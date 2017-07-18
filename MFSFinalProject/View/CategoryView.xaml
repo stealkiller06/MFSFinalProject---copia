@@ -1,0 +1,90 @@
+﻿<Window x:Class="MFSFinalProject.View.CategoryView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MFSFinalProject.View"
+        xmlns:vm="clr-namespace:MFSFinalProject.ViewModel"
+        mc:Ignorable="d"
+        Title="CategoryView" Height="426.442" Width="413.398">
+    <Window.Resources>
+        <!--<vm:CategoryViewModel x:Key="categoryViewModel"/>-->
+        <Style x:Key="FontSize" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <!--DataGrid-->
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <GroupBox Header="Datos de la Categoria" Grid.Row="0">
+            <!--Main Container-->
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--User Data-->
+                <Grid DataContext="{Binding SelectedCategory}" Grid.Row="0" Margin="0 0 0 10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    
+
+                    <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource FontSize}">Name</TextBlock>
+                    <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding CategoryName}" FontSize="20"/>
+
+
+                </Grid>
+                <!-- Buttons -->
+                <Grid  Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Nueva" Command="{Binding AddCategoryCommand}" Grid.Column="0"/>
+                    <Button Content="Actualizar" Command="{Binding UpdateCatecoryCommand}" Grid.Column="1"/>
+                    <Button Content="Eliminar" Command="{Binding DeleteCategoryCommand}" Grid.Column="2"/>
+                </Grid>
+            </Grid>
+            
+            
+
+        </GroupBox>
+        <GroupBox Header="Listado de Categorias" Grid.Row="1">
+            <StackPanel>
+                <!-- Search bar-->
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <!--Label searching-->
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <!-- Label searching-->
+                        <ColumnDefinition Width="2*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock>Buscar:</TextBlock>
+                    <TextBox x:Name="TextBoxSearchBar" TextChanged="TextBoxSearchBar_TextChanged" Grid.Column="1"/>
+                </Grid>
+                
+                
+                <DataGrid x:Name="DataGridCategories"    ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" CanUserAddRows="False"
+                          CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Height="200">
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn  Header="ID" Binding="{Binding CategoryId}" Width="*" />
+                        <DataGridTextColumn Header="Category Name" Binding="{Binding CategoryName}" Width="2*"/>
+                        <!--<DataGridTextColumn Binding="{Binding CategoryRemove}" Visibility="Hidden" />
+                        <DataGridTextColumn  Binding="{Binding RowVersion}" Visibility="Hidden"/>
+                        <DataGridTextColumn  Binding="{Binding Products}" Visibility="Hidden"/>-->
+                    </DataGrid.Columns>
+                </DataGrid>
+                
+            </StackPanel>
+        </GroupBox>
+
+    </Grid>
+</Window>
