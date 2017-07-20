@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="Mantenimiento Productos" Height="426.442" Width="688.548">
     <Window.Resources>
-        <!--<vm:CategoryViewModel x:Key="categoryViewModel"/>-->
+        <!--<vm:ProductViewModel x:Key="productViewModel"/>-->
         <Style x:Key="FontSize" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
         </Style>
@@ -22,7 +22,7 @@
 
         <GroupBox Header="Datos de la Productos" Grid.Row="0">
             <!--Main Container-->
-            <Grid>
+            <Grid DataContext="{Binding SelectedProduct}">
                 <Grid.RowDefinitions>
                    <!--NAME-->
                     <RowDefinition></RowDefinition>
@@ -46,7 +46,7 @@
 
 
                     <TextBlock Grid.Column="0" Grid.Row="0" >Name</TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="0" Text="" FontSize="20"/>
+                    <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name, Mode=TwoWay}" FontSize="20"/>
 
 
                 </Grid>
@@ -128,20 +128,21 @@
                     <TextBlock>Buscar:</TextBlock>
                     <TextBox x:Name="TextBoxSearchBar" TextChanged="TextBoxSearchBar_TextChanged" Grid.Column="1"/>
                 </Grid>
-                
-                
-                <DataGrid x:Name="DataGridCategories"    ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" CanUserAddRows="False"
+
+
+                <DataGrid x:Name="DataGridCategories"    ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" CanUserAddRows="False"
                           CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Height="200">
 
                     <DataGrid.Columns>
-                        <DataGridTextColumn  Header="ID" Binding="{Binding CategoryId}" Width="*" />
-                        <DataGridTextColumn Header="Producto" Binding="{Binding CategoryName}" Width="*"/>
-                        <DataGridTextColumn Header="Categoria" Binding="{Binding CategoryName}" Width="*"/>
-                        <DataGridTextColumn Header="Min Stock" Binding="{Binding CategoryName}" Width="*"/>
+                        <DataGridTextColumn  Header="ID" Binding="{Binding ProductId}" Width="*" />
+                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
+                        <DataGridTextColumn Header="Categoria" Binding="{Binding Category}" Width="*"/>
+                        <DataGridTextColumn Header="Min Stock" Binding="{Binding MinStock}" Width="*"/>
                         <DataGridTextColumn Header="Suplidor" Binding="{Binding CategoryName}" Width="*"/>
                         <DataGridTextColumn Header="Precio" Binding="{Binding CategoryName}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
+                
                 
             </StackPanel>
         </GroupBox>
