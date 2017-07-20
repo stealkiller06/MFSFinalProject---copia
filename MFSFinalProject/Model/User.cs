@@ -11,9 +11,6 @@ namespace MFSFinalProject.Model
     {
         public User()
         {
-            Category = new List<Category>();
-            Products = new List<Product>();
-
         }
 
         public int UserId { get; set; }
@@ -37,7 +34,7 @@ namespace MFSFinalProject.Model
         public byte[] RowVersion { get; set; }
 
         //Relationships
-        public virtual ICollection<Category> Category { get; set; }
-        public virtual ICollection<Product> Products { get; set; }
+        public virtual List<Category> Category { get; set; }
+        public virtual List<Product> Products { get; set; }
     }
 }
