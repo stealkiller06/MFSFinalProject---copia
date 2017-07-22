@@ -12,7 +12,7 @@ namespace MFSFinalProject.Model
             Products = new HashSet<Product>();
         }
 
-        
+        #region Properties
         public int CategoryId { get; set; }
         [Required]
         [StringLength(50)]
@@ -28,12 +28,15 @@ namespace MFSFinalProject.Model
         public int CategoryRemove { get; set; }
         [Timestamp]
         public byte[] RowVersion { get; set; }
+        #endregion
 
-
-        //RelationShips
+        #region Relationships
         public virtual User User { get; set; }
+        public virtual Measurement Mesurement { get; set; }
         public virtual ICollection<Product> Products { get; set; }
+        #endregion
 
-        
+
+
     }
 }

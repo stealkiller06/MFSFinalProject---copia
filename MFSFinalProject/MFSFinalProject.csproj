@@ -81,7 +81,8 @@
     <Compile Include="Migrations\201707221047430_Relationships.Designer.cs">
       <DependentUpon>201707221047430_Relationships.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\ProductAux.cs" />
+    <Compile Include="Model\Measurement.cs" />
+    <Compile Include="Model\Help\ProductAux.cs" />
     <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Compile Include="ViewModel\Commands\SimpleCommand.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />

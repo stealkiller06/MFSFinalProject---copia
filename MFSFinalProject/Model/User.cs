@@ -11,6 +11,9 @@ namespace MFSFinalProject.Model
     {
         public User()
         {
+            Category = new HashSet<Category>();
+            Products = new HashSet<Product>();
+            Remove = 0;
         }
 
         public int UserId { get; set; }
@@ -28,13 +31,15 @@ namespace MFSFinalProject.Model
         [Required]
         [StringLength(20)]
         public string PassWord { get; set; }
-        [Required]
         public int Remove { get; set; }
         [Timestamp]
         public byte[] RowVersion { get; set; }
 
-        //Relationships
-        public virtual List<Category> Category { get; set; }
-        public virtual List<Product> Products { get; set; }
+        #region Relagionships
+        public virtual ICollection<Category> Category { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
+        public virtual ICollection<Measurement> Measurements { get; set; }
+        #endregion
+
     }
 }

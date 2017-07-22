@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MFSFinalProject.Infra;
 using System.Collections.ObjectModel;
 using MFSFinalProject.Model;
+using MFSFinalProject.Model.Help;
 using System.Windows;
 using System.Data.Entity;
 

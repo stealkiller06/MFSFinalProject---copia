@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MFSFinalProject.Model
+namespace MFSFinalProject.Model.Help
 {
     public class ProductAux
     {
