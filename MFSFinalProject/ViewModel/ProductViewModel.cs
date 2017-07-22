@@ -39,16 +39,21 @@ namespace MFSFinalProject.ViewModel
                            join c in context.Categories on p.Category.CategoryId equals c.CategoryId
                            select new
                            {
+                               Id = p.ProductId,
                                Name = p.Name,
+                               CategoryId = c.CategoryId,
                                Category = c.CategoryName,
                                MinStock = p.MinStock
+                               
                            };
 
 
                 foreach (var pro in data)
                 {
                     ProductAux product = new ProductAux();
+                    product.Id = pro.Id;
                     product.Name = pro.Name;
+                    product.CategoryId = pro.CategoryId;
                     product.Category = pro.Category;
                     product.MinStock = pro.MinStock;
                     products.Add(product);
@@ -73,11 +78,11 @@ namespace MFSFinalProject.ViewModel
 
         #endregion
 
-
+        #region Propiedades
         public ObservableCollection<ProductAux> Products
         {
             get { return products; }
-            
+
             set
             {
                 products = value;
@@ -100,6 +105,8 @@ namespace MFSFinalProject.ViewModel
                 OnPropertyChanged();
             }
         }
+        #endregion
+
 
 
     }

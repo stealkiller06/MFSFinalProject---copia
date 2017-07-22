@@ -6,11 +6,20 @@
         xmlns:local="clr-namespace:MFSFinalProject.View"
         xmlns:vm="clr-namespace:MFSFinalProject.ViewModel"
         mc:Ignorable="d"
-        Title="Mantenimiento Productos" Height="426.442" Width="688.548">
+        Title="Mantenimiento Productos" Height="695.774" Width="877.722">
     <Window.Resources>
         <!--<vm:ProductViewModel x:Key="productViewModel"/>-->
         <Style x:Key="FontSize" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
+            
+        </Style>
+        <Style x:Key="ColumnSize" TargetType="ColumnDefinition">
+            <Setter Property="Width" Value="3*"></Setter>
+        </Style>
+
+        <Style x:Key="Groupbox" TargetType="GroupBox">
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Margin" Value="15"/>
         </Style>
     </Window.Resources>
     <Grid>
@@ -20,11 +29,14 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <GroupBox Header="Datos de la Productos" Grid.Row="0">
+        <GroupBox Header="Datos de la Productos" Grid.Row="0" Margin="15" Padding="20">
             <!--Main Container-->
+
             <Grid DataContext="{Binding SelectedProduct}">
+
+                <!--#region rowdefinitions-->
                 <Grid.RowDefinitions>
-                   <!--NAME-->
+                    <!--NAME-->
                     <RowDefinition></RowDefinition>
                     <!--MIN STOCK-->
                     <RowDefinition></RowDefinition>
@@ -34,14 +46,16 @@
                     <RowDefinition></RowDefinition>
                     <!--PRECIO DE PRODUCTO-->
                     <RowDefinition></RowDefinition>
-                    
-                   
+
+
                 </Grid.RowDefinitions>
-                <!--NAME-->
+                <!--#endregion-->
+
+                <!--#region NAME-->
                 <Grid  Grid.Row="0" Margin="0 0 0 10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Style="{StaticResource ColumnSize}"/>
                     </Grid.ColumnDefinitions>
 
 
@@ -50,59 +64,79 @@
 
 
                 </Grid>
+                <!--#endregion-->
 
-                <!--MIN STOCK-->
+                <!--#region MIN STOCK-->
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Style="{StaticResource ColumnSize}"/>
                     </Grid.ColumnDefinitions>
 
 
                     <TextBlock Grid.Column="0" Grid.Row="0" >Stock Minimo</TextBlock>
                     <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding MinStock}" FontSize="20"/>
                 </Grid>
-                
-                <!--CATEGORIAS-->
+                <!--#endregion-->
+
+                <!--#region  CATEGORIA-->
                 <Grid Grid.Row="2">
+                    <!--#region  ColumnDefinitions-->
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Style="{StaticResource ColumnSize}"/>
                     </Grid.ColumnDefinitions>
-
+                    <!--#endregion-->
 
                     <TextBlock Grid.Column="0" Grid.Row="0" >Categoria</TextBlock>
-                    
-                    <ComboBox Grid.Column="1" Grid.Row="0"  Text="{Binding Category, Mode=TwoWay}"  DisplayMemberPath="CategoryName" FontSize="20">
-                        
-                    </ComboBox>
+                    <!--#region Nombre de categoria y boton -->
+                    <Grid Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2">
+                        <!--#region ColumnDefinitions-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <!--#endregion-->
+                        <TextBox Text="{Binding CategoryId}" Margin="0 0 0 5" Grid.Column="0"/>
+                        <TextBox   Text="{Binding Category, Mode=TwoWay}"  IsReadOnly="True" FontSize="20" Grid.Column="1"/>
+                        <Button Content="..." Grid.Column="2"/>
+
+                    </Grid>
+                    <!--#endregion-->
+
 
 
                 </Grid>
-                
-                <!--SUPLIDOR-->
+                <!--#endregion-->
+
+                <!--#region SUPLIDOR-->
                 <Grid Grid.Row="3">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Style="{StaticResource ColumnSize}"/>
                     </Grid.ColumnDefinitions>
 
 
                     <TextBlock Grid.Column="0" Grid.Row="0" >Suplidor</TextBlock>
                     <ComboBox Grid.Column="1" Grid.Row="0" Text="" FontSize="20"/>
                 </Grid>
-                
-                <!--PRECIO DEL PRODUCTO-->
+
+                <!--#endregion-->
+
+                <!--#region PRECIO DEL PRODUCTO-->
                 <Grid Grid.Row="4">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Style="{StaticResource ColumnSize}"/>
                     </Grid.ColumnDefinitions>
 
 
                     <TextBlock Grid.Column="0" Grid.Row="0" >Precio</TextBlock>
                     <TextBox Grid.Column="1" Grid.Row="0" Text="" FontSize="20"/>
                 </Grid>
+                <!--#endregion-->
+
                 <!-- Buttons -->
                 <!--<Grid  Grid.Row="1">
                     <Grid.ColumnDefinitions>
@@ -115,11 +149,11 @@
                     <Button Content="Eliminar" Command="{Binding DeleteCategoryCommand}" Grid.Column="2"/>
                 </Grid>-->
             </Grid>
-            
-            
+
+
 
         </GroupBox>
-        <GroupBox Header="Listado de Productos" Grid.Row="1">
+        <GroupBox Header="Listado de Productos" Grid.Row="1" Margin="15" Padding="20">
             <StackPanel>
                 <!-- Search bar-->
                 <Grid>
@@ -139,8 +173,8 @@
                           CanUserDeleteRows="False" IsReadOnly="True"  Height="200">
 
                 </DataGrid>
-                
-                
+
+
             </StackPanel>
         </GroupBox>
 
