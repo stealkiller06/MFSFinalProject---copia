@@ -65,8 +65,7 @@ namespace MFSFinalProject.View
                 Category SelectedCategory = (Category)DataGridCategories.SelectedItem;
                 ProductView.TextBoxCategoryId.Text = Convert.ToString(SelectedCategory.CategoryId);
                 ProductView.TextBoxCategoryName.Text = SelectedCategory.CategoryName;
-                //ProductViewModel.ChangeCategoryData(SelectedCategory.CategoryId, SelectedCategory.CategoryName);
-                //this.Close();
+                this.Close();
             }
         }
     }

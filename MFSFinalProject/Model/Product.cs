@@ -33,8 +33,6 @@ namespace MFSFinalProject.Model
             }
         }
         [Required]
-        public decimal Cost { get; set; }
-        [Required]
         public decimal SellPrice { get; set; }
         [Required]
         public int MinStock
