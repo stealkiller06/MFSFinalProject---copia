@@ -27,9 +27,20 @@ namespace MFSFinalProject.View
         {
             InitializeComponent();
             this.DataContext = new CategoryViewModel();
-            //DataGridCategories.Columns[0].Visibility = Visibility.Collapsed;
         }
 
+        public CategoryView(ProductViewModel productViewModel)
+        {
+            InitializeComponent();
+            this.DataContext = new CategoryViewModel();
+            this.ProductViewModel = productViewModel;
+        }
+
+        public ProductViewModel ProductViewModel { get; set; }
+
+        /// <summary>
+        /// Funcion para filtrar datos del DataGrid
+        /// </summary>
         private void TextBoxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
 
@@ -44,6 +55,18 @@ namespace MFSFinalProject.View
                     Category C = o as Category;
                     return (C.CategoryName.ToUpper().StartsWith(textFilter.ToUpper()));
                 };
+            }
+        }
+
+        private void DataGridCategories_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if(ProductViewModel != null)
+            {
+                Category SelectedCategory = (Category)DataGridCategories.SelectedItem;
+                MessageBox.Show(SelectedCategory.CategoryName);
+                MessageBox.Show(ProductViewModel.SelectedProduct.Name);
+                //ProductViewModel.ChangeCategoryData(SelectedCategory.CategoryId, SelectedCategory.CategoryName);
+                //this.Close();
             }
         }
     }

@@ -50,7 +50,8 @@ namespace MFSFinalProject.Model
         [Timestamp]
         public byte[] RowVersion { get; set; }
 
-        //RelationShips
+        #region Relationships
+        public virtual Measurement Mesurement { get; set; }
         public virtual Category Category
         {
             get { return category; }
@@ -61,6 +62,8 @@ namespace MFSFinalProject.Model
             }
         }
         public virtual User User { get; set; }
+        #endregion
+
 
 
     }

@@ -72,7 +72,7 @@
                 
                 
                 <DataGrid x:Name="DataGridCategories"    ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" CanUserAddRows="False"
-                          CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Height="200">
+                          CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Height="200" MouseDoubleClick="DataGridCategories_MouseDoubleClick">
 
                     <DataGrid.Columns>
                         <DataGridTextColumn  Header="ID" Binding="{Binding CategoryId}" Width="*" />

@@ -9,6 +9,7 @@ using MFSFinalProject.Model;
 using MFSFinalProject.Model.Help;
 using System.Windows;
 using System.Data.Entity;
+using MFSFinalProject.View;
 
 namespace MFSFinalProject.ViewModel
 {
@@ -24,7 +25,7 @@ namespace MFSFinalProject.ViewModel
         public ProductViewModel()
         {
             LoadProduct();
-            LoadCategories();
+            //ChangeCategory = new MyICommand(OnChangeCategory, CanChangeCategory);
         }
         #region Cargar elementos 
 
@@ -108,7 +109,33 @@ namespace MFSFinalProject.ViewModel
         }
         #endregion
 
+        #region Commands
+        #region ChangeCategory
+        public MyICommand ChangeCategory { get; set; }
 
+        public void OnChangeCategory()
+        {
+            CategoryView categoryView = new CategoryView(this)
+            {
+                Owner = Application.Current.MainWindow
+            };
+            categoryView.Show();
+        }
+        public bool CanChangeCategory()
+        {
+            return true;
+        }
+        #endregion
+
+        #endregion
+
+        #region Funciones
+        public void ChangeCategoryData(int id, string name)
+        {
+            SelectedProduct.Id = id;
+            SelectedProduct.Name = name;
+        }
+        #endregion
 
     }
 }

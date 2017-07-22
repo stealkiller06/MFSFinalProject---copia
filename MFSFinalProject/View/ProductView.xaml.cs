@@ -30,5 +30,15 @@ namespace MFSFinalProject.View
         {
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonChangeCategory_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MFSFinalProject.View"
         xmlns:vm="clr-namespace:MFSFinalProject.ViewModel"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Mantenimiento Productos" Height="695.774" Width="877.722">
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+         Background="{DynamicResource MaterialDesignBackground}"
+         FontFamily="{DynamicResource MaterialDesignFont}"
+    Title="Mantenimiento Productos" Height="695.774" Width="877.722">
     <Window.Resources>
         <!--<vm:ProductViewModel x:Key="productViewModel"/>-->
         <Style x:Key="FontSize" TargetType="TextBlock">
@@ -21,6 +29,7 @@
             <Setter Property="Padding" Value="20"/>
             <Setter Property="Margin" Value="15"/>
         </Style>
+        <vm:ProductViewModel x:Key="productViewModel"/>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -28,117 +37,117 @@
             <!--DataGrid-->
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+        <materialDesign:Card  Margin="15">
+            <GroupBox Header="Datos de la Productos" Grid.Row="0"  Padding="20">
+                <!--Main Container-->
 
-        <GroupBox Header="Datos de la Productos" Grid.Row="0" Margin="15" Padding="20">
-            <!--Main Container-->
+                <Grid DataContext="{Binding SelectedProduct}">
 
-            <Grid DataContext="{Binding SelectedProduct}">
-
-                <!--#region rowdefinitions-->
-                <Grid.RowDefinitions>
-                    <!--NAME-->
-                    <RowDefinition></RowDefinition>
-                    <!--MIN STOCK-->
-                    <RowDefinition></RowDefinition>
-                    <!--CATEGORIAS-->
-                    <RowDefinition></RowDefinition>
-                    <!--SUPLIDOR-->
-                    <RowDefinition></RowDefinition>
-                    <!--PRECIO DE PRODUCTO-->
-                    <RowDefinition></RowDefinition>
-
-
-                </Grid.RowDefinitions>
-                <!--#endregion-->
-
-                <!--#region NAME-->
-                <Grid  Grid.Row="0" Margin="0 0 0 10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Style="{StaticResource ColumnSize}"/>
-                    </Grid.ColumnDefinitions>
+                    <!--#region rowdefinitions-->
+                    <Grid.RowDefinitions>
+                        <!--NAME-->
+                        <RowDefinition></RowDefinition>
+                        <!--MIN STOCK-->
+                        <RowDefinition></RowDefinition>
+                        <!--CATEGORIAS-->
+                        <RowDefinition></RowDefinition>
+                        <!--SUPLIDOR-->
+                        <RowDefinition></RowDefinition>
+                        <!--PRECIO DE PRODUCTO-->
+                        <RowDefinition></RowDefinition>
 
 
-                    <TextBlock Grid.Column="0" Grid.Row="0" >Name</TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name, Mode=TwoWay}" FontSize="20"/>
-
-
-                </Grid>
-                <!--#endregion-->
-
-                <!--#region MIN STOCK-->
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Style="{StaticResource ColumnSize}"/>
-                    </Grid.ColumnDefinitions>
-
-
-                    <TextBlock Grid.Column="0" Grid.Row="0" >Stock Minimo</TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding MinStock}" FontSize="20"/>
-                </Grid>
-                <!--#endregion-->
-
-                <!--#region  CATEGORIA-->
-                <Grid Grid.Row="2">
-                    <!--#region  ColumnDefinitions-->
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Style="{StaticResource ColumnSize}"/>
-                    </Grid.ColumnDefinitions>
+                    </Grid.RowDefinitions>
                     <!--#endregion-->
 
-                    <TextBlock Grid.Column="0" Grid.Row="0" >Categoria</TextBlock>
-                    <!--#region Nombre de categoria y boton -->
-                    <Grid Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2">
-                        <!--#region ColumnDefinitions-->
+                    <!--#region NAME-->
+                    <Grid  Grid.Row="0" Margin="0 0 0 10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="4*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Style="{StaticResource ColumnSize}"/>
                         </Grid.ColumnDefinitions>
-                        <!--#endregion-->
-                        <TextBox Text="{Binding CategoryId}" Margin="0 0 0 5" Grid.Column="0"/>
-                        <TextBox   Text="{Binding Category, Mode=TwoWay}"  IsReadOnly="True" FontSize="20" Grid.Column="1"/>
-                        <Button Content="..." Grid.Column="2"/>
+
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" >Name</TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name, Mode=TwoWay}" />
+
 
                     </Grid>
                     <!--#endregion-->
 
+                    <!--#region MIN STOCK-->
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Style="{StaticResource ColumnSize}"/>
+                        </Grid.ColumnDefinitions>
 
 
-                </Grid>
-                <!--#endregion-->
+                        <TextBlock Grid.Column="0" Grid.Row="0" >Stock Minimo</TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding MinStock}" />
+                    </Grid>
+                    <!--#endregion-->
 
-                <!--#region SUPLIDOR-->
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Style="{StaticResource ColumnSize}"/>
-                    </Grid.ColumnDefinitions>
+                    <!--#region  CATEGORIA-->
+                    <Grid Grid.Row="2">
+                        <!--#region  ColumnDefinitions-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Style="{StaticResource ColumnSize}"/>
+                        </Grid.ColumnDefinitions>
+                        <!--#endregion-->
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" >Categoria</TextBlock>
+                        <!--#region Nombre de categoria y boton -->
+                        <Grid Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2">
+                            <!--#region ColumnDefinitions-->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <!--#endregion-->
+                            <TextBox Text="{Binding CategoryId}" Margin="0 0 5 0" Grid.Column="0"/>
+                            <TextBox   Text="{Binding Category, Mode=TwoWay}"  IsReadOnly="True"  Grid.Column="1"/>
+                            <Button Content="..." Grid.Column="2" Command="{Binding ChangeCategory,Source={StaticResource productViewModel}}" Click="ButtonChangeCategory_Click" x:Name="ButtonChangeCategory"/>
+
+                        </Grid>
+                        <!--#endregion-->
 
 
-                    <TextBlock Grid.Column="0" Grid.Row="0" >Suplidor</TextBlock>
-                    <ComboBox Grid.Column="1" Grid.Row="0" Text="" FontSize="20"/>
-                </Grid>
 
-                <!--#endregion-->
+                    </Grid>
+                    <!--#endregion-->
 
-                <!--#region PRECIO DEL PRODUCTO-->
-                <Grid Grid.Row="4">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Style="{StaticResource ColumnSize}"/>
-                    </Grid.ColumnDefinitions>
+                    <!--#region SUPLIDOR-->
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Style="{StaticResource ColumnSize}"/>
+                        </Grid.ColumnDefinitions>
 
 
-                    <TextBlock Grid.Column="0" Grid.Row="0" >Precio</TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="0" Text="" FontSize="20"/>
-                </Grid>
-                <!--#endregion-->
+                        <TextBlock Grid.Column="0" Grid.Row="0" >Suplidor</TextBlock>
+                        <ComboBox Grid.Column="1" Grid.Row="0" Text="" />
+                    </Grid>
 
-                <!-- Buttons -->
-                <!--<Grid  Grid.Row="1">
+                    <!--#endregion-->
+
+                    <!--#region PRECIO DEL PRODUCTO-->
+                    <Grid Grid.Row="4">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Style="{StaticResource ColumnSize}"/>
+                        </Grid.ColumnDefinitions>
+
+
+                        <TextBlock Grid.Column="0" Grid.Row="0" >Precio</TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="0" Text="" />
+                    </Grid>
+                    <!--#endregion-->
+
+                    <!-- Buttons -->
+                    <!--<Grid  Grid.Row="1">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -148,35 +157,38 @@
                     <Button Content="Actualizar" Command="{Binding UpdateCatecoryCommand}" Grid.Column="1"/>
                     <Button Content="Eliminar" Command="{Binding DeleteCategoryCommand}" Grid.Column="2"/>
                 </Grid>-->
-            </Grid>
-
-
-
-        </GroupBox>
-        <GroupBox Header="Listado de Productos" Grid.Row="1" Margin="15" Padding="20">
-            <StackPanel>
-                <!-- Search bar-->
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <!--Label searching-->
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <!-- Label searching-->
-                        <ColumnDefinition Width="2*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock>Buscar:</TextBlock>
-                    <TextBox x:Name="TextBoxSearchBar" TextChanged="TextBoxSearchBar_TextChanged" Grid.Column="1"/>
                 </Grid>
 
 
-                <DataGrid x:Name="DataGridCategories"    ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" CanUserAddRows="False"
+
+            </GroupBox>
+        </materialDesign:Card>
+
+        <materialDesign:Card  Margin="15" Grid.Row="1">
+            <GroupBox Header="Listado de Productos"   Padding="20">
+                <StackPanel>
+                    <!-- Search bar-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <!--Label searching-->
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <!-- Label searching-->
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock>Buscar:</TextBlock>
+                        <TextBox x:Name="TextBoxSearchBar" TextChanged="TextBoxSearchBar_TextChanged" Grid.Column="1"/>
+                    </Grid>
+
+
+                    <DataGrid x:Name="DataGridCategories"    ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" CanUserAddRows="False"
                           CanUserDeleteRows="False" IsReadOnly="True"  Height="200">
 
-                </DataGrid>
+                    </DataGrid>
 
 
-            </StackPanel>
-        </GroupBox>
-
+                </StackPanel>
+            </GroupBox>
+        </materialDesign:Card>
     </Grid>
 </Window>

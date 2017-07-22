@@ -17,6 +17,7 @@ namespace MFSFinalProject.Model
 
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Measurement> Measurements { get; set; }
         public virtual DbSet<Product> Products { get; set; }
     }
 }

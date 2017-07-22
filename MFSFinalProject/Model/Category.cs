@@ -32,7 +32,6 @@ namespace MFSFinalProject.Model
 
         #region Relationships
         public virtual User User { get; set; }
-        public virtual Measurement Mesurement { get; set; }
         public virtual ICollection<Product> Products { get; set; }
         #endregion
 
