@@ -39,13 +39,17 @@ namespace MFSFinalProject.ViewModel
 
                 var data = from p in context.Products
                            join c in context.Categories on p.Category.CategoryId equals c.CategoryId
+                           join m in context.Measurements on p.Mesurement.MeasurementId equals m.MeasurementId
                            select new
                            {
                                Id = p.ProductId,
                                Name = p.Name,
                                CategoryId = c.CategoryId,
                                Category = c.CategoryName,
-                               MinStock = p.MinStock
+                               MinStock = p.MinStock,
+                               SellPrice = p.SellPrice,
+                               MeasurementId = m.MeasurementId,
+                               MeasurementName = m.Name
                                
                            };
 
@@ -58,6 +62,9 @@ namespace MFSFinalProject.ViewModel
                     product.CategoryId = pro.CategoryId;
                     product.Category = pro.Category;
                     product.MinStock = pro.MinStock;
+                    product.SellPrice = pro.SellPrice;
+                    product.MeasurementId = pro.MeasurementId;
+                    product.Measurementname = pro.MeasurementName;
                     products.Add(product);
                 }
             }

@@ -121,35 +121,50 @@
                     </Grid>
                     <!--#endregion-->
 
-                    <!--#region SUPLIDOR-->
-                    <Grid Grid.Row="3">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Style="{StaticResource ColumnSize}"/>
-                        </Grid.ColumnDefinitions>
-
-
-                        <TextBlock Grid.Column="0" Grid.Row="0" >Suplidor</TextBlock>
-                        <ComboBox Grid.Column="1" Grid.Row="0" Text="" />
-                    </Grid>
-
-                    <!--#endregion-->
-
-                    <!--#region PRECIO DEL PRODUCTO-->
+                    <!--#region PRECIO DEL PRODUCTO y Medida-->
                     <Grid Grid.Row="4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Style="{StaticResource ColumnSize}"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-
-                        <TextBlock Grid.Column="0" Grid.Row="0" >Precio</TextBlock>
-                        <TextBox Grid.Column="1" Grid.Row="0" Text="" />
+                        <!--#region PRECIO DEL PRODUCTO -->
+                        <Grid Margin="0 0 20 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Grid.Row="0" >Precio</TextBlock>
+                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding SellPrice}" />
+                        </Grid>
+                        <!--#endregion-->
+                        <!--#region Medida -->
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Grid.Row="0" >Medida</TextBlock>
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Text="{Binding MeasurementId}"/>
+                                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Measurementname}" />
+                                <Button Grid.Column="2" Content="..."/>
+                            </Grid>
+                            
+                        </Grid>
+                        <!--#endregion-->
+                        
+                       
                     </Grid>
                     <!--#endregion-->
 
                     <!-- Buttons -->
-                    <Grid  Grid.Row="10">
+                    <Grid  Grid.Row="10" Margin="5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>

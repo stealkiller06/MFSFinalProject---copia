@@ -13,5 +13,8 @@ namespace MFSFinalProject.Model.Help
         public int CategoryId { get; set; }
         public string Category { get; set; }
         public int MinStock { get; set; }
+        public decimal SellPrice { get; set; }
+        public int MeasurementId { get; set; }
+        public string Measurementname { get; set; }
     }
 }
