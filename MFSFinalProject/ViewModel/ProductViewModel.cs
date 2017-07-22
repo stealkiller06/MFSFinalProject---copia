@@ -115,11 +115,11 @@ namespace MFSFinalProject.ViewModel
 
         public void OnChangeCategory()
         {
-            CategoryView categoryView = new CategoryView(this)
-            {
-                Owner = Application.Current.MainWindow
-            };
-            categoryView.Show();
+            //CategoryView categoryView = new CategoryView(this)
+            //{
+            //    Owner = Application.Current.MainWindow
+            //};
+            //categoryView.Show();
         }
         public bool CanChangeCategory()
         {

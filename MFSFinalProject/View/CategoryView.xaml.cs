@@ -29,14 +29,14 @@ namespace MFSFinalProject.View
             this.DataContext = new CategoryViewModel();
         }
 
-        public CategoryView(ProductViewModel productViewModel)
+        public CategoryView(ProductView productView)
         {
             InitializeComponent();
             this.DataContext = new CategoryViewModel();
-            this.ProductViewModel = productViewModel;
+            this.ProductView = productView;
         }
 
-        public ProductViewModel ProductViewModel { get; set; }
+        public ProductView ProductView { get; set; }
 
         /// <summary>
         /// Funcion para filtrar datos del DataGrid
@@ -60,11 +60,11 @@ namespace MFSFinalProject.View
 
         private void DataGridCategories_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if(ProductViewModel != null)
+            if(ProductView != null)
             {
                 Category SelectedCategory = (Category)DataGridCategories.SelectedItem;
-                MessageBox.Show(SelectedCategory.CategoryName);
-                MessageBox.Show(ProductViewModel.SelectedProduct.Name);
+                ProductView.TextBoxCategoryId.Text = Convert.ToString(SelectedCategory.CategoryId);
+                ProductView.TextBoxCategoryName.Text = SelectedCategory.CategoryName;
                 //ProductViewModel.ChangeCategoryData(SelectedCategory.CategoryId, SelectedCategory.CategoryName);
                 //this.Close();
             }

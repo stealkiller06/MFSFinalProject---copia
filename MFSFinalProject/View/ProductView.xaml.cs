@@ -30,14 +30,11 @@ namespace MFSFinalProject.View
         {
 
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void ButtonChangeCategory_Click(object sender, RoutedEventArgs e)
         {
+            CategoryView cv = new CategoryView(this);
+            cv.Owner = Application.Current.MainWindow;
+            cv.ShowDialog();
 
         }
     }
