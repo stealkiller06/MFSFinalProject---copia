@@ -38,7 +38,7 @@
                    
                 </Grid.RowDefinitions>
                 <!--NAME-->
-                <Grid DataContext="" Grid.Row="0" Margin="0 0 0 10">
+                <Grid  Grid.Row="0" Margin="0 0 0 10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
@@ -60,7 +60,7 @@
 
 
                     <TextBlock Grid.Column="0" Grid.Row="0" >Stock Minimo</TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="0" Text="" FontSize="20"/>
+                    <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding MinStock}" FontSize="20"/>
                 </Grid>
                 
                 <!--CATEGORIAS-->
@@ -72,7 +72,12 @@
 
 
                     <TextBlock Grid.Column="0" Grid.Row="0" >Categoria</TextBlock>
-                    <ComboBox Grid.Column="1" Grid.Row="0" Text="" FontSize="20"/>
+                    
+                    <ComboBox Grid.Column="1" Grid.Row="0"  Text="{Binding Category, Mode=TwoWay}"  DisplayMemberPath="CategoryName" FontSize="20">
+                        
+                    </ComboBox>
+
+
                 </Grid>
                 
                 <!--SUPLIDOR-->
@@ -131,16 +136,8 @@
 
 
                 <DataGrid x:Name="DataGridCategories"    ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" CanUserAddRows="False"
-                          CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Height="200">
+                          CanUserDeleteRows="False" IsReadOnly="True"  Height="200">
 
-                    <DataGrid.Columns>
-                        <DataGridTextColumn  Header="ID" Binding="{Binding ProductId}" Width="*" />
-                        <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="*"/>
-                        <DataGridTextColumn Header="Categoria" Binding="{Binding Category}" Width="*"/>
-                        <DataGridTextColumn Header="Min Stock" Binding="{Binding MinStock}" Width="*"/>
-                        <DataGridTextColumn Header="Suplidor" Binding="{Binding CategoryName}" Width="*"/>
-                        <DataGridTextColumn Header="Precio" Binding="{Binding CategoryName}" Width="*"/>
-                    </DataGrid.Columns>
                 </DataGrid>
                 
                 

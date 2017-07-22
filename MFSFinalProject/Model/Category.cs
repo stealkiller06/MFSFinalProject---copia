@@ -9,7 +9,7 @@ namespace MFSFinalProject.Model
         private string categoryName;
         public Category()
         {
-            Products = new List<Product>();
+            Products = new HashSet<Product>();
         }
 
         
@@ -32,7 +32,7 @@ namespace MFSFinalProject.Model
 
         //RelationShips
         public virtual User User { get; set; }
-        public virtual List<Product> Products { get; set; }
+        public virtual ICollection<Product> Products { get; set; }
 
         
     }

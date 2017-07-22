@@ -7,31 +7,74 @@ using MFSFinalProject.Infra;
 using System.Collections.ObjectModel;
 using MFSFinalProject.Model;
 using System.Windows;
+using System.Data.Entity;
 
 namespace MFSFinalProject.ViewModel
 {
     public class ProductViewModel : NotificationClass
     {
-        private ObservableCollection<Product> products;
-        private Product selectedProduct;
+        #region atributos 
+        private ObservableCollection<ProductAux> products;
+        private ObservableCollection<Category> categories;
+        private ProductAux selectedProduct;
+        #endregion
+
 
         public ProductViewModel()
         {
             LoadProduct();
-
-            MessageBox.Show(Products.First().Name);
+            LoadCategories();
         }
+        #region Cargar elementos 
+
+        #region Cargar todos los productos no borrados
         public void LoadProduct()
         {
-            ObservableCollection<Product> products;
+            ObservableCollection<ProductAux> products = new ObservableCollection<ProductAux>();
             using (MFSContext context = new MFSContext())
             {
-                products = new ObservableCollection<Model.Product>(context.Products.ToList());
+
+
+                var data = from p in context.Products
+                           join c in context.Categories on p.Category.CategoryId equals c.CategoryId
+                           select new
+                           {
+                               Name = p.Name,
+                               Category = c.CategoryName,
+                               MinStock = p.MinStock
+                           };
+
+
+                foreach (var pro in data)
+                {
+                    ProductAux product = new ProductAux();
+                    product.Name = pro.Name;
+                    product.Category = pro.Category;
+                    product.MinStock = pro.MinStock;
+                    products.Add(product);
+                }
             }
             Products = products;
         }
+        #endregion
 
-        public ObservableCollection<Product> Products
+        #region Cargar todas las categorias no borradas
+        public void LoadCategories()
+        {
+            ObservableCollection<Category> categories;
+            using (MFSContext context = new MFSContext())
+            {
+                categories =
+                new ObservableCollection<Category>(context.Categories.ToList());
+            }
+            Categories = categories;
+        }
+        #endregion
+
+        #endregion
+
+
+        public ObservableCollection<ProductAux> Products
         {
             get { return products; }
             
@@ -42,7 +85,13 @@ namespace MFSFinalProject.ViewModel
             }
         }
 
-        public Product SelectedProduct
+        public ObservableCollection<Category> Categories
+        {
+            get { return categories; }
+            set { categories = value; }
+        }
+
+        public ProductAux SelectedProduct
         {
             get { return selectedProduct; }
             set
