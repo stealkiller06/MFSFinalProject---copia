@@ -14,7 +14,6 @@ namespace MFSFinalProject.Model
 
         #region Properties
         public int CategoryId { get; set; }
-        [Required]
         [StringLength(50)]
         public string CategoryName
         {

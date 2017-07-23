@@ -40,141 +40,157 @@
         <materialDesign:Card  Margin="15">
             <GroupBox Header="Datos de la Productos" Grid.Row="0"  Padding="20">
                 <!--Main Container-->
-
-                <Grid DataContext="{Binding SelectedProduct}">
-
-                    <!--#region rowdefinitions-->
+                <Grid>
                     <Grid.RowDefinitions>
-                        <!--NAME-->
-                        <RowDefinition></RowDefinition>
-                        <!--MIN STOCK-->
-                        <RowDefinition></RowDefinition>
-                        <!--CATEGORIAS-->
-                        <RowDefinition></RowDefinition>
-                        <!--SUPLIDOR-->
-                        <RowDefinition></RowDefinition>
-                        <!--PRECIO DE PRODUCTO-->
-                        <RowDefinition></RowDefinition>
-                        <!--Botones-->
-                        <RowDefinition></RowDefinition>
-
-
+                        <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <!--#endregion-->
+                    <Grid DataContext="{Binding SelectedProduct}">
 
-                    <!--#region NAME-->
-                    <Grid  Grid.Row="0" Margin="0 0 0 10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Style="{StaticResource ColumnSize}"/>
-                        </Grid.ColumnDefinitions>
-
-
-                        <TextBlock Grid.Column="0" Grid.Row="0" >Name</TextBlock>
-                        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name, Mode=TwoWay}" />
-
-
-                    </Grid>
-                    <!--#endregion-->
-
-                    <!--#region MIN STOCK-->
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Style="{StaticResource ColumnSize}"/>
-                        </Grid.ColumnDefinitions>
+                        <!--#region rowdefinitions-->
+                        <Grid.RowDefinitions>
+                            <!--NAME-->
+                            <RowDefinition></RowDefinition>
+                            <!--MIN STOCK-->
+                            <RowDefinition></RowDefinition>
+                            <!--CATEGORIAS-->
+                            <RowDefinition></RowDefinition>
+                            <!--SUPLIDOR-->
+                            <RowDefinition></RowDefinition>
+                            <!--PRECIO DE PRODUCTO-->
+                            <RowDefinition></RowDefinition>
+                            <!--Botones-->
+                            <RowDefinition></RowDefinition>
 
 
-                        <TextBlock Grid.Column="0" Grid.Row="0" >Stock Minimo</TextBlock>
-                        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding MinStock}" />
-                    </Grid>
-                    <!--#endregion-->
-
-                    <!--#region  CATEGORIA-->
-                    <Grid Grid.Row="2">
-                        <!--#region  ColumnDefinitions-->
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Style="{StaticResource ColumnSize}"/>
-                        </Grid.ColumnDefinitions>
+                        </Grid.RowDefinitions>
                         <!--#endregion-->
 
-                        <TextBlock Grid.Column="0" Grid.Row="0" >Categoria</TextBlock>
-                        <!--#region Nombre de categoria y boton -->
-                        <Grid Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2">
-                            <!--#region ColumnDefinitions-->
+                        <!--#region NAME-->
+                        <Grid  Grid.Row="0" Margin="0 0 0 10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Style="{StaticResource ColumnSize}"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <TextBlock Grid.Column="0" Grid.Row="0" >Name</TextBlock>
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Text="{Binding Id,Mode=TwoWay}" />
+                                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name, Mode=TwoWay}" />
+                            </Grid>
+
+
+
+                        </Grid>
+                        <!--#endregion-->
+
+                        <!--#region MIN STOCK-->
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Style="{StaticResource ColumnSize}"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <TextBlock Grid.Column="0" Grid.Row="0" >Stock Minimo</TextBlock>
+                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding MinStock}" />
+                        </Grid>
+                        <!--#endregion-->
+
+                        <!--#region  CATEGORIA-->
+                        <Grid Grid.Row="2">
+                            <!--#region  ColumnDefinitions-->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Style="{StaticResource ColumnSize}"/>
                             </Grid.ColumnDefinitions>
                             <!--#endregion-->
-                            <TextBox Text="{Binding CategoryId,UpdateSourceTrigger=PropertyChanged}" Margin="0 0 5 0" Grid.Column="0" x:Name="TextBoxCategoryId"/>
-                            <TextBox   Text="{Binding Category, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  IsReadOnly="True"  Grid.Column="1" x:Name="TextBoxCategoryName" />
-                            <Button Content="..." Grid.Column="2" Command="{Binding ChangeCategory,Source={StaticResource productViewModel}}" Click="ButtonChangeCategory_Click" x:Name="ButtonChangeCategory"/>
 
-                        </Grid>
-                        <!--#endregion-->
-
-
-
-                    </Grid>
-                    <!--#endregion-->
-
-                    <!--#region PRECIO DEL PRODUCTO y Medida-->
-                    <Grid Grid.Row="4">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-
-                        <!--#region PRECIO DEL PRODUCTO -->
-                        <Grid Margin="0 0 20 0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="3*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Grid.Row="0" >Precio</TextBlock>
-                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding SellPrice}" />
-                        </Grid>
-                        <!--#endregion-->
-                        <!--#region Medida -->
-                        <Grid Grid.Column="1">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="3*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Grid.Row="0" >Medida</TextBlock>
-                            <Grid Grid.Column="1">
+                            <TextBlock Grid.Column="0" Grid.Row="0" >Categoria</TextBlock>
+                            <!--#region Nombre de categoria y boton -->
+                            <Grid Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2">
+                                <!--#region ColumnDefinitions-->
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="4*"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBox Text="{Binding MeasurementId}"/>
-                                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Measurementname}" />
-                                <Button Grid.Column="2" Content="..."/>
+                                <!--#endregion-->
+                                <TextBox Text="{Binding CategoryId,UpdateSourceTrigger=PropertyChanged}" Margin="0 0 5 0" Grid.Column="0" x:Name="TextBoxCategoryId"/>
+                                <TextBox   Text="{Binding Category, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  IsReadOnly="True"  Grid.Column="1" x:Name="TextBoxCategoryName" />
+                                <Button Content="..." Grid.Column="2" Command="{Binding ChangeCategory,Source={StaticResource productViewModel}}" Click="ButtonChangeCategory_Click" x:Name="ButtonChangeCategory"/>
+
                             </Grid>
-                            
+                            <!--#endregion-->
+
+
+
                         </Grid>
                         <!--#endregion-->
-                        
+
+                        <!--#region PRECIO DEL PRODUCTO y Medida-->
+                        <Grid Grid.Row="4">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--#region PRECIO DEL PRODUCTO -->
+                            <Grid Margin="0 0 20 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="0" >Precio</TextBlock>
+                                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding SellPrice}" />
+                            </Grid>
+                            <!--#endregion-->
+                            <!--#region Medida -->
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Grid.Row="0" >Medida</TextBlock>
+                                <Grid Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="4*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Text="{Binding MeasurementId}"/>
+                                    <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Measurementname}" />
+                                    <Button Grid.Column="2" Content="..."/>
+                                </Grid>
+
+                            </Grid>
+                            <!--#endregion-->
+
+
+                        </Grid>
+                        <!--#endregion-->
+
                        
                     </Grid>
-                    <!--#endregion-->
-
                     <!-- Buttons -->
-                    <Grid  Grid.Row="10" Margin="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Button Content="Nueva" Command="{Binding AddCategoryCommand}" Grid.Column="0"/>
-                    <Button Content="Actualizar" Command="{Binding UpdateCatecoryCommand}" Grid.Column="1"/>
-                    <Button Content="Eliminar" Command="{Binding DeleteCategoryCommand}" Grid.Column="2"/>
+                    <Grid  Grid.Row="1" Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Content="Nueva" Command="{Binding AddProductCommand}" Grid.Column="0"/>
+                        <Button Content="Actualizar" Command="{Binding UpdateProductCommand}" Grid.Column="1"/>
+                        <Button Content="Eliminar" Command="{Binding DeleteCategoryCommand}" Grid.Column="2"/>
+                    </Grid>
                 </Grid>
-                </Grid>
+
+                
 
 
 

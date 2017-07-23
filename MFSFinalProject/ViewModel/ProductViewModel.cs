@@ -10,6 +10,7 @@ using MFSFinalProject.Model.Help;
 using System.Windows;
 using System.Data.Entity;
 using MFSFinalProject.View;
+using System.Data.Entity.Validation;
 
 namespace MFSFinalProject.ViewModel
 {
@@ -24,6 +25,9 @@ namespace MFSFinalProject.ViewModel
 
         public ProductViewModel()
         {
+            SelectedProduct = new ProductAux();
+            AddCategoryCommand = new MyICommand(OnAddCategory, CanAddCategory);
+            UpdateProductCommand = new MyICommand(OnUpdateProduct, CanUpdateProduct);
             LoadProduct();
             //ChangeCategory = new MyICommand(OnChangeCategory, CanChangeCategory);
         }
@@ -117,21 +121,76 @@ namespace MFSFinalProject.ViewModel
         #endregion
 
         #region Commands
-        #region ChangeCategory
-        public MyICommand ChangeCategory { get; set; }
 
-        public void OnChangeCategory()
+
+        #region AddCategoryCommand
+        public MyICommand AddCategoryCommand { get; set; }
+
+        private void OnAddCategory()
         {
-            //CategoryView categoryView = new CategoryView(this)
-            //{
-            //    Owner = Application.Current.MainWindow
-            //};
-            //categoryView.Show();
+            SelectedProduct = new ProductAux();
         }
-        public bool CanChangeCategory()
+        private bool CanAddCategory()
         {
             return true;
         }
+        #endregion
+
+        #region UpdateCategoryCommand
+        public MyICommand UpdateProductCommand { get; set; }
+        
+        private void OnUpdateProduct()
+        {
+            using (MFSContext context = new MFSContext())
+            {
+                Product product = new Product();
+                if (SelectedProduct.Id != 0)
+                {
+                    product = context.Products.Find(SelectedProduct.Id);
+                }
+                product.Name = SelectedProduct.Name;
+                product.MinStock = SelectedProduct.MinStock;
+                product.Category = context.Categories.Find(SelectedProduct.CategoryId);
+                product.SellPrice = SelectedProduct.SellPrice;
+                product.Mesurement = context.Measurements.Find(SelectedProduct.MeasurementId);
+                context.Entry(product).State = SelectedProduct.Id == 0 ?
+                                                EntityState.Added : EntityState.Modified;
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    Exception raise = dbEx;
+                    foreach (var validationErrors in dbEx.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            string message = string.Format("{0}:{1}",
+                                validationErrors.Entry.Entity.ToString(),
+                                validationError.ErrorMessage);
+                            // raise a new exception nesting  
+                            // the current instance as InnerException  
+                            raise = new InvalidOperationException(message, raise);
+                        }
+                    }
+                    throw raise;
+                }
+                
+                LoadCategories();
+                OnPropertyChanged("Products");
+            }
+        }
+
+        private bool CanUpdateProduct()
+        {
+            return true;
+        }
+        
+        #endregion 
+
+        #region DeleteCategoryCommand
+        public MyICommand DeleteProductCommand { get; set; }
         #endregion
 
         #endregion

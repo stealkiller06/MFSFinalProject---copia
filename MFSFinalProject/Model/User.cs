@@ -17,18 +17,14 @@ namespace MFSFinalProject.Model
         }
 
         public int UserId { get; set; }
-        [Required]
         [StringLength(50)]
         public string Name { get; set; }
-        [Required]
         [StringLength(50)]
         public string LastName { get; set; }
         [StringLength(15)]
         public string Phone { get; set; }
-        [Required]
         [StringLength(20)]
         public string UserName { get; set; }
-        [Required]
         [StringLength(20)]
         public string PassWord { get; set; }
         public int Remove { get; set; }
