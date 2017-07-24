@@ -53,6 +53,8 @@ namespace MFSFinalProject.Model
                 OnPropertyChanged();
             }
         }
+
+        public int Remove { get; set; }
         #endregion
 
         #region Relationship
