@@ -146,7 +146,7 @@ namespace MFSFinalProject.ViewModel
                 Product product = new Product();
                 if (SelectedProduct.Id != 0)
                 {
-                    product = context.Products.Find(SelectedProduct.Id);
+                    product = context.Products.Include(p => p.Category).Single(p => p.ProductId == SelectedProduct.Id);
                 }
                 product.Name = SelectedProduct.Name;
                 product.MinStock = SelectedProduct.MinStock;
@@ -176,9 +176,8 @@ namespace MFSFinalProject.ViewModel
                     }
                     throw raise;
                 }
-                
-                LoadCategories();
-                OnPropertyChanged("Products");
+
+                LoadProduct();
             }
         }
 

@@ -163,9 +163,9 @@
                                         <ColumnDefinition Width="4*"/>
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBox Text="{Binding MeasurementId}"/>
-                                    <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Measurementname}" />
-                                    <Button Grid.Column="2" Content="..."/>
+                                    <TextBox Text="{Binding MeasurementId,UpdateSourceTrigger=PropertyChanged}" x:Name="MeasurementId" />
+                                    <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Measurementname,UpdateSourceTrigger=PropertyChanged}"  x:Name="MeasurementName"/>
+                                    <Button Grid.Column="2" Content="..." x:Name="ButtonChangeMeasurement" Click="ButtonChangeMeasurement_Click" />
                                 </Grid>
 
                             </Grid>

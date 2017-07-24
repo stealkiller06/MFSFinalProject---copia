@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MFSFinalProject.ViewModel;
+using MFSFinalProject.Model;
 
 namespace MFSFinalProject.View
 {
@@ -26,19 +27,28 @@ namespace MFSFinalProject.View
             this.DataContext = new MeasurementViewModel();
         }
 
+        public MeasurementView(ProductView productView)
+        {
+            InitializeComponent();
+            this.DataContext = new MeasurementViewModel();
+            ProductView = productView;
+        }
+
+        public ProductView ProductView { get; set; }
+
         private void TextBoxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
 
         }
-
-        private void DataGridCategories_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
         private void DataGridMeasurements_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            if(ProductView != null)
+            {
+                Measurement measurement = (Measurement)DataGridMeasurements.SelectedItem;
+                ProductView.MeasurementId.Text = Convert.ToString(measurement.MeasurementId);
+                ProductView.MeasurementName.Text = measurement.Name;
+                this.Close();
+            }
         }
     }
 }

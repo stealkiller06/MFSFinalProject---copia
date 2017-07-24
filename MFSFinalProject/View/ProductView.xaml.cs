@@ -37,5 +37,12 @@ namespace MFSFinalProject.View
             cv.ShowDialog();
 
         }
+
+        private void ButtonChangeMeasurement_Click(object sender, RoutedEventArgs e)
+        {
+            MeasurementView mv = new MeasurementView(this);
+            mv.Owner = Application.Current.MainWindow;
+            mv.ShowDialog();
+        }
     }
 }
