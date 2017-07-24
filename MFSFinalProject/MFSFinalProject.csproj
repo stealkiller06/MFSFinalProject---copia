@@ -78,12 +78,15 @@
       <DependentUpon>201707241914047_AddSupliers.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Help\OrderAux.cs" />
     <Compile Include="Model\Measurement.cs" />
     <Compile Include="Model\Help\ProductAux.cs" />
+    <Compile Include="Model\Order.cs" />
     <Compile Include="Model\Suplier.cs" />
     <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Compile Include="ViewModel\Commands\SimpleCommand.cs" />
     <Compile Include="ViewModel\MeasurementViewModel.cs" />
+    <Compile Include="ViewModel\OrderViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
     <Compile Include="ViewModel\SuplierViewModel.cs" />
     <Compile Include="View\CategoryView.xaml.cs">
@@ -91,6 +94,9 @@
     </Compile>
     <Compile Include="View\MeasurementView.xaml.cs">
       <DependentUpon>MeasurementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OrderView.xaml.cs">
+      <DependentUpon>OrderView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ProductView.xaml.cs">
       <DependentUpon>ProductView.xaml</DependentUpon>
@@ -119,6 +125,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MeasurementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OrderView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
