@@ -35,6 +35,7 @@ namespace MFSFinalProject.Model
         public virtual ICollection<Category> Category { get; set; }
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<Measurement> Measurements { get; set; }
+        public virtual ICollection<Suplier> Supliers { get; set; }
         #endregion
 
     }
