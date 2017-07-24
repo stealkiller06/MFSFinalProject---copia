@@ -80,7 +80,7 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBox Text="{Binding Id,Mode=TwoWay}" />
+                                <TextBox Text="{Binding Id,Mode=TwoWay}" Opacity="0" />
                                 <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name, Mode=TwoWay}" />
                             </Grid>
 

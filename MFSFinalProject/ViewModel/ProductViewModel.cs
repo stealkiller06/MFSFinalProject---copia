@@ -26,7 +26,7 @@ namespace MFSFinalProject.ViewModel
         public ProductViewModel()
         {
             SelectedProduct = new ProductAux();
-            AddCategoryCommand = new MyICommand(OnAddCategory, CanAddCategory);
+            AddProductCommand = new MyICommand(OnAddCategory, CanAddCategory);
             UpdateProductCommand = new MyICommand(OnUpdateProduct, CanUpdateProduct);
             LoadProduct();
             //ChangeCategory = new MyICommand(OnChangeCategory, CanChangeCategory);
@@ -124,11 +124,12 @@ namespace MFSFinalProject.ViewModel
 
 
         #region AddCategoryCommand
-        public MyICommand AddCategoryCommand { get; set; }
+        public MyICommand AddProductCommand { get; set; }
 
         private void OnAddCategory()
         {
             SelectedProduct = new ProductAux();
+            OnPropertyChanged("SelectedProduct");
         }
         private bool CanAddCategory()
         {
@@ -136,7 +137,7 @@ namespace MFSFinalProject.ViewModel
         }
         #endregion
 
-        #region UpdateCategoryCommand
+        #region UpdateProductCommand
         public MyICommand UpdateProductCommand { get; set; }
         
         private void OnUpdateProduct()
@@ -155,27 +156,9 @@ namespace MFSFinalProject.ViewModel
                 product.Mesurement = context.Measurements.Find(SelectedProduct.MeasurementId);
                 context.Entry(product).State = SelectedProduct.Id == 0 ?
                                                 EntityState.Added : EntityState.Modified;
-                try
-                {
+
                     context.SaveChanges();
-                }
-                catch (DbEntityValidationException dbEx)
-                {
-                    Exception raise = dbEx;
-                    foreach (var validationErrors in dbEx.EntityValidationErrors)
-                    {
-                        foreach (var validationError in validationErrors.ValidationErrors)
-                        {
-                            string message = string.Format("{0}:{1}",
-                                validationErrors.Entry.Entity.ToString(),
-                                validationError.ErrorMessage);
-                            // raise a new exception nesting  
-                            // the current instance as InnerException  
-                            raise = new InvalidOperationException(message, raise);
-                        }
-                    }
-                    throw raise;
-                }
+               
 
                 LoadProduct();
             }

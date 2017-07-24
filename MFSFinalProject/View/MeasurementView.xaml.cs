@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MFSFinalProject.ViewModel;
 using MFSFinalProject.Model;
+using System.ComponentModel;
 
 namespace MFSFinalProject.View
 {
@@ -38,7 +39,18 @@ namespace MFSFinalProject.View
 
         private void TextBoxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
+            string textFilter = TextBoxSearchBar.Text;
+            ICollectionView cv = CollectionViewSource.GetDefaultView(DataGridMeasurements.ItemsSource);
 
+            if (!string.IsNullOrEmpty(textFilter))
+            {
+               
+                cv.Filter = o =>
+                {
+                    Measurement M = o as Measurement;
+                    return (M.Name.ToUpper().StartsWith(textFilter.ToUpper()));
+                };
+            }
         }
         private void DataGridMeasurements_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
