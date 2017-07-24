@@ -13,7 +13,7 @@ namespace MFSFinalProject.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201707241733049_AddSupliers"; }
+            get { return "201707241914047_AddSupliers"; }
         }
         
         string IMigrationMetadata.Source

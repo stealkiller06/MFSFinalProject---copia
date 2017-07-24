@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         Title="Mantenimiento suplidor" Height="426.442" Width="580.398">
     <Window.Resources>
+        
         <!--<vm:SuplierViewModel x:Key="suplierViewModel"/>-->
         <Style x:Key="FontSize" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
@@ -22,7 +23,7 @@
 
         <GroupBox Header="Datos del suplidor" Grid.Row="0">
             <!--Main Container-->
-            <Grid >
+            <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
@@ -89,7 +90,7 @@
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
                     <Button Content="Nueva" Command="{Binding AddSuplierCommand}" Grid.Column="0"/>
-                    <Button Content="Actualizar" Command="{Binding UpdateCatecoryCommand}" Grid.Column="1"/>
+                    <Button Content="Actualizar" Command="{Binding UpdateSuplierCommand}" Grid.Column="1"/>
                     <Button Content="Eliminar" Command="{Binding DeleteSuplierCommand}" Grid.Column="2"/>
                 </Grid>
                 <!--#endregion-->
@@ -110,7 +111,7 @@
                         <ColumnDefinition Width="2*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     <TextBlock>Buscar:</TextBlock>
-                    <TextBox x:Name="TextBoxSearchBar" TextChanged="TextBoxSearchBar_TextChanged" Grid.Column="1"/>
+                    <TextBox x:Name="TextBoxSearchBar" TextChanged="TextBoxSearchBar_TextChanged"  Grid.Column="1"/>
                 </Grid>
 
 
@@ -118,7 +119,7 @@
                           CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Height="200" MouseDoubleClick="DataGridSupliers_MouseDoubleClick">
 
                     <DataGrid.Columns>
-                        <DataGridTextColumn  Header="ID" Binding="{Binding SuplierId}" Width="*" />
+                        <DataGridTextColumn  Header="ID" Binding="{Binding SuplierId}" Width="auto" />
                         <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" Width="*"/>
                         <DataGridTextColumn Header="Dirección" Binding="{Binding Address}" Width="2*"/>
                         <DataGridTextColumn Header="Teléfono" Binding="{Binding Phone}" Width="*"/>

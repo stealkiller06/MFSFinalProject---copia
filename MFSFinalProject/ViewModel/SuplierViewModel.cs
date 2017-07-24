@@ -19,7 +19,7 @@ namespace MFSFinalProject.ViewModel
             LoadSupliers();
             selectedSuplier = new Suplier();
             DeleteSuplierCommand = new MyICommand(OnDelete, CanDelete);
-            UpdateCatecoryCommand = new MyICommand(OnUpdateSuplier, CanUpdateSuplier);
+            UpdateSuplierCommand = new MyICommand(OnUpdateSuplier, CanUpdateSuplier);
             AddSuplierCommand = new MyICommand(OnAddSuplier, CanAddSuplier);
         }
 
@@ -51,7 +51,7 @@ namespace MFSFinalProject.ViewModel
                 selectedSuplier = value;
                 OnPropertyChanged();
                 DeleteSuplierCommand.RaiseCanExecuteChanged();
-                UpdateCatecoryCommand.RaiseCanExecuteChanged();
+                UpdateSuplierCommand.RaiseCanExecuteChanged();
             }
 
         }
@@ -96,7 +96,7 @@ namespace MFSFinalProject.ViewModel
         /// <summary>
         /// Command to update a Suplier
         /// </summary>
-        public MyICommand UpdateCatecoryCommand { get; set; }
+        public MyICommand UpdateSuplierCommand { get; set; }
 
         public void OnUpdateSuplier()
         {

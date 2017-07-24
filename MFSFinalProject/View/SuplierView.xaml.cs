@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MFSFinalProject.ViewModel;
 
 namespace MFSFinalProject.View
 {
@@ -22,6 +23,17 @@ namespace MFSFinalProject.View
         public SuplierView()
         {
             InitializeComponent();
+            this.DataContext = new SuplierViewModel();
+        }
+
+        private void DataGridSupliers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void TextBoxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }

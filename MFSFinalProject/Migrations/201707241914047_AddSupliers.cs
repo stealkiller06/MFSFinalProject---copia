@@ -3,7 +3,7 @@ namespace MFSFinalProject.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Init : DbMigration
+    public partial class AddSupliers : DbMigration
     {
         public override void Up()
         {
@@ -12,7 +12,7 @@ namespace MFSFinalProject.Migrations
                 c => new
                     {
                         CategoryId = c.Int(nullable: false, identity: true),
-                        CategoryName = c.String(nullable: false, maxLength: 50),
+                        CategoryName = c.String(maxLength: 50),
                         CategoryRemove = c.Int(nullable: false),
                         RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                         User_UserId = c.Int(),
@@ -27,7 +27,6 @@ namespace MFSFinalProject.Migrations
                     {
                         ProductId = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false),
-                        Cost = c.Decimal(nullable: false, precision: 18, scale: 2),
                         SellPrice = c.Decimal(nullable: false, precision: 18, scale: 2),
                         MinStock = c.Int(nullable: false),
                         Remove = c.Int(nullable: false),
@@ -63,30 +62,48 @@ namespace MFSFinalProject.Migrations
                 c => new
                     {
                         UserId = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false, maxLength: 50),
-                        LastName = c.String(nullable: false, maxLength: 50),
+                        Name = c.String(maxLength: 50),
+                        LastName = c.String(maxLength: 50),
                         Phone = c.String(maxLength: 15),
-                        UserName = c.String(nullable: false, maxLength: 20),
-                        PassWord = c.String(nullable: false, maxLength: 20),
+                        UserName = c.String(maxLength: 20),
+                        PassWord = c.String(maxLength: 20),
                         Remove = c.Int(nullable: false),
                         RowVersion = c.Binary(nullable: false, fixedLength: true, timestamp: true, storeType: "rowversion"),
                     })
                 .PrimaryKey(t => t.UserId);
             
+            CreateTable(
+                "dbo.Supliers",
+                c => new
+                    {
+                        SuplierId = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Address = c.String(),
+                        Phone = c.String(),
+                        Remove = c.Int(nullable: false),
+                        User_UserId = c.Int(),
+                    })
+                .PrimaryKey(t => t.SuplierId)
+                .ForeignKey("dbo.Users", t => t.User_UserId)
+                .Index(t => t.User_UserId);
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.Supliers", "User_UserId", "dbo.Users");
             DropForeignKey("dbo.Products", "User_UserId", "dbo.Users");
             DropForeignKey("dbo.Measurements", "User_UserId", "dbo.Users");
             DropForeignKey("dbo.Categories", "User_UserId", "dbo.Users");
             DropForeignKey("dbo.Products", "Mesurement_MeasurementId", "dbo.Measurements");
             DropForeignKey("dbo.Products", "Category_CategoryId", "dbo.Categories");
+            DropIndex("dbo.Supliers", new[] { "User_UserId" });
             DropIndex("dbo.Measurements", new[] { "User_UserId" });
             DropIndex("dbo.Products", new[] { "User_UserId" });
             DropIndex("dbo.Products", new[] { "Mesurement_MeasurementId" });
             DropIndex("dbo.Products", new[] { "Category_CategoryId" });
             DropIndex("dbo.Categories", new[] { "User_UserId" });
+            DropTable("dbo.Supliers");
             DropTable("dbo.Users");
             DropTable("dbo.Measurements");
             DropTable("dbo.Products");
