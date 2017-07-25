@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MFSFinalProject.ViewModel;
+using MFSFinalProject.Model;
 
 namespace MFSFinalProject.View
 {
@@ -26,9 +27,25 @@ namespace MFSFinalProject.View
             this.DataContext = new SuplierViewModel();
         }
 
+        public SuplierView(OrderView orderView)
+        {
+            InitializeComponent();
+            this.DataContext = new SuplierViewModel();
+            OrderView = orderView;
+        }
+        #region Properties
+        public OrderView OrderView { get; set; }
+        #endregion
+
         private void DataGridSupliers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            if(OrderView != null)
+            {
+                Suplier suplier = (Suplier)DataGridSupliers.SelectedItem;
+                OrderView.SuplierId.Text = Convert.ToString(suplier.SuplierId);
+                OrderView.SuplierName.Text = suplier.Name;
+                this.Close();
+            }
         }
 
         private void TextBoxSearchBar_TextChanged(object sender, TextChangedEventArgs e)

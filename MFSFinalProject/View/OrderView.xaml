@@ -14,6 +14,10 @@
             <Setter Property="FontSize" Value="20"/>
         </Style>
     </Window.Resources>
+
+    <Window.DataContext>
+        <vm:OrderViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -34,8 +38,9 @@
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <!--#region  Name -->
+                    <!--#region  CodOrder -->
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -43,34 +48,58 @@
                         </Grid.ColumnDefinitions>
 
 
-                        <TextBlock Grid.Column="0" Grid.Row="0">Name</TextBlock>
-                        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name}" />
+                        <TextBlock Grid.Column="0" Grid.Row="0">Cod</TextBlock>
+                        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding CodOrder}" />
                     </Grid>
                     <!--#endregion-->
-                    <!--#region  Dirección y teléfono -->
+                    <!--#region  Suplidor -->
                     <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox Text="{Binding SuplierId, UpdateSourceTrigger=PropertyChanged}" Opacity="0" Width="1" x:Name="SuplierId"/>
+                        <TextBlock Grid.Column="0" Grid.Row="0">Name</TextBlock>
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="*" />
+                                
+                            </Grid.ColumnDefinitions>
+                            <TextBox Grid.Column="0" Grid.Row="0" Text="{Binding SuplierName, UpdateSourceTrigger=PropertyChanged}" x:Name="SuplierName" />
+                            <Button Content="..." x:Name="ChageSuplier" Click="ChageSuplier_Click" Grid.Column="1"/>
+                        </Grid>
+                        
+                    </Grid>
+                    <!--#endregion-->
+
+
+                    
+                    <!--#region  Usuario y Fecha -->
+                    <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <!--#region  Dirección-->
+                        <!--#region  Usuario-->
                         <Grid Grid.Column="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" >Dirección</TextBlock>
-                            <TextBox Grid.Column="1" Text="{Binding Address}" />
+                            <TextBlock Grid.Column="0" >Usuario</TextBlock>
+                            <TextBox Grid.Column="1" Text="{Binding UserName}" />
                         </Grid>
                         <!--#endregion-->
-                        <!--#region  Teléfono-->
+                        <!--#region  Fecha-->
                         <Grid Grid.Column="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" >Teléfono</TextBlock>
-                            <TextBox Grid.Column="1" Text="{Binding Phone}" />
+                            <TextBlock Grid.Column="0" >Fecha</TextBlock>
+                            <DatePicker Grid.Column="1"   IsEnabled="True" SelectedDate="{Binding Date, Mode=TwoWay}"/>
                         </Grid>
                         <!--#endregion-->
 
@@ -119,10 +148,12 @@
                           CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Height="200" MouseDoubleClick="DataGridOrders_MouseDoubleClick">
 
                     <DataGrid.Columns>
-                        <DataGridTextColumn  Header="ID" Binding="{Binding OrderId}" Width="auto" />
-                        <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" Width="*"/>
-                        <DataGridTextColumn Header="Dirección" Binding="{Binding Address}" Width="2*"/>
-                        <DataGridTextColumn Header="Teléfono" Binding="{Binding Phone}" Width="*"/>
+                        <DataGridTextColumn  Header="ID" Binding="{Binding OrderID}" Width="auto" />
+                        <DataGridTextColumn Header="Id suplidor" Binding="{Binding SuplierId}" Width="*"/>
+                        <DataGridTextColumn Header="Suplidor" Binding="{Binding SuplierName}" Width="2*"/>
+                        <DataGridTextColumn Header="Usuario" Binding="{Binding UserName}" Width="*"/>
+                        <DataGridTextColumn Header="Fecha" Binding="{Binding Date}" Width="*"/>
+                        <DataGridTextColumn Header="CodCompra" Binding="{Binding CodOrder}" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
 

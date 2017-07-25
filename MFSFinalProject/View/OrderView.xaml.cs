@@ -33,5 +33,12 @@ namespace MFSFinalProject.View
         {
 
         }
+
+        private void ChageSuplier_Click(object sender, RoutedEventArgs e)
+        {
+            SuplierView sv = new SuplierView(this);
+            sv.Owner = Application.Current.MainWindow;
+            sv.ShowDialog();
+        }
     }
 }

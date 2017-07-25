@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MFSFinalProject.Infra;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MFSFinalProject.Model
 {
@@ -12,6 +13,7 @@ namespace MFSFinalProject.Model
 
         #region Properties
         public int OrderId { get; set; }
+        [Column(TypeName = "Date")]
         public DateTime Date { get; set; }
         public string CodOrder { get; set; }
         #endregion
