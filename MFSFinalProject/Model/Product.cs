@@ -60,6 +60,7 @@ namespace MFSFinalProject.Model
             }
         }
         public virtual User User { get; set; }
+        public virtual OrderDetail OrderDetail { get; set; }
         #endregion
 
 

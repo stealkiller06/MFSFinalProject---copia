@@ -16,11 +16,13 @@ namespace MFSFinalProject.Model
         [Column(TypeName = "Date")]
         public DateTime Date { get; set; }
         public string CodOrder { get; set; }
+        public int Remove { get; set; }
         #endregion
 
         #region Relationships
         public virtual Suplier Suplier { get; set; }
         public virtual User User { get; set; }
+        public virtual OrderDetail OrderDetail { get; set; }
         #endregion
 
 

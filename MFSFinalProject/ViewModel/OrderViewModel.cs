@@ -27,15 +27,12 @@ namespace MFSFinalProject.ViewModel
             AddOrderCommand = new MyICommand(OnAddCategory, CanAddCategory);
             UpdateOrderCommand = new MyICommand(OnUpdateOrder, CanUpdateOrder);
             LoadOrder();
-            //ChangeCategory = new MyICommand(OnChangeCategory, CanChangeCategory);
         }
-        #region Cargar elementos 
 
-        #region Cargar todos los compras no borrados
+        #region Cargar todos los compras no borrados en la propiedad Order
         public void LoadOrder()
         {
             ObservableCollection<OrderAux> orders = new ObservableCollection<OrderAux>();
-            ObservableCollection<Order> orderss;
             using (MFSContext context = new MFSContext())
             {
 
@@ -63,7 +60,7 @@ namespace MFSFinalProject.ViewModel
                 order.OrderID = or.Id;
                 order.UserId = or.UserId;
                 order.UserName = or.UserName;
-                order.SuplierId = or.Id;
+                order.SuplierId = or.SuplierId;
                 order.SuplierName = or.SuplierName;
                 order.Date = or.Date;
                 order.CodOrder = or.CodOrder;
@@ -77,22 +74,13 @@ namespace MFSFinalProject.ViewModel
         }
         #endregion
 
-        #region Cargar todas las categorias no borradas
-        public void LoadCategories()
-        {
-            ObservableCollection<Category> categories;
-            using (MFSContext context = new MFSContext())
-            {
-                categories =
-                new ObservableCollection<Category>(context.Categories.ToList());
-            }
-            Categories = categories;
-        }
-        #endregion
 
-        #endregion
+
+
 
         #region Propiedades
+
+        #region Propiedad que almacena todas las ordenes no borradas de la base de datos
         public ObservableCollection<OrderAux> Orders
         {
             get { return orders; }
@@ -103,23 +91,9 @@ namespace MFSFinalProject.ViewModel
                 OnPropertyChanged();
             }
         }
+        #endregion
 
-        public ObservableCollection<Order> Orderss
-        {
-            get => orderss;
-            set
-            {
-                orderss = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public ObservableCollection<Category> Categories
-        {
-            get { return categories; }
-            set { categories = value; }
-        }
-
+        #region SelectedOrder = Propiedad que almacena el elemento actual seleccionada del DataGrid
         public OrderAux SelectedOrder
         {
             get { return selectedOrder; }
@@ -131,10 +105,12 @@ namespace MFSFinalProject.ViewModel
         }
         #endregion
 
+        #endregion
+
         #region Commands
 
 
-        #region AddCategoryCommand
+        #region AddCategoryCommand Inicializa un nuevo objeto Order vacío
         public MyICommand AddOrderCommand { get; set; }
 
         private void OnAddCategory()
@@ -156,19 +132,16 @@ namespace MFSFinalProject.ViewModel
             using (MFSContext context = new MFSContext())
             {
                 Order order = new Order();
-                //if (SelectedOrder.Id != 0)
-                //{
-                //    order = context.Orders.Include(p => p.Category).Single(p => p.OrderId == SelectedOrder.Id);
-                //}
-                //order.Name = SelectedOrder.Name;
-                //order.MinStock = SelectedOrder.MinStock;
-                //order.Category = context.Categories.Find(SelectedOrder.CategoryId);
-                //order.SellPrice = SelectedOrder.SellPrice;
-                //order.Mesurement = context.Measurements.Find(SelectedOrder.MeasurementId);
-                //context.Entry(order).State = SelectedOrder.Id == 0 ?
-                //                                EntityState.Added : EntityState.Modified;
+                if (SelectedOrder.OrderID != 0)
+                {
+                    order = context.Orders.Include(o => o.User).Include(o => o.Suplier).First();
+                }
+                order.Date = SelectedOrder.Date;
+                order.Suplier = context.Supliers.Find(SelectedOrder.SuplierId);
+                context.Entry(order).State = SelectedOrder.OrderID == 0 ?
+                                                EntityState.Added : EntityState.Modified;
 
-                //context.SaveChanges();
+                context.SaveChanges();
 
 
                 LoadOrder();

@@ -90,6 +90,7 @@
     <Compile Include="Model\Measurement.cs" />
     <Compile Include="Model\Help\ProductAux.cs" />
     <Compile Include="Model\Order.cs" />
+    <Compile Include="Model\OrderDetail.cs" />
     <Compile Include="Model\Suplier.cs" />
     <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Compile Include="ViewModel\Commands\SimpleCommand.cs" />
