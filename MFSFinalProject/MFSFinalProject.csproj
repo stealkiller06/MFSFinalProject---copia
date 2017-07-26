@@ -85,6 +85,14 @@
     <Compile Include="Migrations\201707252024192_SetDate.Designer.cs">
       <DependentUpon>201707252024192_SetDate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707262050586_ProductDetails.cs" />
+    <Compile Include="Migrations\201707262050586_ProductDetails.Designer.cs">
+      <DependentUpon>201707262050586_ProductDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707262105057_ProductDetails2.cs" />
+    <Compile Include="Migrations\201707262105057_ProductDetails2.Designer.cs">
+      <DependentUpon>201707262105057_ProductDetails2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Help\OrderAux.cs" />
     <Compile Include="Model\Measurement.cs" />
@@ -95,6 +103,7 @@
     <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Compile Include="ViewModel\Commands\SimpleCommand.cs" />
     <Compile Include="ViewModel\MeasurementViewModel.cs" />
+    <Compile Include="ViewModel\OrderDetailViewModel.cs" />
     <Compile Include="ViewModel\OrderViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
     <Compile Include="ViewModel\SuplierViewModel.cs" />
@@ -103,6 +112,9 @@
     </Compile>
     <Compile Include="View\MeasurementView.xaml.cs">
       <DependentUpon>MeasurementView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OrderDetailView.xaml.cs">
+      <DependentUpon>OrderDetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\OrderView.xaml.cs">
       <DependentUpon>OrderView.xaml</DependentUpon>
@@ -134,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MeasurementView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OrderDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -180,6 +196,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707252024192_SetDate.resx">
       <DependentUpon>201707252024192_SetDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707262050586_ProductDetails.resx">
+      <DependentUpon>201707262050586_ProductDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707262105057_ProductDetails2.resx">
+      <DependentUpon>201707262105057_ProductDetails2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
