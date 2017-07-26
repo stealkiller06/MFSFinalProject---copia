@@ -15,8 +15,6 @@ namespace MFSFinalProject.ViewModel
     {
         #region atributos 
         private ObservableCollection<OrderAux> orders;
-        private ObservableCollection<Order> orderss;
-        private ObservableCollection<Category> categories;
         private OrderAux selectedOrder;
         #endregion
 

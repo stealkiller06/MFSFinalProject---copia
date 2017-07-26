@@ -95,6 +95,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Help\OrderAux.cs" />
+    <Compile Include="Model\Help\OrderDetailAux.cs" />
     <Compile Include="Model\Measurement.cs" />
     <Compile Include="Model\Help\ProductAux.cs" />
     <Compile Include="Model\Order.cs" />
