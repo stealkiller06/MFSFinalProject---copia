@@ -10,7 +10,10 @@ namespace MFSFinalProject.Model
 {
     public class Order 
     {
-
+        public Order()
+        {
+            OrderDetail = new HashSet<OrderDetail>();
+        }
         #region Properties
         public int OrderId { get; set; }
         [Column(TypeName = "Date")]
@@ -22,7 +25,7 @@ namespace MFSFinalProject.Model
         #region Relationships
         public virtual Suplier Suplier { get; set; }
         public virtual User User { get; set; }
-        public virtual OrderDetail OrderDetail { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetail { get; set; }
         #endregion
 
 
