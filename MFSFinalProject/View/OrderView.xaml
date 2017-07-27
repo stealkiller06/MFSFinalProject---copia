@@ -5,19 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MFSFinalProject.View"
         xmlns:vm="clr-namespace:MFSFinalProject.ViewModel"
+        Loaded="Window_Loaded"
         mc:Ignorable="d"
         Title="Mantenimiento Compras" Height="426.442" Width="580.398">
     <Window.Resources>
-
-        <!--<vm:OrderViewModel x:Key="orderViewModel"/>-->
         <Style x:Key="FontSize" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
         </Style>
     </Window.Resources>
-     
-    <Window.DataContext>
-        <vm:OrderViewModel/>
-    </Window.DataContext>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>

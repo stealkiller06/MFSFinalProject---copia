@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MFSFinalProject.Model;
+using MFSFinalProject.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,7 +34,7 @@ namespace MFSFinalProject.View
         private void ButtonChangeProduct_Click(object sender, RoutedEventArgs e)
         {
             ProductView productView = new ProductView(this);
-           // productView.Owner = Application.Current.MainWindow;
+            // productView.Owner = Application.Current.MainWindow;
             productView.ShowDialog();
         }
 
@@ -44,6 +46,11 @@ namespace MFSFinalProject.View
         private void TextBoxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.DataContext = new OrderDetailViewModel(Convert.ToInt32(OrderId.Text));
         }
     }
 }

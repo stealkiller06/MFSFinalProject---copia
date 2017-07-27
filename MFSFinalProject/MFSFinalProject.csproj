@@ -73,26 +73,6 @@
     <Compile Include="Infra\NotificationClass.cs" />
     <Compile Include="Infra\RelayCommand.cs" />
     <Compile Include="Infra\Utility.cs" />
-    <Compile Include="Migrations\201707241914047_AddSupliers.cs" />
-    <Compile Include="Migrations\201707241914047_AddSupliers.Designer.cs">
-      <DependentUpon>201707241914047_AddSupliers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707250016150_OrderMigration.cs" />
-    <Compile Include="Migrations\201707250016150_OrderMigration.Designer.cs">
-      <DependentUpon>201707250016150_OrderMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707252024192_SetDate.cs" />
-    <Compile Include="Migrations\201707252024192_SetDate.Designer.cs">
-      <DependentUpon>201707252024192_SetDate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707262050586_ProductDetails.cs" />
-    <Compile Include="Migrations\201707262050586_ProductDetails.Designer.cs">
-      <DependentUpon>201707262050586_ProductDetails.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707262105057_ProductDetails2.cs" />
-    <Compile Include="Migrations\201707262105057_ProductDetails2.Designer.cs">
-      <DependentUpon>201707262105057_ProductDetails2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Help\OrderAux.cs" />
     <Compile Include="Model\Help\OrderDetailAux.cs" />
@@ -189,21 +169,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201707241914047_AddSupliers.resx">
-      <DependentUpon>201707241914047_AddSupliers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707250016150_OrderMigration.resx">
-      <DependentUpon>201707250016150_OrderMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707252024192_SetDate.resx">
-      <DependentUpon>201707252024192_SetDate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707262050586_ProductDetails.resx">
-      <DependentUpon>201707262050586_ProductDetails.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707262105057_ProductDetails2.resx">
-      <DependentUpon>201707262105057_ProductDetails2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

@@ -12,6 +12,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MFSFinalProject.ViewModel;
+using MFSFinalProject.Model;
 
 namespace MFSFinalProject.View
 {
@@ -23,6 +25,7 @@ namespace MFSFinalProject.View
         public OrderView()
         {
             InitializeComponent();
+            this.DataContext = new OrderViewModel();
         }
 
         private void TextBoxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
@@ -47,6 +50,11 @@ namespace MFSFinalProject.View
             SuplierView sv = new SuplierView(this);
             sv.Owner = Application.Current.MainWindow;
             sv.ShowDialog();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

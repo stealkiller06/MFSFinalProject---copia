@@ -60,7 +60,7 @@ namespace MFSFinalProject.View
                // MessageBox.Show(string.Format("{0:0.00}", product.SellPrice).Replace(",","."));
                 OrderDetailView.TextBoxProductId.Text = Convert.ToString(product.Id);
                 OrderDetailView.TextBoxProductName.Text = product.Name;
-                OrderDetailView.TextBoxSellPrice.Text = string.Format("{0:0.00}", product.SellPrice).Replace(",", ".");//Convert.ToString(product.SellPrice);
+               // OrderDetailView.TextBoxSellPrice.Text = string.Format("{0:0.00}", product.SellPrice).Replace(",", ".");//Convert.ToString(product.SellPrice);
                 this.Close();
             }
         }

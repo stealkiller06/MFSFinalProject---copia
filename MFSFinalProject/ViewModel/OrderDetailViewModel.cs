@@ -8,24 +8,29 @@ using System.Collections.ObjectModel;
 using MFSFinalProject.Model.Help;
 using MFSFinalProject.Model;
 using System.Data.Entity;
+using System.Windows;
 
 namespace MFSFinalProject.ViewModel
 {
     public class OrderDetailViewModel : NotificationClass
     {
       
-            #region atributos 
+        #region atributos 
         private ObservableCollection<OrderDetailAux> orderDetails;
         private OrderDetailAux selectedOrderDetail;
+        private decimal total;
         #endregion
 
 
-        public OrderDetailViewModel()
+        public OrderDetailViewModel(int orderId)
         {
-            SelectedOrderDetail = new OrderDetailAux();
+            SelectedOrderDetail = new OrderDetailAux() { OrderId = orderId};
             AddOrderDetailCommand = new MyICommand(OnAddCategory, CanAddCategory);
             UpdateOrderDetailCommand = new MyICommand(OnUpdateOrderDetail, CanUpdateOrderDetail);
+            OrderId = orderId; 
             LoadOrderDetail();
+            UpdateTotal();
+            //UpdateTotal();
         }
 
         #region Cargar todos los compras no borrados en la propiedad OrderDetail
@@ -37,14 +42,14 @@ namespace MFSFinalProject.ViewModel
 
 
                 var data = from od in context.OrderDetails
-                               //join c in context.Categories on p.Category.CategoryId equals c.CategoryId
                            join p in context.Products on od.Product.ProductId equals p.ProductId
                            join o in context.Orders on od.Order.OrderId equals o.OrderId
+                           where od.Order.OrderId == SelectedOrderDetail.OrderId
                            select new
                            {
                                OrderDetailId =od.OrderDetailId,
                                Quantity = od.Quantity,
-                               SellPrice = od.SellPrice,
+                               Cost = od.Cost,
                                ProductId = p.ProductId,
                                ProductName = p.Name,
                                OrderId = o.OrderId
@@ -61,7 +66,7 @@ namespace MFSFinalProject.ViewModel
                         ProductName = or.ProductName,
                         OrderId = or.OrderId,
                         Quantity = or.Quantity,
-                        SellPrice = or.SellPrice
+                        Cost = or.Cost
                     };
 
                     orderDetails.Add(orderDetail);
@@ -70,6 +75,25 @@ namespace MFSFinalProject.ViewModel
 
             }
             OrderDetails = orderDetails;
+        }
+        #endregion
+
+        #region Actualizar propiedad total con total actual
+        private void UpdateTotal()
+        {
+            using (MFSContext context = new MFSContext())
+            {
+                if(context.OrderDetails.Where(o=>o.Order.OrderId == SelectedOrderDetail.OrderId).Count() > 0)
+                {
+                    Total = context.OrderDetails.Where(o => o.Order.OrderId == SelectedOrderDetail.OrderId)
+                                            .Sum(o => o.Cost * o.Quantity);
+                }
+                else
+                {
+                    Total = 0;
+                }
+                
+            }
         }
         #endregion
 
@@ -102,6 +126,18 @@ namespace MFSFinalProject.ViewModel
 
         #region OrderId almacena la orden a la que se le está agregando los producto actualmente
         public int OrderId { get; set; }
+        #endregion
+
+        #region Total Propiedad que obtiene el total de la compra
+        public decimal Total
+        {
+            get => total;
+            set
+            {
+                total = value;
+                OnPropertyChanged();
+            }
+        }
         #endregion
 
         #endregion
@@ -138,9 +174,10 @@ namespace MFSFinalProject.ViewModel
                 }
                 orderDetail.Order = context.Orders.Find(SelectedOrderDetail.OrderId);
                 orderDetail.Quantity = SelectedOrderDetail.Quantity;
-                orderDetail.SellPrice = selectedOrderDetail.SellPrice;
-                orderDetail.Product = context.Products.Find(SelectedOrderDetail.ProductId);
+                orderDetail.Cost = selectedOrderDetail.Cost;
+                orderDetail.Product = context.Products.Include(p => p.Category).Single(p => p.ProductId == SelectedOrderDetail.ProductId);
                 OrderId = SelectedOrderDetail.OrderId;
+                context.Entry(orderDetail.Product.Category).State = EntityState.Unchanged;
                 context.Entry(orderDetail).State = SelectedOrderDetail.OrderDetailId == 0 ?
                                                 EntityState.Added : EntityState.Modified;
 
@@ -148,7 +185,7 @@ namespace MFSFinalProject.ViewModel
 
                 LoadOrderDetail();
                 SelectedOrderDetail = new OrderDetailAux() { OrderId = OrderId};
-                System.Windows.MessageBox.Show("Guardado con exito!");
+                UpdateTotal();
             }
         }
 
@@ -166,6 +203,8 @@ namespace MFSFinalProject.ViewModel
         #endregion
 
         #region Funciones
+
+
         public void ChangeCategoryData(int id, string name)
         {
             //SelectedOrderDetail.Id = id;

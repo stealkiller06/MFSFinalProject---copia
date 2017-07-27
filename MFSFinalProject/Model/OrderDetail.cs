@@ -12,7 +12,7 @@ namespace MFSFinalProject.Model
         #region Properties
         public int OrderDetailId { get; set; }
         public int Quantity { get; set; }
-        public decimal SellPrice { get; set; }
+        public decimal Cost { get; set; }
         public int Remove { get; set; }
         #endregion
 

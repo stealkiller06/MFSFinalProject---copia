@@ -7,6 +7,7 @@
         xmlns:vm="clr-namespace:MFSFinalProject.ViewModel"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        Loaded="Window_Loaded"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
          TextElement.FontWeight="Regular"
          TextElement.FontSize="13"
@@ -31,14 +32,14 @@
         </Style>
         <vm:OrderDetailViewModel x:Key="orderDetailViewModel"/>
     </Window.Resources>
-    <Window.DataContext>
-        <vm:OrderDetailViewModel/>
-    </Window.DataContext>
+
     <Grid>
+    
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
-            <!--DataGrid-->
             <RowDefinition Height="auto"/>
+            <!--DataGrid-->
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <materialDesign:Card  Margin="15">
             <GroupBox Header="Datos de la compra" Grid.Row="0"  Padding="20">
@@ -152,8 +153,8 @@
                                     <ColumnDefinition Width="*"/>
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Grid.Row="0" >Precio</TextBlock>
-                                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding SellPrice, UpdateSourceTrigger=PropertyChanged}" x:Name="TextBoxSellPrice"  />
+                                <TextBlock Grid.Column="0" Grid.Row="0" >Costo: </TextBlock>
+                                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Cost, UpdateSourceTrigger=PropertyChanged}" x:Name="TextBoxSellPrice"  />
                                 
 
                             </Grid>
@@ -183,8 +184,14 @@
 
             </GroupBox>
         </materialDesign:Card>
+        <!--#region Total de la compra-->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="1">
+            <TextBlock Text="Precio: "/>
+            <TextBlock Text="{Binding Total}" />
+        </StackPanel>
+        <!--#endregion-->
 
-        <materialDesign:Card  Margin="15" Grid.Row="1">
+        <materialDesign:Card  Margin="15" Grid.Row="2">
             <GroupBox Header="Listado de OrderDetailos"   Padding="20">
                 <StackPanel>
                     <!-- Search bar-->
