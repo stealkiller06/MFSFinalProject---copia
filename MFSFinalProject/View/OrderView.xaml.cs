@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MFSFinalProject.Model.Help;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,14 @@ namespace MFSFinalProject.View
 
         private void DataGridOrders_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            OrderAux order = DataGridOrders.SelectedItem as OrderAux;
+            if(order != null)
+            {
+                OrderDetailView orderDetailView = new OrderDetailView();
+                orderDetailView.OrderId.Text = Convert.ToString(order.OrderID);
+                orderDetailView.ShowDialog();
 
+            }
         }
 
         private void ChageSuplier_Click(object sender, RoutedEventArgs e)

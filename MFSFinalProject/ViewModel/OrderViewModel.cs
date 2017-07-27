@@ -8,6 +8,7 @@ using MFSFinalProject.Model;
 using System.Collections.ObjectModel;
 using MFSFinalProject.Model.Help;
 using System.Data.Entity;
+using MFSFinalProject.View;
 
 namespace MFSFinalProject.ViewModel
 {
@@ -21,7 +22,7 @@ namespace MFSFinalProject.ViewModel
 
         public OrderViewModel()
         {
-            SelectedOrder = new OrderAux();
+            SelectedOrder = new OrderAux() { OrderID = 0,Date=DateTime.Now.Date};
             AddOrderCommand = new MyICommand(OnAddCategory, CanAddCategory);
             UpdateOrderCommand = new MyICommand(OnUpdateOrder, CanUpdateOrder);
             LoadOrder();
@@ -113,7 +114,7 @@ namespace MFSFinalProject.ViewModel
 
         private void OnAddCategory()
         {
-            SelectedOrder = new OrderAux();
+            SelectedOrder = new OrderAux() { Date = DateTime.Now.Date};
             OnPropertyChanged("SelectedOrder");
         }
         private bool CanAddCategory()
@@ -129,13 +130,17 @@ namespace MFSFinalProject.ViewModel
         {
             using (MFSContext context = new MFSContext())
             {
-                Order order = new Order();
+                Order order = new Order() { OrderId = 0};
+                int isNewOrder = 0;
                 if (SelectedOrder.OrderID != 0)
                 {
-                    order = context.Orders.Include(o => o.User).Include(o => o.Suplier).First();
+                    isNewOrder = 1;
+                    order = context.Orders.Include(o => o.User).Include(o => o.Suplier).Single(o => o.OrderId == SelectedOrder.OrderID);
                 }
                 order.Date = SelectedOrder.Date;
                 order.Suplier = context.Supliers.Find(SelectedOrder.SuplierId);
+                order.User = context.Users.First();
+                order.CodOrder = SelectedOrder.CodOrder;
                 context.Entry(order).State = SelectedOrder.OrderID == 0 ?
                                                 EntityState.Added : EntityState.Modified;
 
@@ -143,6 +148,14 @@ namespace MFSFinalProject.ViewModel
 
 
                 LoadOrder();
+                //Nueva order
+                if(isNewOrder == 0)
+                {
+                    OrderDetailView orderDetailView = new OrderDetailView();
+                    orderDetailView.OrderId.Text = Convert.ToString(order.OrderId);
+                    orderDetailView.ShowDialog();
+                }
+                
             }
         }
 
@@ -160,11 +173,6 @@ namespace MFSFinalProject.ViewModel
         #endregion
 
         #region Funciones
-        public void ChangeCategoryData(int id, string name)
-        {
-            //SelectedOrder.Id = id;
-            //SelectedOrder.Name = name;
-        }
         #endregion
 
     }

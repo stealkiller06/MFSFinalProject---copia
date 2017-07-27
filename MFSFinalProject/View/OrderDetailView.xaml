@@ -4,9 +4,175 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MFSFinalProject.View"
+        xmlns:vm="clr-namespace:MFSFinalProject.ViewModel"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="OrderDetailView" Height="300" Width="300">
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+         TextElement.FontWeight="Regular"
+         TextElement.FontSize="13"
+         TextOptions.TextFormattingMode="Ideal"
+         TextOptions.TextRenderingMode="Auto"
+         Background="{DynamicResource MaterialDesignBackground}"
+         FontFamily="{DynamicResource MaterialDesignFont}"
+    Title="Mantenimiento de detalle de compras" Height="695.774" Width="877.722">
+    <Window.Resources>
+        <!--<vm:OrderDetailViewModel x:Key="orderDetailViewModel"/>-->
+        <Style x:Key="FontSize" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+
+        </Style>
+        <Style x:Key="ColumnSize" TargetType="ColumnDefinition">
+            <Setter Property="Width" Value="3*"></Setter>
+        </Style>
+
+        <Style x:Key="Groupbox" TargetType="GroupBox">
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Margin" Value="15"/>
+        </Style>
+        <vm:OrderDetailViewModel x:Key="orderDetailViewModel"/>
+    </Window.Resources>
+    <Window.DataContext>
+        <vm:OrderDetailViewModel/>
+    </Window.DataContext>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <!--DataGrid-->
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <materialDesign:Card  Margin="15">
+            <GroupBox Header="Datos de la compra" Grid.Row="0"  Padding="20">
+                <!--Main Container-->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid DataContext="{Binding SelectedOrderDetail}">
+
+                        <!--#region rowdefinitions-->
+                        <Grid.RowDefinitions>
+                            <!--NAME-->
+                            <RowDefinition></RowDefinition>
+                            <!--MIN STOCK-->
+                            <RowDefinition></RowDefinition>
+                            <!--CATEGORIAS-->
+                            <RowDefinition></RowDefinition>
+                            <!--SUPLIDOR-->
+                            <RowDefinition></RowDefinition>
+                            <!--PRECIO DE PRODUCTO-->
+                            <RowDefinition></RowDefinition>
+                            <!--Botones-->
+                            <RowDefinition></RowDefinition>
+
+
+                        </Grid.RowDefinitions>
+                        <!--#endregion-->
+
+                        <!--#region OrderId-->
+                        <Grid  Grid.Row="0" Margin="0 0 0 10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Style="{StaticResource ColumnSize}"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <TextBlock Grid.Column="0" Grid.Row="0" >Id</TextBlock>
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                
+                                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding OrderId}" IsReadOnly="True" IsEnabled="True"
+                                         x:Name="OrderId" />
+                            </Grid>
+
+
+
+                        </Grid>
+                        <!--#endregion-->
+
+                        <!--#region  Producto-->
+                        <Grid Grid.Row="1">
+                            <!--#region  ColumnDefinitions-->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Style="{StaticResource ColumnSize}"/>
+                            </Grid.ColumnDefinitions>
+                            <!--#endregion-->
+
+                            <TextBlock Grid.Column="0" Grid.Row="0" >Producto</TextBlock>
+                            <!--#region Nombre de Producto y boton -->
+                            <Grid Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2">
+                                <!--#region ColumnDefinitions-->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="4*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <!--#endregion-->
+                                <TextBox Text="{Binding ProductId,UpdateSourceTrigger=PropertyChanged}" Margin="0 0 5 0" Grid.Column="0" x:Name="TextBoxProductId"/>
+                                <TextBox   Text="{Binding ProductName, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"  IsReadOnly="True"  Grid.Column="1" x:Name="TextBoxProductName" />
+                                <Button Content="..." Grid.Column="2"   x:Name="ButtonChangeProduct" Click="ButtonChangeProduct_Click" />
+
+                            </Grid>
+                            <!--#endregion-->
+
+
+                         
+
+                          
+
+
+                        </Grid>
+                        
+                    </Grid>
+                    <!-- Buttons -->
+                    <Grid  Grid.Row="1" Margin="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Content="Nueva" Command="{Binding AddOrderDetailCommand}" Grid.Column="0"/>
+                        <Button Content="Actualizar" Command="{Binding UpdateOrderDetailCommand}" Grid.Column="1"/>
+                        <Button Content="Eliminar" Command="{Binding DeleteProductCommand}" Grid.Column="2"/>
+                    </Grid>
+                </Grid>
+
+
+
+
+            </GroupBox>
+        </materialDesign:Card>
+
+        <materialDesign:Card  Margin="15" Grid.Row="1">
+            <GroupBox Header="Listado de OrderDetailos"   Padding="20">
+                <StackPanel>
+                    <!-- Search bar-->
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <!--Label searching-->
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <!-- Label searching-->
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock>Buscar:</TextBlock>
+                        <TextBox x:Name="TextBoxSearchBar" TextChanged="TextBoxSearchBar_TextChanged"  Grid.Column="1"/>
+                    </Grid>
+
+
+                    <DataGrid x:Name="DataGridOrderDetails"    ItemsSource="{Binding OrderDetails}" SelectedItem="{Binding SelectedOrderDetail, Mode=TwoWay}" CanUserAddRows="False"
+                          CanUserDeleteRows="False" IsReadOnly="True"  Height="200" >
+
+                    </DataGrid>
+
+
+                </StackPanel>
+            </GroupBox>
+        </materialDesign:Card>
     </Grid>
+    
 </Window>

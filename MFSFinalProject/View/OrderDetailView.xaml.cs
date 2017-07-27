@@ -23,5 +23,34 @@ namespace MFSFinalProject.View
         {
             InitializeComponent();
         }
+        public OrderDetailView(OrderView orderView)
+        {
+            InitializeComponent();
+            OrderView = orderView;
+
+            
+        }
+
+        public OrderView OrderView { get; set; }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ButtonChangeProduct_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DataGridOrderDetails_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+
+        }
+
+        private void TextBoxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
