@@ -31,6 +31,9 @@
         </Style>
         <vm:ProductViewModel x:Key="productViewModel"/>
     </Window.Resources>
+    <Window.DataContext>
+        <vm:ProductViewModel/>
+    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -214,8 +217,8 @@
                     </Grid>
 
 
-                    <DataGrid x:Name="DataGridCategories"    ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" CanUserAddRows="False"
-                          CanUserDeleteRows="False" IsReadOnly="True"  Height="200">
+                    <DataGrid x:Name="DataGridProducts"    ItemsSource="{Binding Products}" SelectedItem="{Binding SelectedProduct, Mode=TwoWay}" CanUserAddRows="False"
+                          CanUserDeleteRows="False" IsReadOnly="True"  Height="200" MouseDoubleClick="DataGridProducts_MouseDoubleClick">
 
                     </DataGrid>
 

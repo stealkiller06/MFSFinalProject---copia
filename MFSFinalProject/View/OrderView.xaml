@@ -14,7 +14,7 @@
             <Setter Property="FontSize" Value="20"/>
         </Style>
     </Window.Resources>
-
+     
     <Window.DataContext>
         <vm:OrderViewModel/>
     </Window.DataContext>

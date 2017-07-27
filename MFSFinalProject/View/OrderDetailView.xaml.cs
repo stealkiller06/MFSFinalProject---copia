@@ -23,15 +23,6 @@ namespace MFSFinalProject.View
         {
             InitializeComponent();
         }
-        public OrderDetailView(OrderView orderView)
-        {
-            InitializeComponent();
-            OrderView = orderView;
-
-            
-        }
-
-        public OrderView OrderView { get; set; }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -40,7 +31,9 @@ namespace MFSFinalProject.View
 
         private void ButtonChangeProduct_Click(object sender, RoutedEventArgs e)
         {
-
+            ProductView productView = new ProductView(this);
+           // productView.Owner = Application.Current.MainWindow;
+            productView.ShowDialog();
         }
 
         private void DataGridOrderDetails_MouseDoubleClick(object sender, MouseButtonEventArgs e)

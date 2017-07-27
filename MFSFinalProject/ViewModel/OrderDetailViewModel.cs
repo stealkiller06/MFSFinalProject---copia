@@ -73,10 +73,6 @@ namespace MFSFinalProject.ViewModel
         }
         #endregion
 
-
-
-
-
         #region Propiedades
 
         #region Propiedad que almacena todas las ordenes no borradas de la base de datos
@@ -104,6 +100,10 @@ namespace MFSFinalProject.ViewModel
         }
         #endregion
 
+        #region OrderId almacena la orden a la que se le está agregando los producto actualmente
+        public int OrderId { get; set; }
+        #endregion
+
         #endregion
 
         #region Commands
@@ -114,7 +114,8 @@ namespace MFSFinalProject.ViewModel
 
         private void OnAddCategory()
         {
-            SelectedOrderDetail = new OrderDetailAux();
+            OrderId = SelectedOrderDetail.OrderId;
+            SelectedOrderDetail = new OrderDetailAux() { OrderId = OrderId};
             OnPropertyChanged("SelectedOrderDetail");
         }
         private bool CanAddCategory()
@@ -133,18 +134,21 @@ namespace MFSFinalProject.ViewModel
                 OrderDetail orderDetail = new OrderDetail();
                 if (SelectedOrderDetail.OrderDetailId != 0)
                 {
-                    orderDetail = context.OrderDetails.Include(od => od.Product).Include(od => od.Order).Single( od=> od.Remove == 0);
+                    orderDetail = context.OrderDetails.Include(od => od.Product).Include(od => od.Order).Single( od=> od.OrderDetailId == SelectedOrderDetail.OrderDetailId);
                 }
+                orderDetail.Order = context.Orders.Find(SelectedOrderDetail.OrderId);
                 orderDetail.Quantity = SelectedOrderDetail.Quantity;
                 orderDetail.SellPrice = selectedOrderDetail.SellPrice;
                 orderDetail.Product = context.Products.Find(SelectedOrderDetail.ProductId);
+                OrderId = SelectedOrderDetail.OrderId;
                 context.Entry(orderDetail).State = SelectedOrderDetail.OrderDetailId == 0 ?
                                                 EntityState.Added : EntityState.Modified;
 
                 context.SaveChanges();
 
-
                 LoadOrderDetail();
+                SelectedOrderDetail = new OrderDetailAux() { OrderId = OrderId};
+                System.Windows.MessageBox.Show("Guardado con exito!");
             }
         }
 
