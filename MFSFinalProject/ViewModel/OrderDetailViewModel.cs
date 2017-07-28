@@ -165,6 +165,8 @@ namespace MFSFinalProject.ViewModel
 
         private void OnUpdateOrderDetail()
         {
+            if (!OrderDetailValidation())
+                return;
             using (MFSContext context = new MFSContext())
             {
                 OrderDetail orderDetail = new OrderDetail();
@@ -202,15 +204,27 @@ namespace MFSFinalProject.ViewModel
 
         #endregion
 
-        #region Funciones
-
-
-        public void ChangeCategoryData(int id, string name)
+        #region Validaciones
+        private bool OrderDetailValidation()
         {
-            //SelectedOrderDetail.Id = id;
-            //SelectedOrderDetail.Name = name;
+            try
+            {
+                if (SelectedOrderDetail.ProductId == 0)
+                    throw new Exception("Debes seleccionar un producto.");
+                if (SelectedOrderDetail.Quantity == 0)
+                    throw new Exception("Debes asignar la cantidad.");
+                if (SelectedOrderDetail.Cost == 0)
+                    throw new Exception("Debes agregar el costo del producto.");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error de validación", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
         }
         #endregion
+
     }
 }
 

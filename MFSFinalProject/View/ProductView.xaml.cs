@@ -64,5 +64,11 @@ namespace MFSFinalProject.View
                 this.Close();
             }
         }
+
+        private void ComboBoxSearch_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            MessageBox.Show(ComboBoxSearch.Uid);
+            MessageBox.Show(ComboBoxSearch.Text);
+        }
     }
 }

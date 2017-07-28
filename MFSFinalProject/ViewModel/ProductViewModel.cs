@@ -44,18 +44,17 @@ namespace MFSFinalProject.ViewModel
             {
 
                 var data = from p in context.Products
-                           join c in context.Categories on p.Category.CategoryId equals c.CategoryId
-                           join m in context.Measurements on p.Mesurement.MeasurementId equals m.MeasurementId
+                          
                            select new
                            {
                                Id = p.ProductId,
                                Name = p.Name,
-                               CategoryId = c.CategoryId,
-                               Category = c.CategoryName,
+                               CategoryId = p.Category.CategoryId,
+                               Category = p.Category.CategoryName,
                                MinStock = p.MinStock,
                                SellPrice = p.SellPrice,
-                               MeasurementId = m.MeasurementId,
-                               MeasurementName = m.Name,
+                               MeasurementId = p.Mesurement.MeasurementId,
+                               MeasurementName = p.Mesurement.Name,
                                Cost = (context.OrderDetails
                                .Where(o => o.Product.ProductId == p.ProductId).Count() == 0) ? 0: context.OrderDetails
                                .Where(o => o.Product.ProductId == p.ProductId).Average(o => o.Cost),

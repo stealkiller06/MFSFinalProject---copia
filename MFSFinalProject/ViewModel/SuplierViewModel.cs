@@ -133,5 +133,27 @@ namespace MFSFinalProject.ViewModel
             return true;
         }
         #endregion
+
+        #region Validaciones
+        private bool SuplierValidation()
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(SelectedSuplier.Name))
+                    throw new Exception("Debe asignar un nombre al suplidor.");
+                if (string.IsNullOrWhiteSpace(SelectedSuplier.Address))
+                    throw new Exception("Debe asignar la dirección al suplidor");
+                if (string.IsNullOrWhiteSpace(SelectedSuplier.Phone))
+                    throw new Exception("Debe agregar el número de teléfono del suplidor.");
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error de validación", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+        }
+        #endregion
     }
 }
