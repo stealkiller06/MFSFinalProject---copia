@@ -96,15 +96,8 @@ namespace MFSFinalProject.ViewModel
 
         public void OnUpdateCategory()
         {
-            try
-            {
-                CategoryValidation();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+            if (!CategoryValidation())
                 return;
-            }
             using (MFSContext context = new MFSContext())
             {
                 context.Entry(selectedCategory).State = (selectedCategory.CategoryId == 0) ?
@@ -143,12 +136,23 @@ namespace MFSFinalProject.ViewModel
         #endregion
 
         #region Funcion para validar SelectedCategory
-        private void CategoryValidation()
+        private bool CategoryValidation()
         {
-            if (string.IsNullOrWhiteSpace(SelectedCategory.CategoryName))
-                throw new Exception("No puedes dejar el nombre de la categoria en blanco");
-            if (SelectedCategory.CategoryName.Count() <= 2)
-                throw new Exception("El nombre de categoria debe ser mayor a 2");
+            try
+            {
+                if (string.IsNullOrWhiteSpace(SelectedCategory.CategoryName))
+                    throw new Exception("No puedes dejar el nombre de la categoria en blanco");
+                if (SelectedCategory.CategoryName.Count() <= 2)
+                    throw new Exception("El nombre de categoria debe ser mayor a 2");
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error de validación", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+           
         }
         #endregion
     }

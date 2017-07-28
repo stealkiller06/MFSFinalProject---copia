@@ -100,6 +100,8 @@ namespace MFSFinalProject.ViewModel
 
         public void OnUpdateMeasurement()
         {
+            if (!MeasurementValidation())
+                return;
             using (MFSContext context = new MFSContext())
             {
                 context.Entry(selectedMeasurement).State = (selectedMeasurement.MeasurementId == 0) ?
@@ -108,6 +110,7 @@ namespace MFSFinalProject.ViewModel
                 context.SaveChanges();
             }
             LoadMeasurements();
+            SelectedMeasurement = new Measurement();
 
         }
 
@@ -131,6 +134,29 @@ namespace MFSFinalProject.ViewModel
         public bool CanAddMeasurement()
         {
             return true;
+        }
+        #endregion
+
+        #region Validar Measurment
+        private bool MeasurementValidation()
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(SelectedMeasurement.Name))
+                    throw new Exception("Debe agregarle un nombre a la medida.");
+                using (MFSContext context = new MFSContext())
+                {
+                    if (context.Measurements.Where(m => m.Name == SelectedMeasurement.Name).Count() > 0)
+                        throw new Exception("Ya existe una medida con este nombre.");
+                }
+                    return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error de validación", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+
         }
         #endregion
     }

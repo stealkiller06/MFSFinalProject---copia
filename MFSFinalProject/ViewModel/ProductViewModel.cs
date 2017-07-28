@@ -22,16 +22,18 @@ namespace MFSFinalProject.ViewModel
         private ProductAux selectedProduct;
         #endregion
 
-
+        #region Constructor de la clase
         public ProductViewModel()
         {
             UpdateProductCommand = new MyICommand(OnUpdateProduct, CanUpdateProduct);
             SelectedProduct = new ProductAux();
             AddProductCommand = new MyICommand(OnAddCategory, CanAddCategory);
-           
+
             LoadProduct();
             //ChangeCategory = new MyICommand(OnChangeCategory, CanChangeCategory);
         }
+        #endregion
+
         #region Cargar elementos 
 
         #region Cargar todos los productos no borrados
@@ -151,16 +153,9 @@ namespace MFSFinalProject.ViewModel
         
         private void OnUpdateProduct()
         {
-            try
-            {
-                ProductValidation();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error en validación", MessageBoxButton.OK
-                    , MessageBoxImage.Error);
+            if (!ProductValidation())
                 return;
-            }
+
             using (MFSContext context = new MFSContext())
             {
                 Product product = new Product();
@@ -206,18 +201,29 @@ namespace MFSFinalProject.ViewModel
         #endregion
 
         #region Validaciones del producto
-        private void ProductValidation()
+        private bool ProductValidation()
         {
-            if (string.IsNullOrWhiteSpace(SelectedProduct.Name))
-                throw new Exception("No puedes dejar el nombre del producto vacio.");
-            if (SelectedProduct.MinStock == 0)
-                throw new Exception("El stock minimo no puede ser cero.");
-            if (selectedProduct.MeasurementId == 0)
-                throw new Exception("Debes seleccionar una medida.");
-            if (SelectedProduct.CategoryId == 0)
-                throw new Exception("Aún no has seleccionado ninguna categoria.");
-            if (SelectedProduct.SellPrice == 0)
-                throw new Exception("Debes asignarle un precio de venta al producto.");
+            try
+            {
+                if (string.IsNullOrWhiteSpace(SelectedProduct.Name))
+                    throw new Exception("No puedes dejar el nombre del producto vacio.");
+                if (SelectedProduct.MinStock == 0)
+                    throw new Exception("El stock minimo no puede ser cero.");
+                if (selectedProduct.MeasurementId == 0)
+                    throw new Exception("Debes seleccionar una medida.");
+                if (SelectedProduct.CategoryId == 0)
+                    throw new Exception("Aún no has seleccionado ninguna categoria.");
+                if (SelectedProduct.SellPrice == 0)
+                    throw new Exception("Debes asignarle un precio de venta al producto.");
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error de validación", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+           
            
         }
         #endregion
