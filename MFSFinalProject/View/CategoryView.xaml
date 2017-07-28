@@ -28,7 +28,7 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
                 <!--User Data-->
-                <Grid DataContext="{Binding SelectedCategory}" Grid.Row="0" Margin="0 0 0 10">
+                <Grid DataContext="{Binding SelectedCategory,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" Grid.Row="0" Margin="0 0 0 10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
@@ -36,7 +36,7 @@
                     
 
                     <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource FontSize}">Name</TextBlock>
-                    <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding CategoryName}" FontSize="20"/>
+                    <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding CategoryName,Mode=TwoWay}" FontSize="20" MaxLength="50"/>
 
 
                 </Grid>
@@ -71,7 +71,7 @@
                 </Grid>
                 
                 
-                <DataGrid x:Name="DataGridCategories"    ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" CanUserAddRows="False"
+                <DataGrid x:Name="DataGridCategories"    ItemsSource="{Binding Categories}" SelectedItem="{Binding SelectedCategory, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" CanUserAddRows="False"
                           CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Height="200" MouseDoubleClick="DataGridCategories_MouseDoubleClick">
 
                     <DataGrid.Columns>

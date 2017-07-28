@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using MFSFinalProject.Model;
 using MFSFinalProject.Infra;
 using System.Windows;
+using System;
 
 namespace MFSFinalProject.ViewModel
 {
@@ -14,9 +15,9 @@ namespace MFSFinalProject.ViewModel
         public CategoryViewModel()
         {
             LoadCategories();
+            UpdateCatecoryCommand = new MyICommand(OnUpdateCategory, CanUpdateCategory);
             selectedCategory = new Category();
             DeleteCategoryCommand = new MyICommand(OnDelete, CanDelete);
-            UpdateCatecoryCommand = new MyICommand(OnUpdateCategory, CanUpdateCategory);
             AddCategoryCommand = new MyICommand(OnAddCategory, CanAddCategory);
         }
 
@@ -90,13 +91,20 @@ namespace MFSFinalProject.ViewModel
             return false;
         }
 
-        /// <summary>
-        /// Command to update a Category
-        /// </summary>
+        #region UpdateCategoryCommand
         public MyICommand UpdateCatecoryCommand { get; set; }
 
         public void OnUpdateCategory()
         {
+            try
+            {
+                CategoryValidation();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
             using (MFSContext context = new MFSContext())
             {
                 context.Entry(selectedCategory).State = (selectedCategory.CategoryId == 0) ?
@@ -105,18 +113,20 @@ namespace MFSFinalProject.ViewModel
                 context.SaveChanges();
             }
             LoadCategories();
+            SelectedCategory = new Category();
 
         }
 
         public bool CanUpdateCategory()
         {
 
-            return SelectedCategory != null;
+            return true;
+                  
         }
+        #endregion
 
-        /// <summary>
-        /// Command to add a category
-        /// </summary>
+
+        #region AddCategoryCommand
         public MyICommand AddCategoryCommand { get; set; }
 
         public void OnAddCategory()
@@ -128,6 +138,17 @@ namespace MFSFinalProject.ViewModel
         public bool CanAddCategory()
         {
             return true;
+        }
+        #endregion
+        #endregion
+
+        #region Funcion para validar SelectedCategory
+        private void CategoryValidation()
+        {
+            if (string.IsNullOrWhiteSpace(SelectedCategory.CategoryName))
+                throw new Exception("No puedes dejar el nombre de la categoria en blanco");
+            if (SelectedCategory.CategoryName.Count() <= 2)
+                throw new Exception("El nombre de categoria debe ser mayor a 2");
         }
         #endregion
     }

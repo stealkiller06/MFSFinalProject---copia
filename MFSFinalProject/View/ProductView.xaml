@@ -84,7 +84,7 @@
                                     <ColumnDefinition Width="3*"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBox Text="{Binding Id,Mode=TwoWay}" Opacity="0" />
-                                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name, Mode=TwoWay}" />
+                                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name}" />
                             </Grid>
 
 
@@ -101,7 +101,7 @@
 
 
                             <TextBlock Grid.Column="0" Grid.Row="0" >Stock Minimo</TextBlock>
-                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding MinStock}" />
+                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding MinStock,UpdateSourceTrigger=PropertyChanged}" />
                         </Grid>
                         <!--#endregion-->
 

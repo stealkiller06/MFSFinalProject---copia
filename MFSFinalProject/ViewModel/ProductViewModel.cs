@@ -25,9 +25,10 @@ namespace MFSFinalProject.ViewModel
 
         public ProductViewModel()
         {
+            UpdateProductCommand = new MyICommand(OnUpdateProduct, CanUpdateProduct);
             SelectedProduct = new ProductAux();
             AddProductCommand = new MyICommand(OnAddCategory, CanAddCategory);
-            UpdateProductCommand = new MyICommand(OnUpdateProduct, CanUpdateProduct);
+           
             LoadProduct();
             //ChangeCategory = new MyICommand(OnChangeCategory, CanChangeCategory);
         }
@@ -39,7 +40,6 @@ namespace MFSFinalProject.ViewModel
             ObservableCollection<ProductAux> products = new ObservableCollection<ProductAux>();
             using (MFSContext context = new MFSContext())
             {
-
 
                 var data = from p in context.Products
                            join c in context.Categories on p.Category.CategoryId equals c.CategoryId
@@ -53,10 +53,16 @@ namespace MFSFinalProject.ViewModel
                                MinStock = p.MinStock,
                                SellPrice = p.SellPrice,
                                MeasurementId = m.MeasurementId,
-                               MeasurementName = m.Name
-                               
-                           };
+                               MeasurementName = m.Name,
+                               Cost = (context.OrderDetails
+                               .Where(o => o.Product.ProductId == p.ProductId).Count() == 0) ? 0: context.OrderDetails
+                               .Where(o => o.Product.ProductId == p.ProductId).Average(o => o.Cost),
+                               Stock = (context.OrderDetails.Where(o=>o.Product.ProductId == p.ProductId).Count() > 0)?
+                               context.OrderDetails.Where(o => o.Product.ProductId == p.ProductId).Sum(o=>o.Quantity) : 0
 
+
+                           };
+               // MessageBox.Show(Convert.ToString(context.OrderDetails.First().Product.ProductId));
 
                 foreach (var pro in data)
                 {
@@ -69,6 +75,8 @@ namespace MFSFinalProject.ViewModel
                     product.SellPrice = pro.SellPrice;
                     product.MeasurementId = pro.MeasurementId;
                     product.Measurementname = pro.MeasurementName;
+                    product.Cost = pro.Cost;
+                    product.Stock = pro.Stock;
                     products.Add(product);
                 }
             }
@@ -115,6 +123,7 @@ namespace MFSFinalProject.ViewModel
             set
             {
                 selectedProduct = value;
+                UpdateProductCommand.RaiseCanExecuteChanged();
                 OnPropertyChanged();
             }
         }
@@ -129,7 +138,7 @@ namespace MFSFinalProject.ViewModel
         private void OnAddCategory()
         {
             SelectedProduct = new ProductAux();
-            OnPropertyChanged("SelectedProduct");
+            //OnPropertyChanged("SelectedProduct");
         }
         private bool CanAddCategory()
         {
@@ -142,6 +151,16 @@ namespace MFSFinalProject.ViewModel
         
         private void OnUpdateProduct()
         {
+            try
+            {
+                ProductValidation();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error en validación", MessageBoxButton.OK
+                    , MessageBoxImage.Error);
+                return;
+            }
             using (MFSContext context = new MFSContext())
             {
                 Product product = new Product();
@@ -161,6 +180,7 @@ namespace MFSFinalProject.ViewModel
                
 
                 LoadProduct();
+                SelectedProduct = new ProductAux();
             }
         }
 
@@ -182,6 +202,23 @@ namespace MFSFinalProject.ViewModel
         {
             SelectedProduct.Id = id;
             SelectedProduct.Name = name;
+        }
+        #endregion
+
+        #region Validaciones del producto
+        private void ProductValidation()
+        {
+            if (string.IsNullOrWhiteSpace(SelectedProduct.Name))
+                throw new Exception("No puedes dejar el nombre del producto vacio.");
+            if (SelectedProduct.MinStock == 0)
+                throw new Exception("El stock minimo no puede ser cero.");
+            if (selectedProduct.MeasurementId == 0)
+                throw new Exception("Debes seleccionar una medida.");
+            if (SelectedProduct.CategoryId == 0)
+                throw new Exception("Aún no has seleccionado ninguna categoria.");
+            if (SelectedProduct.SellPrice == 0)
+                throw new Exception("Debes asignarle un precio de venta al producto.");
+           
         }
         #endregion
 
