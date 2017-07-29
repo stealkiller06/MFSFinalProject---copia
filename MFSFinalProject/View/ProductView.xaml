@@ -218,9 +218,9 @@
                                 <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0">Por: </TextBlock>
-                            <ComboBox x:Name="ComboBoxSearch" SelectionChanged="ComboBoxSearch_SelectionChanged" Grid.Column="1">
-                                <ComboBoxItem IsSelected="True" Uid="Name">Nombre</ComboBoxItem>
-                                <ComboBoxItem  Uid="Category">Categoria</ComboBoxItem>
+                            <ComboBox x:Name="ComboBoxSearch" SelectionChanged="ComboBoxSearch_SelectionChanged" Grid.Column="1" FontWeight="Normal">
+                                <ComboBoxItem IsSelected="True">Nombre</ComboBoxItem>
+                                <ComboBoxItem >Categoria</ComboBoxItem>
                             </ComboBox>
                         </Grid>
                         <!--#endregion-->
@@ -231,7 +231,7 @@
                                 <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0">Buscar:</TextBlock>
-                            <TextBox x:Name="TextBoxSearchBar" TextChanged="TextBoxSearchBar_TextChanged" Grid.Column="1"/>
+                            <TextBox x:Name="TextBoxSearchBar" TextChanged="TextBoxSearchBar_TextChanged" Grid.Column="1" FontWeight="Normal"/>
                         </Grid>
                         
                         <!--#endregion-->

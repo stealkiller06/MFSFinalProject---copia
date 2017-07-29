@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using MFSFinalProject.ViewModel;
 using MFSFinalProject.Model.Help;
+using System.ComponentModel;
+using MFSFinalProject.Model;
 
 namespace MFSFinalProject.View
 {
@@ -35,7 +37,8 @@ namespace MFSFinalProject.View
 
         private void TextBoxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            ICollectionView cv = CollectionViewSource.GetDefaultView(DataGridProducts.ItemsSource);
+            ValorCombobox(ref cv);
         }
         private void ButtonChangeCategory_Click(object sender, RoutedEventArgs e)
         {
@@ -67,8 +70,45 @@ namespace MFSFinalProject.View
 
         private void ComboBoxSearch_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MessageBox.Show(ComboBoxSearch.Uid);
-            MessageBox.Show(ComboBoxSearch.Text);
+
         }
+
+        #region Reconocer criterio
+        private void ValorCombobox(ref ICollectionView cv)
+        {
+            string textFilter = TextBoxSearchBar.Text;
+            if (!string.IsNullOrEmpty(textFilter))
+            {
+                switch (((ComboBoxItem)ComboBoxSearch.SelectedItem).Content)
+                {
+                    case "Nombre":
+                        cv.Filter = o =>
+                        {
+                            ProductAux C = o as ProductAux;
+                            return (C.Name.ToUpper().StartsWith(textFilter.ToUpper()));
+                        };
+                        break;
+                    case "Categoria":
+                        cv.Filter = o =>
+                        {
+                            ProductAux C = o as ProductAux;
+                            return (C.Category.ToUpper().StartsWith(textFilter.ToUpper()));
+                        };
+                        break;
+                    
+                }
+
+            }
+            else
+            {
+                cv.Filter = o =>
+                {
+                    ProductAux C = o as ProductAux;
+                    return C.Cost == 0;
+                };
+            }
+
+        }
+        #endregion
     }
 }

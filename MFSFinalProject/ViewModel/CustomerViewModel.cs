@@ -100,6 +100,8 @@ namespace MFSFinalProject.ViewModel
 
         public void OnUpdateCustomer()
         {
+            if (!CustomerValidation())
+                return;
             using (MFSContext context = new MFSContext())
             {
                 context.Entry(selectedCustomer).State = (selectedCustomer.CustomerId == 0) ?
@@ -140,11 +142,11 @@ namespace MFSFinalProject.ViewModel
             try
             {
                 if (string.IsNullOrWhiteSpace(SelectedCustomer.Name))
-                    throw new Exception("Debe asignar un nombre al suplidor.");
+                    throw new Exception("Debe asignar un nombre al cliente.");
                 if (string.IsNullOrWhiteSpace(SelectedCustomer.Address))
-                    throw new Exception("Debe asignar la dirección al suplidor");
+                    throw new Exception("Debe asignar la dirección al cliente");
                 if (string.IsNullOrWhiteSpace(SelectedCustomer.Phone))
-                    throw new Exception("Debe agregar el número de teléfono del suplidor.");
+                    throw new Exception("Debe agregar el número de teléfono del cliente.");
 
                 return true;
             }

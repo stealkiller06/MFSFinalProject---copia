@@ -56,6 +56,14 @@ namespace MFSFinalProject.View
                     return (C.CategoryName.ToUpper().StartsWith(textFilter.ToUpper()));
                 };
             }
+            else
+            {
+                cv.Filter = o =>
+                {
+                    Category C = o as Category;
+                    return C.CategoryRemove == 0;
+                };
+            }
         }
 
         private void DataGridCategories_MouseDoubleClick(object sender, MouseButtonEventArgs e)
