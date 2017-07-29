@@ -25,6 +25,13 @@ namespace MFSFinalProject.View
         {
             InitializeComponent();
         }
+        public CustomerView(SaleView saleView)
+        {
+            InitializeComponent();
+            SaleView = saleView;
+
+        }
+        public SaleView SaleView { get; set; }
 
         private void TextBoxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -36,7 +43,13 @@ namespace MFSFinalProject.View
 
         private void DataGridCustomers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-
+            Customer customer = DataGridCustomers.SelectedItem as Customer;
+            if(SaleView != null)
+            {
+                SaleView.CustomerId.Text = Convert.ToString(customer.CustomerId);
+                SaleView.CustomerName.Text = customer.Name + " " + customer.LastName;
+                this.Close();
+            }
         }
 
         private void ComboBoxSearch_SelectionChanged(object sender, SelectionChangedEventArgs e)
