@@ -77,6 +77,10 @@
     <Compile Include="Migrations\201707282214290_CustomerMigration.Designer.cs">
       <DependentUpon>201707282214290_CustomerMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707290409400_ModuloVentasMigrations.cs" />
+    <Compile Include="Migrations\201707290409400_ModuloVentasMigrations.Designer.cs">
+      <DependentUpon>201707290409400_ModuloVentasMigrations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Help\OrderAux.cs" />
@@ -85,6 +89,8 @@
     <Compile Include="Model\Help\ProductAux.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderDetail.cs" />
+    <Compile Include="Model\Sale.cs" />
+    <Compile Include="Model\SaleDetail.cs" />
     <Compile Include="Model\Suplier.cs" />
     <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Compile Include="ViewModel\Commands\SimpleCommand.cs" />
@@ -184,6 +190,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\201707282214290_CustomerMigration.resx">
       <DependentUpon>201707282214290_CustomerMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707290409400_ModuloVentasMigrations.resx">
+      <DependentUpon>201707290409400_ModuloVentasMigrations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
