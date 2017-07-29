@@ -34,13 +34,13 @@ namespace MFSFinalProject.View
 
         private void DataGridSales_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            //SaleAux order = DataGridSales.SelectedItem as SaleAux;
-            //if (order != null)
-            //{
-            //    SaleDetailView orderDetailView = new SaleDetailView();
-            //    orderDetailView.SaleId.Text = Convert.ToString(order.SaleID);
-            //    orderDetailView.ShowDialog();
-            //}
+            SaleAux sale = DataGridSales.SelectedItem as SaleAux;
+            if (sale != null)
+            {
+                SaleDetailView saleDetailView = new SaleDetailView();
+                saleDetailView.SaleId.Text = Convert.ToString(sale.SaleID);
+                saleDetailView.ShowDialog();
+            }
         }
 
         private void ChageCustomer_Click(object sender, RoutedEventArgs e)

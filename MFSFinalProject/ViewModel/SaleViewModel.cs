@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using MFSFinalProject.View;
+using System.Windows;
 
 namespace MFSFinalProject.ViewModel
 {
@@ -49,11 +51,10 @@ namespace MFSFinalProject.ViewModel
 
                            };
 
-
                 foreach (var or in data)
                 {
                     SaleAux order = new SaleAux();
-                    order.SaleID = or.Id;
+                    order.SaleID = or.Id ;
                     order.UserId = or.UserId;
                     order.UserName = or.UserName;
                     order.CustomerId = or.CustomerId;
@@ -145,13 +146,14 @@ namespace MFSFinalProject.ViewModel
 
 
                 LoadSale();
-                //Nueva order
-                //if (isNewSale == 0)
-                //{
-                //    SaleDetailView orderDetailView = new SaleDetailView();
-                //    orderDetailView.SaleId.Text = Convert.ToString(order.SaleId);
-                //    orderDetailView.ShowDialog();
-                //}
+                MessageBox.Show(Convert.ToString(order.SaleId)); 
+                //Nueva venta
+                if (isNewSale == 0)
+                {
+                    SaleDetailView orderDetailView = new SaleDetailView();
+                    orderDetailView.SaleId.Text = Convert.ToString(order.SaleId);
+                    orderDetailView.ShowDialog();
+                }
 
             }
         }
@@ -169,7 +171,27 @@ namespace MFSFinalProject.ViewModel
 
         #endregion
 
-        #region Funciones
+        #region Validaciones
+        private bool SaleDetailValidation()
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(SelectedSale.CodSale))
+                    throw new Exception("El código de la factura no se puede dejar vacío.");
+                if (SelectedSale.CustomerId == 0)
+                    throw new Exception("Debes agregar un cliente.");
+                if (string.IsNullOrWhiteSpace(SelectedSale.Date.ToString()))
+                    throw new Exception("El campo fecha no puede dejarse vacío.");
+                
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error de validación", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
+        }
         #endregion
+
     }
 }

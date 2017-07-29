@@ -90,6 +90,7 @@
     <Compile Include="Model\Help\OrderAux.cs" />
     <Compile Include="Model\Help\OrderDetailAux.cs" />
     <Compile Include="Model\Help\SaleAux.cs" />
+    <Compile Include="Model\Help\SaleDetailAux.cs" />
     <Compile Include="Model\Measurement.cs" />
     <Compile Include="Model\Help\ProductAux.cs" />
     <Compile Include="Model\Order.cs" />
@@ -104,6 +105,7 @@
     <Compile Include="ViewModel\OrderDetailViewModel.cs" />
     <Compile Include="ViewModel\OrderViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
+    <Compile Include="ViewModel\SaleDetailViewModel.cs" />
     <Compile Include="ViewModel\SaleViewModel.cs" />
     <Compile Include="ViewModel\SuplierViewModel.cs" />
     <Compile Include="View\CategoryView.xaml.cs">
@@ -123,6 +125,9 @@
     </Compile>
     <Compile Include="View\ProductView.xaml.cs">
       <DependentUpon>ProductView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SaleDetailView.xaml.cs">
+      <DependentUpon>SaleDetailView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SaleView.xaml.cs">
       <DependentUpon>SaleView.xaml</DependentUpon>
@@ -167,6 +172,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ProductView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SaleDetailView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

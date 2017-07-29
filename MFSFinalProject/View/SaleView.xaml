@@ -7,7 +7,8 @@
         xmlns:vm="clr-namespace:MFSFinalProject.ViewModel"
         Loaded="Window_Loaded"
         mc:Ignorable="d"
-        Title="Modulo de Ventas" Height="426.442" Width="580.398">
+       WindowState="Maximized"
+        Title="Modulo de Ventas" Height="800.442" Width="811.398">
     <Window.Resources>
         <Style x:Key="FontSize" TargetType="TextBlock">
             <Setter Property="FontSize" Value="20"/>
@@ -21,7 +22,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <GroupBox Header="Datos de la compra" Grid.Row="0">
+        <GroupBox Header="Datos de la compra" Grid.Row="0" Padding="20" FontSize="18" FontWeight="Bold">
             <!--Main Container-->
             <Grid>
                 <Grid.RowDefinitions>
@@ -43,7 +44,7 @@
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBox Opacity="0" Width="1" Text="{Binding SaleId}"/>
+                        <TextBox Opacity="0" Width="1" Text="{Binding SaleID}"/>
                         <TextBlock Grid.Column="0" Grid.Row="0">Cod</TextBlock>
                         <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding CodSale}" />
                     </Grid>
@@ -125,7 +126,7 @@
 
 
         </GroupBox>
-        <GroupBox Header="Listado de Compras" Grid.Row="1">
+        <GroupBox Header="Listado de Compras" Grid.Row="1" Padding="20" FontSize="18" FontWeight="Bold">
             <StackPanel>
                 <!-- Search bar-->
                 <Grid>

@@ -1,20 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using MFSFinalProject.ViewModel;
 using MFSFinalProject.Model.Help;
 using System.ComponentModel;
-using MFSFinalProject.Model;
 
 namespace MFSFinalProject.View
 {
@@ -33,7 +23,13 @@ namespace MFSFinalProject.View
             InitializeComponent();
             OrderDetailView = orderDetailView;
         }
+        public ProductView(SaleDetailView saleDetailView)
+        {
+            InitializeComponent();
+            SaleDetailView = saleDetailView; ;
+        }
         public OrderDetailView OrderDetailView { get; set; }
+        public SaleDetailView SaleDetailView { get; set; }
 
         private void TextBoxSearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -58,12 +54,17 @@ namespace MFSFinalProject.View
         private void DataGridProducts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             ProductAux product = DataGridProducts.SelectedItem as ProductAux;
-            if(product != null)
+            if(OrderDetailView != null)
             {
-               // MessageBox.Show(string.Format("{0:0.00}", product.SellPrice).Replace(",","."));
                 OrderDetailView.TextBoxProductId.Text = Convert.ToString(product.Id);
                 OrderDetailView.TextBoxProductName.Text = product.Name;
-               // OrderDetailView.TextBoxSellPrice.Text = string.Format("{0:0.00}", product.SellPrice).Replace(",", ".");//Convert.ToString(product.SellPrice);
+                this.Close();
+            }
+            if(SaleDetailView != null)
+            {
+                SaleDetailView.TextBoxProductId.Text = Convert.ToString(product.Id);
+                SaleDetailView.TextBoxProductName.Text = product.Name;
+                SaleDetailView.TextBoxSellPrice.Text = string.Format("{0:0.00}", product.SellPrice).Replace(",", ".");//Convert.ToString(product.SellPrice);
                 this.Close();
             }
         }
