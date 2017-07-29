@@ -73,7 +73,12 @@
     <Compile Include="Infra\NotificationClass.cs" />
     <Compile Include="Infra\RelayCommand.cs" />
     <Compile Include="Infra\Utility.cs" />
+    <Compile Include="Migrations\201707282214290_CustomerMigration.cs" />
+    <Compile Include="Migrations\201707282214290_CustomerMigration.Designer.cs">
+      <DependentUpon>201707282214290_CustomerMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Help\OrderAux.cs" />
     <Compile Include="Model\Help\OrderDetailAux.cs" />
     <Compile Include="Model\Measurement.cs" />
@@ -83,6 +88,7 @@
     <Compile Include="Model\Suplier.cs" />
     <Compile Include="ViewModel\CategoryViewModel.cs" />
     <Compile Include="ViewModel\Commands\SimpleCommand.cs" />
+    <Compile Include="ViewModel\CustomerViewModel.cs" />
     <Compile Include="ViewModel\MeasurementViewModel.cs" />
     <Compile Include="ViewModel\OrderDetailViewModel.cs" />
     <Compile Include="ViewModel\OrderViewModel.cs" />
@@ -90,6 +96,9 @@
     <Compile Include="ViewModel\SuplierViewModel.cs" />
     <Compile Include="View\CategoryView.xaml.cs">
       <DependentUpon>CategoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\CustomerView.xaml.cs">
+      <DependentUpon>CustomerView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MeasurementView.xaml.cs">
       <DependentUpon>MeasurementView.xaml</DependentUpon>
@@ -123,6 +132,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\CategoryView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\CustomerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,6 +182,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="Migrations\201707282214290_CustomerMigration.resx">
+      <DependentUpon>201707282214290_CustomerMigration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

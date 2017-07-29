@@ -22,5 +22,6 @@ namespace MFSFinalProject.Model
         public virtual DbSet<Suplier> Supliers { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
     }
 }
