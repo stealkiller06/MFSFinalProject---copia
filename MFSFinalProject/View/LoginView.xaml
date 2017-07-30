@@ -1,0 +1,52 @@
+﻿<Window x:Class="MFSFinalProject.View.LoginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MFSFinalProject.View"
+        xmlns:vm="clr-namespace:MFSFinalProject.ViewModel"
+        mc:Ignorable="d"
+        WindowStyle="None"
+        x:Name="This"
+        WindowStartupLocation="CenterScreen"
+        
+        Title="Login" Height="312.766" Width="339.362" ResizeMode="NoResize">
+    <Window.DataContext>
+        <vm:LoginViewModel/>
+    </Window.DataContext>
+
+    <Grid>
+        <Rectangle HorizontalAlignment="Left" Height="60" Stroke="#00000000" VerticalAlignment="Top" Width="342" Margin="-1,0,-2,0">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF75ACEE" Offset="0"/>
+                    <GradientStop Color="#FF4366E0" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <TextBlock HorizontalAlignment="Left" Margin="24,19,0,0" TextWrapping="Wrap" Text="Inicio de Sesión" VerticalAlignment="Top" FontFamily="Elephant" FontSize="24" Foreground="#FFA3DDFF"/>
+        <Rectangle HorizontalAlignment="Left" Height="176" Margin="-1,59,-2,0" Stroke="#00000000" VerticalAlignment="Top" Width="342">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF68A9F7" Offset="0"/>
+                    <GradientStop Color="#FF455EB6" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle HorizontalAlignment="Left" Height="81" Margin="-1,234,-2,-2" Stroke="#00000000" VerticalAlignment="Top" Width="342">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF354EA2" Offset="0"/>
+                    <GradientStop Color="#FF1E2C5F" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Image HorizontalAlignment="Left" Height="38" Margin="45,100,0,0" VerticalAlignment="Top" Width="39" Source="/MFSFinalProject;component/Resources/Images/Customer.png"/>
+        <Image HorizontalAlignment="Left" Height="41" Margin="44,153,0,0" VerticalAlignment="Top" Width="40" Source="/MFSFinalProject;component/Resources/Images/Lock.png"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="105,115,0,0" TextWrapping="Wrap" Text="{Binding UserName}" VerticalAlignment="Top" Width="149" BorderBrush="#FF092659" Background="#FF4C79F1" BorderThickness="1"/>
+        <PasswordBox PasswordChanged="PassWord_PasswordChanged"  x:Name="PassWord" HorizontalAlignment="Left" Height="23" Margin="105,171,0,0"  VerticalAlignment="Top" Width="149" BorderBrush="#FF092659" Background="#FF4C79F1" BorderThickness="1" />
+        <Button Content="Button" HorizontalAlignment="Left" Margin="264,132,0,0" VerticalAlignment="Top" Width="53" Height="30" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=This}"/>
+        <TextBox x:Name="Password" HorizontalAlignment="Left" Height="23" Margin="105,199,0,0" TextWrapping="Wrap" Text="{Binding PassWord,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" Background="{x:Null}" Opacity="0"/>
+
+    </Grid>
+</Window>

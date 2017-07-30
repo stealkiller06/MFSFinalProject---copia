@@ -22,8 +22,26 @@ namespace MFSFinalProject.View
         public MainMenu()
         {
             InitializeComponent();
-            FacturaForm form = new FacturaForm(1);
-            form.ShowDialog();
+            
+        }
+
+        private void Buy_Click(object sender, RoutedEventArgs e)
+        {
+            OrderView order = new OrderView();
+            order.WindowState = WindowState.Maximized;
+            order.ShowDialog();
+        }
+
+        private void Sale_Click(object sender, RoutedEventArgs e)
+        {
+            SaleView sale = new SaleView();
+            sale.ShowDialog();
+        }
+
+        private void Customer_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerView customer = new CustomerView();
+            customer.ShowDialog();
         }
     }
 }

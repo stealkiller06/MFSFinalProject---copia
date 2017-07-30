@@ -4,14 +4,80 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MFSFinalProject.View"
-        
+        Background="SlateGray"
         WindowState="Maximized"
         mc:Ignorable="d"
-        Title="MainMenu" Height="358.646" Width="575.188">
-    <Grid>
-
-
         
+        Title="Menu principal" Height="492.293" Width="608.177">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="auto"/>
+            <Setter Property="Height" Value="auto"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <!--#region Titulo empresa-->
+        <StackPanel Background="DarkCyan">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <Image Source="C:\Users\cliente\Downloads\cart-148964_640.png" Width="50" ></Image>
+                <TextBlock FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom">Sistema de punto de venta</TextBlock>
+            </StackPanel>
+        </StackPanel>
+
+
+        <!--#endregion-->
+
+        <!--#region Contenido-->
+        <Grid Grid.Row="1">
+            <Grid Margin="40">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition />
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+
+                </Grid.RowDefinitions>
+                <!--#region Botones superiores-->
+                <Button Grid.Column="0" Grid.Row="0" x:Name="Buy" Click="Buy_Click"  >
+                    <Image Source="pack://application:,,,/Resources/Images/Order.png" />
+                </Button>
+                <Button Grid.Column="1" Grid.Row="0" x:Name="Sale" Click="Sale_Click" >
+                    <Image Source="pack://application:,,,/Resources/Images/Sale.png" />
+                </Button>
+                <Button Grid.Column="2" Grid.Row="0" x:Name="Customer" Click="Customer_Click" >
+                    <Image Source="pack://application:,,,/Resources/Images/Customer.png" />
+                </Button>
+
+                <!--#endregion-->
+                <!--#region Botones inferiores-->
+                <Button Grid.Column="0" Grid.Row="1" ></Button>
+                <Button Grid.Column="1" Grid.Row="1" ></Button>
+                <Button Grid.Column="2" Grid.Row="1" ></Button>
+
+                <!--#endregion-->
+                
+                
+            </Grid>
+        </Grid>
+        <!--#endregion-->
+        
+        <!--#region Footer-->
+        <StackPanel Background="DarkCyan" Grid.Row="2">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                
+                <TextBlock FontSize="18" FontWeight="Bold" VerticalAlignment="Bottom">Software creado por Frank Peña</TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <!--#endregion-->
+
 
 
     </Grid>
