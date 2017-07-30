@@ -54,6 +54,9 @@ namespace MFSFinalProject.View
         private void DataGridProducts_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             ProductAux product = DataGridProducts.SelectedItem as ProductAux;
+            if (product == null)
+                return;
+
             if(OrderDetailView != null)
             {
                 OrderDetailView.TextBoxProductId.Text = Convert.ToString(product.Id);
@@ -105,7 +108,7 @@ namespace MFSFinalProject.View
                 cv.Filter = o =>
                 {
                     ProductAux C = o as ProductAux;
-                    return C.Cost == 0;
+                    return C.Remove == 0;
                 };
             }
 

@@ -44,7 +44,7 @@ namespace MFSFinalProject.ViewModel
             {
 
                 var data = from p in context.Products
-                          
+                          where p.Remove != 1
                            select new
                            {
                                Id = p.ProductId,
@@ -52,6 +52,7 @@ namespace MFSFinalProject.ViewModel
                                CategoryId = p.Category.CategoryId,
                                Category = p.Category.CategoryName,
                                MinStock = p.MinStock,
+                               Remove = p.Remove,
                                SellPrice = p.SellPrice,
                                MeasurementId = p.Mesurement.MeasurementId,
                                MeasurementName = p.Mesurement.Name,
@@ -59,7 +60,8 @@ namespace MFSFinalProject.ViewModel
                                .Where(o => o.Product.ProductId == p.ProductId).Count() == 0) ? 0: context.OrderDetails
                                .Where(o => o.Product.ProductId == p.ProductId).Average(o => o.Cost),
                                Stock = (context.OrderDetails.Where(o=>o.Product.ProductId == p.ProductId).Count() > 0)?
-                               context.OrderDetails.Where(o => o.Product.ProductId == p.ProductId).Sum(o=>o.Quantity) : 0
+                               context.OrderDetails.Where(o => o.Product.ProductId == p.ProductId && o.Remove !=1).Sum(o=>o.Quantity) - 
+                               context.SaleDetails.Where(s=> s.Product.ProductId == p.ProductId && s.Remove != 1).Sum(s=>s.Quantity): 0
 
 
                            };
@@ -78,6 +80,7 @@ namespace MFSFinalProject.ViewModel
                     product.Measurementname = pro.MeasurementName;
                     product.Cost = pro.Cost;
                     product.Stock = pro.Stock;
+                    product.Remove = pro.Remove;
                     products.Add(product);
                 }
             }
@@ -85,18 +88,7 @@ namespace MFSFinalProject.ViewModel
         }
         #endregion
 
-        #region Cargar todas las categorias no borradas
-        public void LoadCategories()
-        {
-            ObservableCollection<Category> categories;
-            using (MFSContext context = new MFSContext())
-            {
-                categories =
-                new ObservableCollection<Category>(context.Categories.ToList());
-            }
-            Categories = categories;
-        }
-        #endregion
+        
 
         #endregion
 

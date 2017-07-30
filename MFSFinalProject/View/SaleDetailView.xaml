@@ -43,7 +43,7 @@
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
         <materialDesign:Card  Margin="15">
-            <GroupBox Header="Datos de la compra" Grid.Row="0"  Padding="20">
+            <GroupBox Header="Datos de la venta" Grid.Row="0"  Padding="20">
                 <!--Main Container-->
                 <Grid>
                     <Grid.RowDefinitions>
@@ -188,7 +188,7 @@
         
 
         <materialDesign:Card  Margin="15" Grid.Row="1">
-            <GroupBox Header="Listado de SaleDetailos"   Padding="20">
+            <GroupBox Header="Listado de la venta"   Padding="20">
                 <StackPanel>
                     <!-- Search bar-->
                     <Grid>

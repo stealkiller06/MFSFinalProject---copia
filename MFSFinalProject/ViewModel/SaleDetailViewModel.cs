@@ -208,7 +208,16 @@ namespace MFSFinalProject.ViewModel
                     throw new Exception("Debes asignar la cantidad.");
                 if (SelectedSaleDetail.SellPrice == 0)
                     throw new Exception("Debes agregar el precio de venta del producto.");
-                return true;
+                using (MFSContext context = new MFSContext())
+                {
+                    int stockActually = (context.OrderDetails.Where(o => o.Product.ProductId == SelectedSaleDetail.ProductId).Count() > 0) ?
+                               context.OrderDetails.Where(o => o.Product.ProductId == SelectedSaleDetail.ProductId && o.Remove != 1).Sum(o => o.Quantity) -
+                               context.SaleDetails.Where(s => s.Product.ProductId == SelectedSaleDetail.ProductId && s.Remove != 1).Sum(s => s.Quantity) : 0;
+
+                    if (stockActually - SelectedSaleDetail.Quantity < 0)
+                        throw new Exception("Acutalmente sólo tiene " + stockActually + " en el stock.");
+                }
+                    return true;
             }
             catch (Exception ex)
             {

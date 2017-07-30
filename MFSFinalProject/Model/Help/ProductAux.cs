@@ -18,5 +18,6 @@ namespace MFSFinalProject.Model.Help
         public string Measurementname { get; set; }
         public decimal Cost { get; set; }
         public int Stock { get; set; }
+        public int Remove { get; set; }
     }
 }
