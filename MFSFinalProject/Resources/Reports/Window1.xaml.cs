@@ -11,19 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using MFSFinalProject.Resources.Reports;
-namespace MFSFinalProject.View
+
+namespace MFSFinalProject.Resources.Reports
 {
     /// <summary>
-    /// Interaction logic for MainMenu.xaml
+    /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class MainMenu : Window
+    public partial class Window1 : Window
     {
-        public MainMenu()
+        public Window1()
         {
             InitializeComponent();
-            FacturaForm form = new FacturaForm(1);
-            form.ShowDialog();
         }
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MFSFinalProject.Resources.Reports;
 
 namespace MFSFinalProject.View
 {
@@ -44,6 +45,12 @@ namespace MFSFinalProject.View
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.DataContext = new SaleDetailViewModel(Convert.ToInt32(SaleId.Text));
+        }
+
+        private void ButtonPrint_Click(object sender, RoutedEventArgs e)
+        {
+            FacturaForm factura = new FacturaForm(int.Parse(SaleId.Text));
+            factura.ShowDialog();
         }
     }
 }
