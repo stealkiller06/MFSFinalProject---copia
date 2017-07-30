@@ -137,9 +137,9 @@ namespace MFSFinalProject.ViewModel
                     isNewOrder = 1;
                     order = context.Orders.Include(o => o.User).Include(o => o.Suplier).Single(o => o.OrderId == SelectedOrder.OrderID);
                 }
+                order.User = context.Users.Find(UserLogin.Id);
                 order.Date = SelectedOrder.Date;
                 order.Suplier = context.Supliers.Find(SelectedOrder.SuplierId);
-                order.User = context.Users.First();
                 order.CodOrder = SelectedOrder.CodOrder;
                 context.Entry(order).State = SelectedOrder.OrderID == 0 ?
                                                 EntityState.Added : EntityState.Modified;

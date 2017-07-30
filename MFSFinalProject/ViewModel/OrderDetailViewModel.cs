@@ -174,6 +174,7 @@ namespace MFSFinalProject.ViewModel
                 {
                     orderDetail = context.OrderDetails.Include(od => od.Product).Include(od => od.Order).Single( od=> od.OrderDetailId == SelectedOrderDetail.OrderDetailId);
                 }
+               
                 orderDetail.Order = context.Orders.Find(SelectedOrderDetail.OrderId);
                 orderDetail.Quantity = SelectedOrderDetail.Quantity;
                 orderDetail.Cost = selectedOrderDetail.Cost;

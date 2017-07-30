@@ -104,6 +104,7 @@ namespace MFSFinalProject.ViewModel
                 return;
             using (MFSContext context = new MFSContext())
             {
+                SelectedMeasurement.User = context.Users.Find(UserLogin.Id);
                 context.Entry(selectedMeasurement).State = (selectedMeasurement.MeasurementId == 0) ?
                                                         System.Data.Entity.EntityState.Added :
                                                         System.Data.Entity.EntityState.Modified;

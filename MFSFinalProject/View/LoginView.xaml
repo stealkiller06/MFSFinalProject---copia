@@ -11,9 +11,7 @@
         WindowStartupLocation="CenterScreen"
         
         Title="Login" Height="312.766" Width="339.362" ResizeMode="NoResize">
-    <Window.DataContext>
-        <vm:LoginViewModel/>
-    </Window.DataContext>
+
 
     <Grid>
         <Rectangle HorizontalAlignment="Left" Height="60" Stroke="#00000000" VerticalAlignment="Top" Width="342" Margin="-1,0,-2,0">
@@ -43,10 +41,11 @@
         </Rectangle>
         <Image HorizontalAlignment="Left" Height="38" Margin="45,100,0,0" VerticalAlignment="Top" Width="39" Source="/MFSFinalProject;component/Resources/Images/Customer.png"/>
         <Image HorizontalAlignment="Left" Height="41" Margin="44,153,0,0" VerticalAlignment="Top" Width="40" Source="/MFSFinalProject;component/Resources/Images/Lock.png"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="105,115,0,0" TextWrapping="Wrap" Text="{Binding UserName}" VerticalAlignment="Top" Width="149" BorderBrush="#FF092659" Background="#FF4C79F1" BorderThickness="1"/>
+        <TextBox x:Name="Username" HorizontalAlignment="Left" Height="23" Margin="105,115,0,0" TextWrapping="Wrap" Text="{Binding UserName}" VerticalAlignment="Top" Width="149" BorderBrush="#FF092659" Background="#FF4C79F1" BorderThickness="1"/>
         <PasswordBox PasswordChanged="PassWord_PasswordChanged"  x:Name="PassWord" HorizontalAlignment="Left" Height="23" Margin="105,171,0,0"  VerticalAlignment="Top" Width="149" BorderBrush="#FF092659" Background="#FF4C79F1" BorderThickness="1" />
-        <Button Content="Button" HorizontalAlignment="Left" Margin="264,132,0,0" VerticalAlignment="Top" Width="53" Height="30" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=This}"/>
+        <Button x:Name="Login"  Content="Button" HorizontalAlignment="Left" Margin="264,132,0,0" VerticalAlignment="Top" Width="53" Height="30" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=This}" Click="Login_Click"/>
         <TextBox x:Name="Password" HorizontalAlignment="Left" Height="23" Margin="105,199,0,0" TextWrapping="Wrap" Text="{Binding PassWord,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" Background="{x:Null}" Opacity="0"/>
+        <TextBox  x:Name="flag"  TextChanged="flag_TextChanged"  HorizontalAlignment="Left" Height="23" Margin="45,240,0,0" TextWrapping="Wrap"  Width="20" Background="White" VerticalAlignment="Top" Text="{Binding Login, Mode=TwoWay}" />
 
     </Grid>
 </Window>

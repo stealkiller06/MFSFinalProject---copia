@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MFSFinalProject.View"
         Background="SlateGray"
+        Loaded="Window_Loaded"
         WindowState="Maximized"
         mc:Ignorable="d"
         
@@ -23,10 +24,40 @@
         </Grid.RowDefinitions>
         <!--#region Titulo empresa-->
         <StackPanel Background="DarkCyan">
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <Image Source="C:\Users\cliente\Downloads\cart-148964_640.png" Width="50" ></Image>
-                <TextBlock FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom">Sistema de punto de venta</TextBlock>
-            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontWeight="Bold">Usuario: </TextBlock>
+                        <TextBlock x:Name="Username" Grid.Column="1">Name</TextBlock>
+                        
+                    </Grid>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock FontWeight="Bold">Rol:</TextBlock>
+                        <TextBlock x:Name="Role" Grid.Column="1">Rol</TextBlock>
+
+                    </Grid>
+
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Grid.Column="1">
+                    <Image Source="C:\Users\cliente\Downloads\cart-148964_640.png" Width="50" ></Image>
+                    <TextBlock FontSize="25" FontWeight="Bold" VerticalAlignment="Bottom">Sistema de punto de venta</TextBlock>
+                    
+                </StackPanel>
+            </Grid>
+            
         </StackPanel>
 
 

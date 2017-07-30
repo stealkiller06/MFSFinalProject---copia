@@ -23,6 +23,7 @@ namespace MFSFinalProject.View
         {
             InitializeComponent();
             
+
         }
 
         private void Buy_Click(object sender, RoutedEventArgs e)
@@ -42,6 +43,18 @@ namespace MFSFinalProject.View
         {
             CustomerView customer = new CustomerView();
             customer.ShowDialog();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(Model.UserLogin.UserName);
+            Username.Text = MFSFinalProject.Model.UserLogin.UserName;
+            Role.Text = MFSFinalProject.Model.UserLogin.Role;
+        }
+
+        private void flag_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

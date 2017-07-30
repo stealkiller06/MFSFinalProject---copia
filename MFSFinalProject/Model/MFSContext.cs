@@ -13,6 +13,7 @@ namespace MFSFinalProject.Model
         public MFSContext() :base("name=MFSFinalProjectConnectionString")
         {
         }
+        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Measurement> Measurements { get; set; }

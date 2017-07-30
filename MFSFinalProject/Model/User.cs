@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MFSFinalProject.Model
 {
@@ -31,11 +32,13 @@ namespace MFSFinalProject.Model
         [Timestamp]
         public byte[] RowVersion { get; set; }
 
+
         #region Relagionships
         public virtual ICollection<Category> Category { get; set; }
         public virtual ICollection<Product> Products { get; set; }
         public virtual ICollection<Measurement> Measurements { get; set; }
         public virtual ICollection<Suplier> Supliers { get; set; }
+        public virtual Role Role { get; set; }
         #endregion
 
     }

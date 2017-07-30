@@ -121,6 +121,10 @@
     <Compile Include="Migrations\201707290416430_ModuloVentasMigrations1.Designer.cs">
       <DependentUpon>201707290416430_ModuloVentasMigrations1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707301818424_AgregandoRoles.cs" />
+    <Compile Include="Migrations\201707301818424_AgregandoRoles.Designer.cs">
+      <DependentUpon>201707301818424_AgregandoRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Help\Company.cs" />
@@ -133,6 +137,7 @@
     <Compile Include="Model\Help\ProductAux.cs" />
     <Compile Include="Model\Order.cs" />
     <Compile Include="Model\OrderDetail.cs" />
+    <Compile Include="Model\Role.cs" />
     <Compile Include="Model\Sale.cs" />
     <Compile Include="Model\SaleDetail.cs" />
     <Compile Include="Model\Suplier.cs" />
@@ -299,6 +304,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707290416430_ModuloVentasMigrations1.resx">
       <DependentUpon>201707290416430_ModuloVentasMigrations1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707301818424_AgregandoRoles.resx">
+      <DependentUpon>201707301818424_AgregandoRoles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

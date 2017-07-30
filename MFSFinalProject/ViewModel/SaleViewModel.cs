@@ -137,7 +137,7 @@ namespace MFSFinalProject.ViewModel
                 }
                 order.Date = SelectedSale.Date;
                 order.Customer = context.Customers.Find(SelectedSale.CustomerId);
-                order.User = context.Users.First();
+                order.User = context.Users.Find(UserLogin.Id);
                 order.CodSale = SelectedSale.CodSale;
                 context.Entry(order).State = SelectedSale.SaleID == 0 ?
                                                 System.Data.Entity.EntityState.Added : System.Data.Entity.EntityState.Modified;

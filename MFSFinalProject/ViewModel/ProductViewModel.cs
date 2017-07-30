@@ -154,6 +154,7 @@ namespace MFSFinalProject.ViewModel
                 {
                     product = context.Products.Include(p => p.Category).Single(p => p.ProductId == SelectedProduct.Id);
                 }
+                product.User = context.Users.Find(UserLogin.Id);
                 product.Name = SelectedProduct.Name;
                 product.MinStock = SelectedProduct.MinStock;
                 product.Category = context.Categories.Find(SelectedProduct.CategoryId);

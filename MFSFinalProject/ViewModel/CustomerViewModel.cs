@@ -104,6 +104,7 @@ namespace MFSFinalProject.ViewModel
                 return;
             using (MFSContext context = new MFSContext())
             {
+                SelectedCustomer.User = context.Users.Find(UserLogin.Id);
                 context.Entry(selectedCustomer).State = (selectedCustomer.CustomerId == 0) ?
                                                         System.Data.Entity.EntityState.Added :
                                                         System.Data.Entity.EntityState.Modified;
