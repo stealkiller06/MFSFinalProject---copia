@@ -429,6 +429,9 @@
     <Resource Include="Resources\Images\Icons\Store.png" />
     <Resource Include="Resources\Images\Icons\Category.png" />
     <Resource Include="Resources\Images\SampleLogo.png" />
+    <Resource Include="Resources\Images\Icons\Arrowhead-Down.png" />
+    <Resource Include="Resources\Images\Icons\Help.png" />
+    <Resource Include="Resources\Images\Icons\User-Login.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -50,6 +50,7 @@ namespace MFSFinalProject.View
          
             Username.Text = MFSFinalProject.Model.UserLogin.UserName;
             Role.Text = MFSFinalProject.Model.UserLogin.Role;
+            
         }
 
         private void flag_TextChanged(object sender, TextChangedEventArgs e)
@@ -61,6 +62,27 @@ namespace MFSFinalProject.View
         {
             UserView user = new UserView();
             user.ShowDialog();
+        }
+
+        private void ButtonProfile_Click(object sender, RoutedEventArgs e)
+        {
+            ContextMenu profileMenu = this.FindResource("ContextMenuProfile") as ContextMenu;
+
+            profileMenu.PlacementTarget = sender as Button;
+            profileMenu.Items[0] = new MenuItem() { Header = Model.UserLogin.UserName };
+            profileMenu.IsOpen = true;
+        }
+
+        private void ContextExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        private void ContextLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            LoginView login = new LoginView();
+            login.Show();
+            this.Close();
         }
     }
 }
