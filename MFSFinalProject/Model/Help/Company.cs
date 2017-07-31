@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace MFSFinalProject.Model.Help
 {
-    public class Company
+    public static class Company
     {
-        public string Name { get => ConfigurationManager.AppSettings["CompanyName"]; }
-        public string Address { get => ConfigurationManager.AppSettings["Address"]; }
-        public string Phone { get => ConfigurationManager.AppSettings["Phone"]; }
+        public static string Name { get => ConfigurationManager.AppSettings["CompanyName"]; }
+        public static string Address { get => ConfigurationManager.AppSettings["Address"]; }
+        public static string Phone { get => ConfigurationManager.AppSettings["Phone"]; }
+        public static string Slogan { get => ConfigurationManager.AppSettings["Slogan"]; }
     }
 }

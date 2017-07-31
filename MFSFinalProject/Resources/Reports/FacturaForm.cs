@@ -14,6 +14,7 @@ namespace MFSFinalProject.Resources.Reports
 {
     public partial class FacturaForm : Form
     {
+        
         public FacturaForm(int id)
         {
             InitializeComponent();
@@ -24,6 +25,7 @@ namespace MFSFinalProject.Resources.Reports
 
         private void FacturaForm_Load(object sender, EventArgs e)
         {
+
             using (MFSContext context = new MFSContext())
             {
                 List<SaleDetail> saleDetails = context.SaleDetails.Where(sd => sd.Sale.SaleId == Id && sd.Remove != 1).ToList();
@@ -37,7 +39,11 @@ namespace MFSFinalProject.Resources.Reports
                         CustomerName = de.Sale.Customer.Name + " " + de.Sale.Customer.LastName,
                         Fecha = de.Sale.Date,
                         SellPrice = de.SellPrice,
-                        UserName = de.Sale.User.Name +" "+ de.Sale.User.LastName
+                        UserName = de.Sale.User.Name + " " + de.Sale.User.LastName,
+                        CompanyName = Company.Name,
+                        Address = Company.Address,
+                        Phone = Company.Phone,
+                        Slogan = Company.Slogan
                     };
                     saleDetailsAux.Add(SaleDetailAuxi);
                 }

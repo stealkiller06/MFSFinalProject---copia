@@ -142,6 +142,17 @@
     <Compile Include="Model\SaleDetail.cs" />
     <Compile Include="Model\Suplier.cs" />
     <Compile Include="Model\UserLogin.cs" />
+    <Compile Include="Properties\DataSources\facturaaaa.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>facturaaaa.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Reports\Facturacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Resources\Reports\Facturacion.Designer.cs">
+      <DependentUpon>Facturacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Reports\FacturaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -313,6 +324,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Facturacion.resx">
+      <DependentUpon>Facturacion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Reports\Facturación - Copy.rdlc" />
     <EmbeddedResource Include="Resources\Reports\Facturación.rdlc" />
     <EmbeddedResource Include="Resources\Reports\FacturaForm.resx">
@@ -322,6 +336,7 @@
       <DependentUpon>FormFactura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Reports\Report1.rdlc" />
+    <EmbeddedResource Include="Resources\Reports\Report2.rdlc" />
     <None Include="MFSFinalProjectDataSetFactura.xsc">
       <DependentUpon>MFSFinalProjectDataSetFactura.xsd</DependentUpon>
     </None>
@@ -334,10 +349,18 @@
       <DependentUpon>MFSFinalProjectDataSetFactura.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="Properties\DataSources\MFSFinalProject.Model.Customer.datasource" />
-    <None Include="Properties\DataSources\MFSFinalProject.Model.Help.SaleDetailAux.datasource" />
+    <None Include="Properties\DataSources\facturaaaa.xsc">
+      <DependentUpon>facturaaaa.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\DataSources\facturaaaa.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>facturaaaa.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\DataSources\facturaaaa.xss">
+      <DependentUpon>facturaaaa.xsd</DependentUpon>
+    </None>
     <None Include="Properties\DataSources\MFSFinalProject.Model.Help.SaleDetailAux2.datasource" />
-    <None Include="Properties\DataSources\MFSFinalProject.Model.SaleDetail.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
