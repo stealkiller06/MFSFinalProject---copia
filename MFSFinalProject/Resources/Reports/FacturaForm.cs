@@ -37,7 +37,7 @@ namespace MFSFinalProject.Resources.Reports
                         ProductName = de.Product.Name,
                         Quantity = de.Quantity,
                         CustomerName = de.Sale.Customer.Name + " " + de.Sale.Customer.LastName,
-                        Fecha = de.Sale.Date,
+                        Fecha = de.Sale.Date.ToString("MM/dd/yyyy"),
                         SellPrice = de.SellPrice,
                         UserName = de.Sale.User.Name + " " + de.Sale.User.LastName,
                         CompanyName = Company.Name,

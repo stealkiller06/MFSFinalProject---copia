@@ -365,6 +365,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Resources\Images\Trash can - 01.metrop" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -376,6 +377,58 @@
     <Resource Include="Resources\Images\Sale.png" />
     <Resource Include="Resources\Images\d97eddfbccec3e6959dbfea9ec609d29.jpg" />
     <Resource Include="Resources\Images\Lock.png" />
+    <Resource Include="Resources\Images\Add Report.png" />
+    <Resource Include="Resources\Images\Diagram.png" />
+    <Resource Include="Resources\Images\Garbage-Closed.png" />
+    <Resource Include="Resources\Images\New Report.png" />
+    <Resource Include="Resources\Images\Save_02.png" />
+    <Resource Include="Resources\Images\Sync-WF.png" />
+    <Resource Include="Resources\Images\User-Profile.png" />
+    <Resource Include="Resources\Images\Icons\Add Report%281%29.png" />
+    <Resource Include="Resources\Images\Icons\Add Report.png" />
+    <Resource Include="Resources\Images\Icons\Customer.png" />
+    <Resource Include="Resources\Images\Icons\Data Collapse-WF.png" />
+    <Resource Include="Resources\Images\Icons\Data Export-WF.png" />
+    <Resource Include="Resources\Images\Icons\Data replace -WF.png" />
+    <Resource Include="Resources\Images\Icons\Data-Certificate.png" />
+    <Resource Include="Resources\Images\Icons\Documents-01.png" />
+    <Resource Include="Resources\Images\Icons\Favorite Info-WF.png" />
+    <Resource Include="Resources\Images\Icons\File Info-WF.png" />
+    <Resource Include="Resources\Images\Icons\Information-WF.png" />
+    <Resource Include="Resources\Images\Icons\Load Report.png" />
+    <Resource Include="Resources\Images\Icons\Mail info-WF.png" />
+    <Resource Include="Resources\Images\Icons\Movie Info-WF.png" />
+    <Resource Include="Resources\Images\Icons\Msg sent-WF.png" />
+    <Resource Include="Resources\Images\Icons\New Report.png" />
+    <Resource Include="Resources\Images\Icons\News-01.png" />
+    <Resource Include="Resources\Images\Icons\Paper-WF.png" />
+    <Resource Include="Resources\Images\Icons\Remove Report.png" />
+    <Resource Include="Resources\Images\Icons\Rename Report.png" />
+    <Resource Include="Resources\Images\Icons\Save-01.png" />
+    <Resource Include="Resources\Images\Icons\Save.png" />
+    <Resource Include="Resources\Images\Icons\Sync-WF.png" />
+    <Resource Include="Resources\Images\Icons\Trash can - 03.png" />
+    <Resource Include="Resources\Images\Icons\User Delete-01-WF.png" />
+    <Resource Include="Resources\Images\Icons\User Edit-02-WF.png" />
+    <Resource Include="Resources\Images\Icons\User Favourite-01-WF.png" />
+    <Resource Include="Resources\Images\Icons\User Favourites-02-WF.png" />
+    <Resource Include="Resources\Images\Icons\User Globe-WF.png" />
+    <Resource Include="Resources\Images\Icons\User Help.png" />
+    <Resource Include="Resources\Images\Icons\User Modify-WF.png" />
+    <Resource Include="Resources\Images\Icons\User Modify1-WF.png" />
+    <Resource Include="Resources\Images\Icons\User Next-02-WF.png" />
+    <Resource Include="Resources\Images\Icons\User Refresh.png" />
+    <Resource Include="Resources\Images\Icons\User Remove.png" />
+    <Resource Include="Resources\Images\Icons\User Save -01-WF.png" />
+    <Resource Include="Resources\Images\Icons\User Search-01-WF.png" />
+    <Resource Include="Resources\Images\Icons\User Search.png" />
+    <Resource Include="Resources\Images\Icons\User Settings-02-WF.png" />
+    <Resource Include="Resources\Images\Icons\User Sync-01-WF.png" />
+    <Resource Include="Resources\Images\Icons\User Unlocked-02-WF.png" />
+    <Resource Include="Resources\Images\Icons\Sales-Order.png" />
+    <Resource Include="Resources\Images\Icons\Store.png" />
+    <Resource Include="Resources\Images\Icons\Category.png" />
+    <Resource Include="Resources\Images\SampleLogo.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

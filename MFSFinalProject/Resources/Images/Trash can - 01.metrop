@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<IconProject Version="2.0" Name="Trash can - 01" PUAEnable="true" BasicLatinEnable="false">
+  <Icon Name="Trash can - 01" HasCharacterMap="false" Data="M0,12.568994L23.662999,12.568994 20.910989,31.999999 2.7520113,31.999999z M8.0689915,1.6269979L8.0689915,4.6679968 15.594984,4.6679968 15.594984,1.6269979z M6.4420097,0L17.221997,0 17.221997,4.6679968 23.662999,4.6679968 23.662999,8.7949938 0,8.7949938 0,4.6679968 6.4420097,4.6679968z" Location="Application" IsDirty="false" FontName="Trash can - 01" IsDuplicate="false" ASCIIValue="" AlphaNumericValue="" FiValue="" GroupName="Application" DataFont="M218.8,2.5L786.3,2.5 872.3,609.7 132.8,609.7 218.8,2.5z M620,951.6L620,856.6 384.9,856.6 384.9,951.6C384.9,951.6,620,951.6,620,951.6z M334,856.6L132.8,856.6 132.8,727.6 872.3,727.6 872.3,856.6 671,856.6 671,1002.5 334,1002.5 334,856.6z" ExportCommand="MetroGraphicsPackage.IconCommand">
+    <Settings MainWidth="48" MainHeight="48" FlipX="1" FlipY="1" CustomSize="48" IconShape="Square" BackgroundBrush="#FFC30101" ContentWidth="26" ContentHeight="26" Angle="0" IsRect="false" SizeIndex="4" CustomWidth="48" CustomHeight="48" IsLinked="false" Padding="11" MaximumPadding="15" SldierValueChanged="MetroGraphicsPackage.IconCommand" IconBrush="#FFFFFFFF" FontFamily="Webdings" Character="&gt;" FlipCommand="MetroGraphicsPackage.IconCommand" IsBackgroundVisible="true" />
+  </Icon>
+  <PreferenceInfo ClassPrefix="sf-icon-" ClassPostfix="" CSSSelector="Attribute" CSSClassName="sf-icon" />
+</IconProject>

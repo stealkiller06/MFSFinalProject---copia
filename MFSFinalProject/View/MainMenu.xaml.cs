@@ -47,7 +47,7 @@ namespace MFSFinalProject.View
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(Model.UserLogin.UserName);
+         
             Username.Text = MFSFinalProject.Model.UserLogin.UserName;
             Role.Text = MFSFinalProject.Model.UserLogin.Role;
         }

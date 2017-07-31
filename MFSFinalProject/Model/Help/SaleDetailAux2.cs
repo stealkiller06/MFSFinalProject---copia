@@ -13,8 +13,8 @@ namespace MFSFinalProject.Model.Help
         public string ProductName { get; set; }
         public string UserName { get; set; }
         public string CustomerName { get; set; }
-        public DateTime Fecha { get; set; }
-        public String CompanyName { get; set; }
+        public string Fecha { get; set; }
+        public string CompanyName { get; set; }
         public string Slogan { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }

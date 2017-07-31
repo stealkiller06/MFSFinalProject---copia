@@ -8,13 +8,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-         TextElement.FontWeight="Regular"
-         TextElement.FontSize="13"
-         TextOptions.TextFormattingMode="Ideal"
-         TextOptions.TextRenderingMode="Auto"
-         Background="{DynamicResource MaterialDesignBackground}"
-         FontFamily="{DynamicResource MaterialDesignFont}"
+        
        WindowState="Maximized"
     Title="Detalle de la venta" Height="695.774" Width="877.722">
     <Window.Resources>

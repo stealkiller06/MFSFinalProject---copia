@@ -408,36 +408,6 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="Fecha">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=First(Fields!Fecha.Value, "Facturaciom")</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Fecha</rd:DefaultName>
-              <Top>0.17703cm</Top>
-              <Left>2.86118cm</Left>
-              <Height>0.6cm</Height>
-              <Width>3.76632cm</Width>
-              <ZIndex>1</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
             <Textbox Name="Textbox12">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
@@ -459,7 +429,7 @@
               <Left>0.75333cm</Left>
               <Height>0.6cm</Height>
               <Width>1.96674cm</Width>
-              <ZIndex>2</ZIndex>
+              <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -489,7 +459,7 @@
               <Left>2.89645cm</Left>
               <Height>0.6cm</Height>
               <Width>3.73105cm</Width>
-              <ZIndex>3</ZIndex>
+              <ZIndex>2</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -521,7 +491,7 @@
               <Left>0.75333cm</Left>
               <Height>0.6cm</Height>
               <Width>1.96674cm</Width>
-              <ZIndex>4</ZIndex>
+              <ZIndex>3</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -551,6 +521,36 @@
               <Left>2.89645cm</Left>
               <Height>0.6cm</Height>
               <Width>3.73105cm</Width>
+              <ZIndex>4</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Fecha">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=First(Fields!Fecha.Value, "Facturaciom")</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Fecha</rd:DefaultName>
+              <Top>0.17703cm</Top>
+              <Left>2.89646cm</Left>
+              <Height>0.6cm</Height>
+              <Width>3.73104cm</Width>
               <ZIndex>5</ZIndex>
               <Style>
                 <Border>
@@ -790,7 +790,7 @@
         </Field>
         <Field Name="Fecha">
           <DataField>Fecha</DataField>
-          <rd:TypeName>System.DateTime</rd:TypeName>
+          <rd:TypeName>System.String</rd:TypeName>
         </Field>
         <Field Name="Phone">
           <DataField>Phone</DataField>

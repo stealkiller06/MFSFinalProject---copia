@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using MFSFinalProject.Model.Help;
 using System.Data.Entity;
 using MFSFinalProject.View;
+using System.Windows;
 
 namespace MFSFinalProject.ViewModel
 {
@@ -25,6 +26,7 @@ namespace MFSFinalProject.ViewModel
             SelectedOrder = new OrderAux() { OrderID = 0,Date=DateTime.Now.Date};
             AddOrderCommand = new MyICommand(OnAddCategory, CanAddCategory);
             UpdateOrderCommand = new MyICommand(OnUpdateOrder, CanUpdateOrder);
+            DeleteOrderCommand = new MyICommand(OnDeleteOrder, CanDeleteOrder);
             LoadOrder();
         }
 
@@ -168,6 +170,30 @@ namespace MFSFinalProject.ViewModel
 
         #region DeleteCategoryCommand
         public MyICommand DeleteOrderCommand { get; set; }
+
+        private void OnDeleteOrder()
+        {
+            Order orderSelected;
+            using (MFSContext context = new MFSContext())
+            {
+                orderSelected = context.Orders.Find(SelectedOrder.OrderID);
+                orderSelected.Remove = 1;
+                ICollection<OrderDetail> orderDetail = orderSelected.OrderDetail;
+                if(orderDetail != null)
+                {
+                    foreach(var od in orderDetail)
+                    {
+                        od.Remove = 1;
+                    }
+                }
+                context.Entry(orderSelected).State = EntityState.Modified;
+                MessageBox.Show("Order eliminada correctamente"); 
+            }
+        }
+        private bool CanDeleteOrder()
+        {
+            return true;
+        }
         #endregion
 
         #endregion
