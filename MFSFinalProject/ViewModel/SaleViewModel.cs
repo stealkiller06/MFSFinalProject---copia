@@ -146,7 +146,6 @@ namespace MFSFinalProject.ViewModel
 
 
                 LoadSale();
-                MessageBox.Show(Convert.ToString(order.SaleId)); 
                 //Nueva venta
                 if (isNewSale == 0)
                 {

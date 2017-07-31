@@ -56,5 +56,11 @@ namespace MFSFinalProject.View
         {
             this.Close();
         }
+
+        private void User_Click(object sender, RoutedEventArgs e)
+        {
+            UserView user = new UserView();
+            user.ShowDialog();
+        }
     }
 }

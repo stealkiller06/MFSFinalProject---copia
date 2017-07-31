@@ -169,6 +169,7 @@
     <Compile Include="ViewModel\SaleDetailViewModel.cs" />
     <Compile Include="ViewModel\SaleViewModel.cs" />
     <Compile Include="ViewModel\SuplierViewModel.cs" />
+    <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="View\CategoryView.xaml.cs">
       <DependentUpon>CategoryView.xaml</DependentUpon>
     </Compile>
@@ -312,6 +313,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\Facturación - Copy.rdlc" />
     <EmbeddedResource Include="Resources\Reports\Facturación.rdlc" />
     <EmbeddedResource Include="Resources\Reports\FacturaForm.resx">
       <DependentUpon>FacturaForm.cs</DependentUpon>

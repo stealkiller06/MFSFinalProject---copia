@@ -15,6 +15,9 @@ namespace MFSFinalProject.Model.Help
         public string CustomerName { get; set; }
         public DateTime Fecha { get; set; }
         public String CompanyName { get; set; }
+        public string Slogan { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
         
     }
 }

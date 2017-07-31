@@ -23,10 +23,14 @@ namespace MFSFinalProject.View
     public partial class LoginView : Window
     {
         MainMenu menu;
+        OrderView order;
+        SaleView sale;
         public LoginView()
         {
             InitializeComponent();
             menu = new MainMenu();
+            sale = new SaleView();
+            order = new OrderView();
         }
 
 
@@ -44,14 +48,14 @@ namespace MFSFinalProject.View
         {
             using (MFSContext context = new MFSContext())
             {
-                var user = context.Users.Where(u => u.UserName == Username.Text  && u.PassWord == PassWord.Password).First();
+                var user = context.Users.Where(u => u.UserName == Username.Text  && u.PassWord == PassWord.Password).FirstOrDefault() ;
                 if (user != null)
                 {
                     //MessageBox.Show("Inicio de sesión exitoso", "Mensaje", MessageBoxButton.OK, MessageBoxImage.Information);
                     UserLogin.Id = user.UserId;
                     UserLogin.UserName = user.Name + " " + user.LastName;
                     UserLogin.Role = user.Role.Name;
-                    menu.Show();
+                    ShowWindowsByRole(UserLogin.Role);
                     this.Close();
 
 
@@ -60,6 +64,22 @@ namespace MFSFinalProject.View
                     MessageBox.Show("Usuario o contraseña incorrectos", "Mensaje", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
+        }
+
+        private void ShowWindowsByRole(string role)
+        {
+            switch(role)
+            {
+                case "Admin":
+                    menu.Show();
+                    break;
+                case "Cajero":
+                    sale.Show();
+                    break;
+                case "Almacen":
+                    order.Show();
+                    break;
+            }
         }
     }
 }
