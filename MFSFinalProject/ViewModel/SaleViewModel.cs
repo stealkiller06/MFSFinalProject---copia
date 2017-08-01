@@ -36,8 +36,6 @@ namespace MFSFinalProject.ViewModel
             ObservableCollection<SaleAux> sales = new ObservableCollection<SaleAux>();
             using (MFSContext context = new MFSContext())
             {
-
-
                 var data = from o in context.Sales
                            select new
                            {
@@ -70,11 +68,6 @@ namespace MFSFinalProject.ViewModel
             Sales = sales;
         }
         #endregion
-
-
-
-
-
         #region Propiedades
 
         #region Propiedad que almacena todas las ordenes no borradas de la base de datos
@@ -166,6 +159,32 @@ namespace MFSFinalProject.ViewModel
 
         #region DeleteCategoryCommand
         public MyICommand DeleteSaleCommand { get; set; }
+
+        private void OnDeleteSale()
+        {
+            Sale saleSelected;
+            using (MFSContext context = new MFSContext())
+            {
+                saleSelected = context.Sales.Find(SelectedSale.SaleID);
+                saleSelected.Remove = 1;
+                ICollection<SaleDetail> orderDetail = saleSelected.SaleDetails;
+                if (orderDetail != null)
+                {
+                    foreach (var od in orderDetail)
+                    {
+                        od.Remove = 1;
+                        context.Entry(od).State = System.Data.Entity.EntityState.Modified;
+                    }
+                    
+                }
+
+                context.Entry(saleSelected).State = System.Data.Entity.EntityState.Modified;
+                context.SaveChanges();
+                
+
+                MessageBox.Show("Venta eliminada correctamente");
+            }
+        }
         #endregion
 
         #endregion

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Configuration;
+
 
 namespace MFSFinalProject.Model.Help
 {
@@ -13,5 +9,7 @@ namespace MFSFinalProject.Model.Help
         public static string Address { get => ConfigurationManager.AppSettings["Address"]; }
         public static string Phone { get => ConfigurationManager.AppSettings["Phone"]; }
         public static string Slogan { get => ConfigurationManager.AppSettings["Slogan"]; }
+        public static string Logo { get => ConfigurationManager.AppSettings["Logo"]; }
+        public static string Image { get => ConfigurationManager.AppSettings["Image"]; }
     }
 }

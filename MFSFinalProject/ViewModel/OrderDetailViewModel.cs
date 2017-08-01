@@ -201,6 +201,7 @@ namespace MFSFinalProject.ViewModel
 
         #region DeleteCategoryCommand
         public MyICommand DeleteOrderDetailCommand { get; set; }
+        
         #endregion
 
         #endregion

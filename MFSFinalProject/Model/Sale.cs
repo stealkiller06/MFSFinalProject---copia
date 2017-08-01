@@ -10,6 +10,10 @@ namespace MFSFinalProject.Model
 {
     public class Sale
     {
+        public Sale()
+        {
+            SaleDetails = new HashSet<SaleDetail>();
+        }
         public int SaleId { get; set; }
         public string CodSale { get; set; }
         [Column(TypeName = "Date")]
@@ -19,6 +23,7 @@ namespace MFSFinalProject.Model
         #region RelationShips
         public virtual User User { get; set; }
         public virtual Customer Customer { get; set; }
+        public virtual ICollection<SaleDetail> SaleDetails { get; set; }
         #endregion
     }
 }

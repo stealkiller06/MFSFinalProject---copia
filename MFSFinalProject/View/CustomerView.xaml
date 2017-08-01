@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:MFSFinalProject.View"
         xmlns:vm="clr-namespace:MFSFinalProject.ViewModel"
         mc:Ignorable="d"
-        Title="Mantenimiento suplidor" Height="777.442" Width="915.398">
+        WindowStartupLocation="CenterScreen"
+        Padding="20"
+        Title="Mantenimiento suplidor" Height="620.835" Width="915.398" WindowStyle="ToolWindow" Background="White" SnapsToDevicePixels="False">
     <Window.Resources>
 
         <!--<vm:CustomerViewModel x:Key="suplierViewModel"/>-->
@@ -20,158 +22,170 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <!--DataGrid-->
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
+        <!--#region Titulo empresa-->
 
-        <GroupBox Header="Datos del cliente" Grid.Row="0" Padding="40" FontSize="18" FontWeight="Bold">
-            <!--Main Container-->
-            <Grid >
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <!--User Data-->
-                <Grid  Grid.Row="0" Margin="0 0 0 10" DataContext="{Binding SelectedCustomer}">
+
+        <!--#endregion-->
+        <Grid Grid.Row="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <GroupBox Header="Datos del cliente" Grid.Row="0" Padding="40" FontSize="18" FontWeight="Bold" Foreground="Black">
+                <!--Main Container-->
+                <Grid >
                     <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition/>
-                        <RowDefinition/>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
-                    <!--#region  Name -->
-                    <Grid Grid.Row="0" >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="3*"/>
-                        </Grid.ColumnDefinitions>
+                    <!--User Data-->
+                    <Grid  Grid.Row="0" Margin="0 0 0 10" DataContext="{Binding SelectedCustomer}">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <!--#region  Name -->
+                        <Grid Grid.Row="0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
 
 
-                        <TextBlock Grid.Column="0" Grid.Row="0">Nombre: </TextBlock>
-                        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name}" FontWeight="Normal"/>
+                            <TextBlock Grid.Column="0" Grid.Row="0">Nombre:</TextBlock>
+                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name}" FontWeight="Normal"/>
+                        </Grid>
+
+                        <!--#endregion-->
+                        <!--#region  LastName -->
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+
+
+                            <TextBlock Grid.Column="0" Grid.Row="0">Apellido:</TextBlock>
+                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding LastName}" FontWeight="Normal" />
+                        </Grid>
+
+                        <!--#endregion-->
+                        <!--#region  Dirección y teléfono -->
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <!--#region  Dirección-->
+                            <Grid Grid.Column="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" >Dirección:</TextBlock>
+                                <TextBox Grid.Column="1" Text="{Binding Address}" FontWeight="Normal" />
+                            </Grid>
+                            <!--#endregion-->
+                            <!--#region  Teléfono-->
+                            <Grid Grid.Column="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" >Teléfono:</TextBlock>
+                                <TextBox Grid.Column="1" Text="{Binding Phone}" FontWeight="Normal" />
+                            </Grid>
+                            <!--#endregion-->
+
+
+                        </Grid>
+                        <!--#endregion-->
+
+
+
+
                     </Grid>
-
-                    <!--#endregion-->
-                    <!--#region  LastName -->
-                    <Grid Grid.Row="1">
+                    <!--#region Buttons -->
+                    <Grid  Grid.Row="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="272*"/>
+                            <ColumnDefinition Width="272*"/>
+                            <ColumnDefinition Width="164*"/>
+                            <ColumnDefinition Width="107*"/>
                         </Grid.ColumnDefinitions>
-
-
-                        <TextBlock Grid.Column="0" Grid.Row="0">Apellido: </TextBlock>
-                        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding LastName}" FontWeight="Normal" />
+                        <Button Content="Nueva" Command="{Binding AddCustomerCommand}" Grid.Column="0"/>
+                        <Button Content="Actualizar" Command="{Binding UpdateCustomerCommand}" Grid.Column="1"/>
+                        <Button Content="Eliminar" Command="{Binding DeleteCustomerCommand}" Grid.Column="2" Grid.ColumnSpan="2"/>
                     </Grid>
-
                     <!--#endregion-->
-                    <!--#region  Dirección y teléfono -->
-                    <Grid Grid.Row="2">
+
+                </Grid>
+
+
+
+            </GroupBox>
+            <GroupBox Header="Listado de clientes" Grid.Row="2" Padding="40" FontSize="18" FontWeight="Bold" Foreground="Black">
+                <StackPanel>
+                    <!-- Search bar-->
+                    <!-- Search bar-->
+                    <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="*"/>
+                            <!--Label searching-->
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <!-- Label searching-->
+                            <ColumnDefinition Width="*"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
-                        <!--#region  Dirección-->
+                        <!--#region Criterio-->
                         <Grid Grid.Column="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" >Dirección: </TextBlock>
-                            <TextBox Grid.Column="1" Text="{Binding Address}" FontWeight="Normal" />
+                            <TextBlock Grid.Column="0">Por:</TextBlock>
+                            <ComboBox x:Name="ComboBoxSearch" SelectionChanged="ComboBoxSearch_SelectionChanged"  Grid.Column="1">
+                                <ComboBoxItem IsSelected="True" Tag="Name">Nombre</ComboBoxItem>
+                                <ComboBoxItem Tag="LastName">Apellido</ComboBoxItem>
+                                <ComboBoxItem Tag="Phone">Teléfono</ComboBoxItem>
+                            </ComboBox>
                         </Grid>
                         <!--#endregion-->
-                        <!--#region  Teléfono-->
+                        <!--#region  busqueda-->
                         <Grid Grid.Column="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" >Teléfono: </TextBlock>
-                            <TextBox Grid.Column="1" Text="{Binding Phone}" FontWeight="Normal" />
+                            <TextBlock Grid.Column="0">Buscar:</TextBlock>
+                            <TextBox x:Name="TextBoxSearchBar" TextChanged="TextBoxSearchBar_TextChanged" Grid.Column="1"/>
                         </Grid>
+
                         <!--#endregion-->
 
-
-                    </Grid>
-                    <!--#endregion-->
-
-
-
-
-                </Grid>
-                <!--#region Buttons -->
-                <Grid  Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Button Content="Nueva" Command="{Binding AddCustomerCommand}" Grid.Column="0"/>
-                    <Button Content="Actualizar" Command="{Binding UpdateCustomerCommand}" Grid.Column="1"/>
-                    <Button Content="Eliminar" Command="{Binding DeleteCustomerCommand}" Grid.Column="2"/>
-                </Grid>
-                <!--#endregion-->
-
-            </Grid>
-
-
-
-        </GroupBox>
-        <GroupBox Header="Listado de clientes" Grid.Row="1" Padding="40" FontSize="18" FontWeight="Bold">
-            <StackPanel>
-                <!-- Search bar-->
-                <!-- Search bar-->
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <!--Label searching-->
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                        <!-- Label searching-->
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <!--#region Criterio-->
-                    <Grid Grid.Column="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0">Por:</TextBlock>
-                        <ComboBox x:Name="ComboBoxSearch" SelectionChanged="ComboBoxSearch_SelectionChanged"  Grid.Column="1">
-                            <ComboBoxItem IsSelected="True" Tag="Name">Nombre</ComboBoxItem>
-                            <ComboBoxItem Tag="LastName">Apellido</ComboBoxItem>
-                            <ComboBoxItem Tag="Phone">Teléfono</ComboBoxItem>
-                        </ComboBox>
-                    </Grid>
-                    <!--#endregion-->
-                    <!--#region  busqueda-->
-                    <Grid Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0">Buscar:</TextBlock>
-                        <TextBox x:Name="TextBoxSearchBar" TextChanged="TextBoxSearchBar_TextChanged" Grid.Column="1"/>
                     </Grid>
 
-                    <!--#endregion-->
 
-                </Grid>
-
-
-                <DataGrid x:Name="DataGridCustomers"    ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}" CanUserAddRows="False"
+                    <DataGrid x:Name="DataGridCustomers"    ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}" CanUserAddRows="False"
                           CanUserDeleteRows="False" IsReadOnly="True" AutoGenerateColumns="False" Height="200" MouseDoubleClick="DataGridCustomers_MouseDoubleClick">
 
-                    <DataGrid.Columns>
-                        <DataGridTextColumn  Header="ID" Binding="{Binding CustomerId}" Width="auto" />
-                        <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" Width="*"/>
-                        <DataGridTextColumn Header="Apellido" Binding="{Binding LastName}" Width="*"/>
-                        <DataGridTextColumn Header="Dirección" Binding="{Binding Address}" Width="2*"/>
-                        <DataGridTextColumn Header="Teléfono" Binding="{Binding Phone}" Width="*"/>
-                    </DataGrid.Columns>
-                </DataGrid>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn  Header="ID" Binding="{Binding CustomerId}" Width="auto" />
+                            <DataGridTextColumn Header="Nombre" Binding="{Binding Name}" Width="*"/>
+                            <DataGridTextColumn Header="Apellido" Binding="{Binding LastName}" Width="*"/>
+                            <DataGridTextColumn Header="Dirección" Binding="{Binding Address}" Width="2*"/>
+                            <DataGridTextColumn Header="Teléfono" Binding="{Binding Phone}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
 
-            </StackPanel>
-        </GroupBox>
+                </StackPanel>
+            </GroupBox>
+        </Grid>
+
 
     </Grid>
 </Window>

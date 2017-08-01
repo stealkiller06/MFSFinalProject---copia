@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using MFSFinalProject.Resources.Reports;
+using MFSFinalProject.Model.Help;
+
 namespace MFSFinalProject.View
 {
     /// <summary>
@@ -47,9 +39,16 @@ namespace MFSFinalProject.View
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-         
-            Username.Text = MFSFinalProject.Model.UserLogin.UserName;
-            Role.Text = MFSFinalProject.Model.UserLogin.Role;
+            var logoTemp = Logo.Source;
+            try
+            {
+                Logo.Source =  new BitmapImage(new Uri(Company.Logo));
+            }  
+            catch(Exception)
+            {
+                Logo.Source = logoTemp;
+            }
+            
             
         }
 
@@ -83,6 +82,19 @@ namespace MFSFinalProject.View
             LoginView login = new LoginView();
             login.Show();
             this.Close();
+        }
+
+        private void ProductReport_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void ReportView_Click(object sender, RoutedEventArgs e)
+        {
+            ContextMenu profileMenu = this.FindResource("ContextMenuReport") as ContextMenu;
+
+            profileMenu.PlacementTarget = sender as Button;
+            profileMenu.IsOpen = true;
         }
     }
 }
