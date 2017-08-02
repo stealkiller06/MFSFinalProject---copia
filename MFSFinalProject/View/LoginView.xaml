@@ -22,6 +22,7 @@
         <TextBox x:Name="Password" HorizontalAlignment="Left" Height="23" Margin="76,182,0,0" TextWrapping="Wrap" Text="{Binding PassWord,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120" Background="{x:Null}" Opacity="0"/>
         <TextBlock HorizontalAlignment="Left" Margin="76,77,0,0" TextWrapping="Wrap" Text="USERNAME" VerticalAlignment="Top" Foreground="#FF919191" FontWeight="Bold" FontSize="11"/>
         <TextBlock HorizontalAlignment="Left" Margin="76,134,0,0" TextWrapping="Wrap" Text="PASSWORD" VerticalAlignment="Top" Foreground="#FF919191" FontWeight="Bold" FontSize="11"/>
+        <Button Content="X" HorizontalAlignment="Left" Margin="379,0,0,0" VerticalAlignment="Top" Width="19" Background="{x:Null}" BorderThickness="0" Click="Button_Click"/>
 
     </Grid>
 </Window>

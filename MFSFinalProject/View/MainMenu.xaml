@@ -72,13 +72,11 @@
                             
                         </StackPanel>
                         <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0 0 10 0" >
-                            <Button Width="40" Background="{x:Null}" BorderThickness="0 0 0 0">
-                                <Image Source="/MFSFinalProject;component/Resources/Images/Icons/Help.png" Stretch="Fill" />
-                            </Button>
+                            
                             <Button Width="40" Background="{x:Null}" BorderThickness="1 0 0 0" x:Name="ButtonProfile" Click="ButtonProfile_Click">
                                 <Image Source="/MFSFinalProject;component/Resources/Images/Icons/User-Login.png" Stretch="Fill" />
                             </Button>
-                            <Button Width="40" Background="{x:Null}" BorderThickness="1 0 0 0">
+                            <Button Width="40" Background="{x:Null}" BorderThickness="1 0 0 0" Click="Button_Click">
                                 <Image Source="/MFSFinalProject;component/Resources/Images/Icons/Help.png" Stretch="Fill" />
                                 <Button.ContextMenu>
                                     <ContextMenu>

@@ -128,5 +128,15 @@ namespace MFSFinalProject.View
             MeasurementView measurement = new MeasurementView();
             measurement.ShowDialog();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string datos = "Software creado por Frank Manuel Peña Rosario\n";
+            datos += "Facebook: Frank Peña\n";
+            datos += "Correo: frankrosario1998@gmail.com/frankrosario1998@hotmail.com";
+            datos += "La distribución de este producto sin autorización puede conllevar a serios problemas legales.";
+            
+            MessageBox.Show(datos, "Información", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }

@@ -86,5 +86,10 @@ namespace MFSFinalProject.View
                     break;
             }
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
