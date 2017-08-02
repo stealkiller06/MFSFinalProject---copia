@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using MFSFinalProject.Model.Help;
+using MFSFinalProject.Resources.Reports;
 
 namespace MFSFinalProject.View
 {
@@ -86,7 +87,8 @@ namespace MFSFinalProject.View
 
         private void ProductReport_Click(object sender, RoutedEventArgs e)
         {
-            
+            StudentReport report = new StudentReport();
+            report.ShowDialog();
         }
 
         private void ReportView_Click(object sender, RoutedEventArgs e)
@@ -95,6 +97,36 @@ namespace MFSFinalProject.View
 
             profileMenu.PlacementTarget = sender as Button;
             profileMenu.IsOpen = true;
+        }
+
+        private void ProductoMin_Click(object sender, RoutedEventArgs e)
+        {
+            MinStockReport stock = new MinStockReport();
+            stock.ShowDialog();
+        }
+
+        private void ButtonSuplier_Click(object sender, RoutedEventArgs e)
+        {
+            SuplierView suplier = new SuplierView();
+            suplier.ShowDialog();
+        }
+
+        private void ButtonProduct_Click(object sender, RoutedEventArgs e)
+        {
+            ProductView product = new ProductView();
+            product.ShowDialog();
+        }
+
+        private void ButtonCategory_Click(object sender, RoutedEventArgs e)
+        {
+            CategoryView category = new CategoryView();
+            category.ShowDialog();
+        }
+
+        private void ButtonMeasurement_Click(object sender, RoutedEventArgs e)
+        {
+            MeasurementView measurement = new MeasurementView();
+            measurement.ShowDialog();
         }
     }
 }

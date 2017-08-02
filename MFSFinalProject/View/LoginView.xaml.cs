@@ -46,6 +46,11 @@ namespace MFSFinalProject.View
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
+            if(string.IsNullOrWhiteSpace(Username.Text) && string.IsNullOrWhiteSpace(Password.Text))
+            {
+                MessageBox.Show("Debe rellenar los campos.", "Mensaje de error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             using (MFSContext context = new MFSContext())
             {
                 var user = context.Users.Where(u => u.UserName == Username.Text  && u.PassWord == PassWord.Password).FirstOrDefault() ;

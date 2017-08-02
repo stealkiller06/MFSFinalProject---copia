@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace MFSFinalProject.Resources.Reports
 {
-    public partial class StudentReport: Form
+    public partial class ProductosAgotamiento: Form
     {
-        public StudentReport()
+        public ProductosAgotamiento()
         {
             InitializeComponent();
         }

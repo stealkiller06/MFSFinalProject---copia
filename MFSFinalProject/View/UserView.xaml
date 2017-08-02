@@ -7,15 +7,14 @@
         xmlns:vm="clr-namespace:MFSFinalProject.ViewModel"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        
          TextElement.FontWeight="Regular"
          TextElement.FontSize="13"
          TextOptions.TextFormattingMode="Ideal"
          TextOptions.TextRenderingMode="Auto"
-         Background="{DynamicResource MaterialDesignBackground}"
-         FontFamily="{DynamicResource MaterialDesignFont}"
+        
          Padding="20"
-    Title="Registro de usuarios" Height="695.774" Width="877.722">
+    Title="Registro de usuarios" Height="695.774" Width="877.722" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <!--<vm:UserViewModel x:Key="UserViewModel"/>-->
         <Style x:Key="FontSize" TargetType="TextBlock">
@@ -36,184 +35,187 @@
         <vm:UserViewModel/>
     </Window.DataContext>
     <Grid>
+        <Grid Margin="20">
 
-        <Grid.RowDefinitions>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <!--DataGrid-->
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <materialDesign:Card  >
-            <GroupBox Header="Datos del usuario" Grid.Row="0"  Padding="20">
-                <!--Main Container-->
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid DataContext="{Binding SelectedUser}">
-
-                        <!--#region rowdefinitions-->
-                        <Grid.RowDefinitions>
-                            <!--NAME-->
-                            <RowDefinition></RowDefinition>
-                            <!--MIN STOCK-->
-                            <RowDefinition></RowDefinition>
-                            <!--CATEGORIAS-->
-                            <RowDefinition></RowDefinition>
-                            <!--SUPLIDOR-->
-                            <RowDefinition></RowDefinition>
-                            <!--PRECIO DE PRODUCTO-->
-                            <RowDefinition></RowDefinition>
-                            <!--Botones-->
-                            <RowDefinition></RowDefinition>
-
-
-                        </Grid.RowDefinitions>
-                        <!--#endregion-->
-
-                        <!--#region Name-->
-                        <Grid  Grid.Row="0" Margin="0 0 0 10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Style="{StaticResource ColumnSize}"/>
-                            </Grid.ColumnDefinitions>
-
-
-                            <TextBlock Grid.Column="0" Grid.Row="0" >Nombre:</TextBlock>
-                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name}" />
-
-
-
-                        </Grid>
-                        <!--#endregion-->
-
-                        <!--#region LastName-->
-                        <Grid  Grid.Row="1" Margin="0 0 0 10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Style="{StaticResource ColumnSize}"/>
-                            </Grid.ColumnDefinitions>
-
-
-                            <TextBlock Grid.Column="0" Grid.Row="0" >Apellido:</TextBlock>
-                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding LastName}" />
-
-
-
-                        </Grid>
-                        <!--#endregion-->
-                        <!--#region Phone-->
-                        <Grid  Grid.Row="2" Margin="0 0 0 10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Style="{StaticResource ColumnSize}"/>
-                            </Grid.ColumnDefinitions>
-
-
-                            <TextBlock Grid.Column="0" Grid.Row="0" >Tel:</TextBlock>
-                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Phone}" />
-
-
-
-                        </Grid>
-                        <!--#endregion-->
-
-                        <!--#region UserName-->
-                        <Grid  Grid.Row="3" Margin="0 0 0 10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Style="{StaticResource ColumnSize}"/>
-                            </Grid.ColumnDefinitions>
-
-
-                            <TextBlock Grid.Column="0" Grid.Row="0" >Usuario:</TextBlock>
-                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding UserName}" />
-
-
-
-                        </Grid>
-                        <!--#endregion-->
-                        <!--#region Password-->
-                        <Grid  Grid.Row="4" Margin="0 0 0 10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Style="{StaticResource ColumnSize}"/>
-                            </Grid.ColumnDefinitions>
-
-
-                            <TextBlock Grid.Column="0" Grid.Row="0" >Contraseña:</TextBlock>
-                            <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding PassWord}" />
-
-
-
-                        </Grid>
-                        <!--#endregion-->
-
-
-
-
-
-
-
-                    </Grid>
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition Width="3*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock>Rol:</TextBlock>
-                        <ComboBox Grid.Column="1" SelectedItem="{Binding ComboBoxRole}">
-                            <ComboBoxItem  IsSelected="True" Content="Admin"/>
-                            <ComboBoxItem Content="Cajero"/>
-                            <ComboBoxItem Content="Almacen"/>
-                        </ComboBox>
-                    </Grid>
-                    <!-- Buttons -->
-                    <Grid  Grid.Row="2" Margin="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Button Content="Nueva" Command="{Binding AddUserCommand}" Grid.Column="0"/>
-                        <Button Content="Actualizar" Command="{Binding UpdateUserCommand}" Grid.Column="1"/>
-                        <Button Content="Eliminar" Command="{Binding DeleteProductCommand}" Grid.Column="2"/>
-                    </Grid>
-                </Grid>
-
-
-
-
-            </GroupBox>
-        </materialDesign:Card>
-        <materialDesign:Card   Grid.Row="2">
-            <GroupBox Header="Listado de usuarios registrados"   Padding="20">
-                <StackPanel>
-                    <!-- Search bar-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <!--DataGrid-->
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <materialDesign:Card  >
+                <GroupBox Header="Datos del usuario" Grid.Row="0"  Padding="20">
+                    <!--Main Container-->
                     <Grid>
-                        <Grid.ColumnDefinitions>
-                            <!--Label searching-->
-                            <ColumnDefinition Width="*"></ColumnDefinition>
-                            <!-- Label searching-->
-                            <ColumnDefinition Width="2*"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid DataContext="{Binding SelectedUser}">
 
-                        <TextBlock>Buscar:</TextBlock>
-                        <TextBox x:Name="TextBoxSearchBar"  Grid.Column="1"/>
+                            <!--#region rowdefinitions-->
+                            <Grid.RowDefinitions>
+                                <!--NAME-->
+                                <RowDefinition></RowDefinition>
+                                <!--MIN STOCK-->
+                                <RowDefinition></RowDefinition>
+                                <!--CATEGORIAS-->
+                                <RowDefinition></RowDefinition>
+                                <!--SUPLIDOR-->
+                                <RowDefinition></RowDefinition>
+                                <!--PRECIO DE PRODUCTO-->
+                                <RowDefinition></RowDefinition>
+                                <!--Botones-->
+                                <RowDefinition></RowDefinition>
+
+
+                            </Grid.RowDefinitions>
+                            <!--#endregion-->
+
+                            <!--#region Name-->
+                            <Grid  Grid.Row="0" Margin="0 0 0 10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Style="{StaticResource ColumnSize}"/>
+                                </Grid.ColumnDefinitions>
+
+
+                                <TextBlock Grid.Column="0" Grid.Row="0" >Nombre:</TextBlock>
+                                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Name}" />
+
+
+
+                            </Grid>
+                            <!--#endregion-->
+
+                            <!--#region LastName-->
+                            <Grid  Grid.Row="1" Margin="0 0 0 10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Style="{StaticResource ColumnSize}"/>
+                                </Grid.ColumnDefinitions>
+
+
+                                <TextBlock Grid.Column="0" Grid.Row="0" >Apellido:</TextBlock>
+                                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding LastName}" />
+
+
+
+                            </Grid>
+                            <!--#endregion-->
+                            <!--#region Phone-->
+                            <Grid  Grid.Row="2" Margin="0 0 0 10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Style="{StaticResource ColumnSize}"/>
+                                </Grid.ColumnDefinitions>
+
+
+                                <TextBlock Grid.Column="0" Grid.Row="0" >Tel:</TextBlock>
+                                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Phone}" />
+
+
+
+                            </Grid>
+                            <!--#endregion-->
+
+                            <!--#region UserName-->
+                            <Grid  Grid.Row="3" Margin="0 0 0 10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Style="{StaticResource ColumnSize}"/>
+                                </Grid.ColumnDefinitions>
+
+
+                                <TextBlock Grid.Column="0" Grid.Row="0" >Usuario:</TextBlock>
+                                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding UserName}" />
+
+
+
+                            </Grid>
+                            <!--#endregion-->
+                            <!--#region Password-->
+                            <Grid  Grid.Row="4" Margin="0 0 0 10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Style="{StaticResource ColumnSize}"/>
+                                </Grid.ColumnDefinitions>
+
+
+                                <TextBlock Grid.Column="0" Grid.Row="0" >Contraseña:</TextBlock>
+                                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding PassWord}" />
+
+
+
+                            </Grid>
+                            <!--#endregion-->
+
+
+
+
+
+
+
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="3*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock>Rol:</TextBlock>
+                            <ComboBox Grid.Column="1" SelectedItem="{Binding ComboBoxRole}">
+                                <ComboBoxItem  IsSelected="True" Content="Admin"/>
+                                <ComboBoxItem Content="Cajero"/>
+                                <ComboBoxItem Content="Almacen"/>
+                            </ComboBox>
+                        </Grid>
+                        <!-- Buttons -->
+                        <Grid  Grid.Row="2" Margin="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Content="Nueva" Command="{Binding AddUserCommand}" Grid.Column="0"/>
+                            <Button Content="Actualizar" Command="{Binding UpdateUserCommand}" Grid.Column="1"/>
+                            <Button Content="Eliminar" Command="{Binding DeleteProductCommand}" Grid.Column="2"/>
+                        </Grid>
                     </Grid>
 
 
-                    <DataGrid x:Name="DataGridUsers"    ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" CanUserAddRows="False"
+
+
+                </GroupBox>
+            </materialDesign:Card>
+            <materialDesign:Card   Grid.Row="2">
+                <GroupBox Header="Listado de usuarios registrados"   Padding="20">
+                    <StackPanel>
+                        <!-- Search bar-->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <!--Label searching-->
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <!-- Label searching-->
+                                <ColumnDefinition Width="2*"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock>Buscar:</TextBlock>
+                            <TextBox x:Name="TextBoxSearchBar"  Grid.Column="1"/>
+                        </Grid>
+
+
+                        <DataGrid x:Name="DataGridUsers"    ItemsSource="{Binding Users}" SelectedItem="{Binding SelectedUser, Mode=TwoWay}" CanUserAddRows="False"
                           CanUserDeleteRows="False" IsReadOnly="True"  Height="200" >
 
-                    </DataGrid>
+                        </DataGrid>
 
 
-                </StackPanel>
-            </GroupBox>
-        </materialDesign:Card>
+                    </StackPanel>
+                </GroupBox>
+            </materialDesign:Card>
+        </Grid>
     </Grid>
+    
 
 </Window>

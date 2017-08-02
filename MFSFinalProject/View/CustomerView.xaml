@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Padding="20"
-        Title="Mantenimiento suplidor" Height="620.835" Width="915.398" WindowStyle="ToolWindow" Background="White" SnapsToDevicePixels="False">
+        Title="Mantenimiento de Clientes" Height="620.835" Width="915.398" WindowStyle="ToolWindow" Background="White" SnapsToDevicePixels="False" Icon="/MFSFinalProject;component/Resources/Images/Icons/Category.png">
     <Window.Resources>
 
         <!--<vm:CustomerViewModel x:Key="suplierViewModel"/>-->

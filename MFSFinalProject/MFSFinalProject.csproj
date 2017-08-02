@@ -170,6 +170,12 @@
     <Compile Include="Resources\Reports\FormFactura.Designer.cs">
       <DependentUpon>FormFactura.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Reports\MinStockReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Resources\Reports\MinStockReport.Designer.cs">
+      <DependentUpon>MinStockReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Reports\StudentReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -350,10 +356,14 @@
     <EmbeddedResource Include="Resources\Reports\FormFactura.resx">
       <DependentUpon>FormFactura.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Reports\MinStockReport.resx">
+      <DependentUpon>MinStockReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Reports\ProductReport.rdlc" />
     <EmbeddedResource Include="Resources\Reports\Report1.rdlc" />
     <EmbeddedResource Include="Resources\Reports\Report2.rdlc" />
     <EmbeddedResource Include="Resources\Reports\Report3.rdlc" />
+    <EmbeddedResource Include="Resources\Reports\ReportMinStock.rdlc" />
     <EmbeddedResource Include="Resources\Reports\StudentReport.resx">
       <DependentUpon>StudentReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -454,6 +464,7 @@
     <Resource Include="Resources\Images\Icons\Arrowhead-Down.png" />
     <Resource Include="Resources\Images\Icons\Help.png" />
     <Resource Include="Resources\Images\Icons\User-Login.png" />
+    <Resource Include="Resources\Images\Icons\Mini-Truck-02.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

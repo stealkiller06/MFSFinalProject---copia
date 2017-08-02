@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MFSFinalProject.View"
         xmlns:vm="clr-namespace:MFSFinalProject.ViewModel"
+        WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
         Title="CategoryView" Height="426.442" Width="413.398">
     <Window.Resources>

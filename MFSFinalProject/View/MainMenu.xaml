@@ -23,9 +23,8 @@
             
         </ContextMenu>
         <ContextMenu x:Key="ContextMenuReport">
-            <MenuItem Header="Cerrar Sesión" x:Name="ProductReport" Click="ProductReport_Click"/>
-            <Separator/>
-            <MenuItem Header="Salir"  Click="ContextExit_Click" />
+            <MenuItem Header="Productos registrados" x:Name="ProductReport" Click="ProductReport_Click"/>
+            <MenuItem Header="Prductos agotandose" x:Name="ProductoMin" Click="ProductoMin_Click" />
 
         </ContextMenu>
     </Window.Resources>
@@ -169,14 +168,14 @@
                     </Grid>
                 </Button>
 
-                <Button Grid.Column="1" Grid.Row="2" Background="#FFF949A1">
+                <Button x:Name="ButtonSuplier" Click="ButtonSuplier_Click" Grid.Column="1" Grid.Row="2" Background="#FFF949A1">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Image Grid.Row="0" Source="/MFSFinalProject;component/Resources/Images/Icons/Category.png"/>
-                        <TextBlock Grid.Row="1" FontSize="24" Foreground="White" FontWeight="Bold">Categorias</TextBlock>
+                        <Image Grid.Row="0" Source="/MFSFinalProject;component/Resources/Images/Icons/Mini-Truck-02.png"/>
+                        <TextBlock Grid.Row="1" FontSize="24" Foreground="White" FontWeight="Bold">Suplidores</TextBlock>
 
                     </Grid>
                 </Button>
@@ -201,9 +200,15 @@
 
         <!--#region Footer-->
         <StackPanel Background="#FF0C0C0F" Grid.Row="2">
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" >
-
-                <TextBlock FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Foreground="White" Height="100">Software creado por Frank Peña</TextBlock>
+            <StackPanel Margin="0 30 0 0" HorizontalAlignment="Center" Orientation="Horizontal" VerticalAlignment="Center" >
+                <Button x:Name="ButtonProduct" Click="ButtonProduct_Click" Content="Productos" Background="#FF666666" BorderBrush="#FF837F7F" FontWeight="Bold" Padding="10,5" FontSize="14"/>
+                <Button x:Name="ButtonCategory" Click="ButtonCategory_Click" Content="Categorias" Background="#FF666666" BorderBrush="#FF837F7F" FontWeight="Bold" Padding="10,5" FontSize="14"/>
+                <Button x:Name="ButtonMeasurement" Click="ButtonMeasurement_Click" Content="Medidas" Background="#FF666666" BorderBrush="#FF837F7F" FontWeight="Bold" Padding="10,5" FontSize="14"/>
+                <!--<TextBlock FontSize="18" FontWeight="Bold" VerticalAlignment="Center" Foreground="White" >Software creado por Frank Peña</TextBlock>-->
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <TextBlock FontSize="10" FontWeight="Bold" VerticalAlignment="Center" Foreground="White" >Software creado por Frank Peña</TextBlock>
+                <TextBlock FontSize="10" FontWeight="Bold" VerticalAlignment="Center" Foreground="White" >Todos los derechos reservados.</TextBlock>
             </StackPanel>
         </StackPanel>
         <!--#endregion-->

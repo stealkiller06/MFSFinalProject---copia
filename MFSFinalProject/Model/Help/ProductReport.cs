@@ -11,6 +11,7 @@ namespace MFSFinalProject.Model.Help
         public string CompanyName { get; set; }
         public  string Address { get; set; }
         public string Image { get; set; }
+        public string Title { get; set; }
         
     }
 }
