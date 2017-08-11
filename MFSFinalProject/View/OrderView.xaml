@@ -15,13 +15,17 @@
     </Window.Resources>
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="304*"/>
+            <ColumnDefinition Width="447*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <!--DataGrid-->
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <GroupBox Header="Datos de la compra" Grid.Row="0" Padding="40" FontSize="18" FontWeight="Bold">
+        <GroupBox Header="Datos de la compra" Grid.Row="0" Padding="40" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="2">
             <!--Main Container-->
             <Grid>
                 <Grid.RowDefinitions>
@@ -61,38 +65,29 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
                                 <ColumnDefinition Width="*" />
-                                
+
                             </Grid.ColumnDefinitions>
                             <TextBox Grid.Column="0" Grid.Row="0" Text="{Binding SuplierName, UpdateSourceTrigger=PropertyChanged}" x:Name="SuplierName" />
                             <Button Content="..." x:Name="ChageSuplier" Click="ChageSuplier_Click" Grid.Column="1"/>
                         </Grid>
-                        
+
                     </Grid>
                     <!--#endregion-->
 
 
-                    
+
                     <!--#region  Usuario y Fecha -->
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
+
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <!--#region  Usuario-->
-                        <Grid Grid.Column="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" >Usuario</TextBlock>
-                            <TextBox Grid.Column="1" Text="{Binding UserName}" />
-                        </Grid>
-                        <!--#endregion-->
+
                         <!--#region  Fecha-->
                         <Grid Grid.Column="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" >Fecha</TextBlock>
                             <DatePicker Grid.Column="1"   IsEnabled="True" SelectedDate="{Binding Date, Mode=TwoWay}"/>
@@ -125,7 +120,7 @@
 
 
         </GroupBox>
-        <GroupBox Header="Listado de Compras" Grid.Row="1" Padding="40" FontSize="18" FontWeight="Bold">
+        <GroupBox Header="Listado de Compras" Grid.Row="1" Padding="40" FontSize="18" FontWeight="Bold" Grid.ColumnSpan="2">
             <StackPanel>
                 <!-- Search bar-->
                 <Grid>

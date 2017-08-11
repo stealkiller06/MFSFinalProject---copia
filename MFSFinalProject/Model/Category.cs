@@ -30,7 +30,6 @@ namespace MFSFinalProject.Model
         #endregion
 
         #region Relationships
-        public virtual User User { get; set; }
         public virtual ICollection<Product> Products { get; set; }
         #endregion
 

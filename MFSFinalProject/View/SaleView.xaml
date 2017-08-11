@@ -76,24 +76,15 @@
                     <!--#region  Usuario y Fecha -->
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
+                            
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <!--#region  Usuario-->
-                        <Grid Grid.Column="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" >Usuario</TextBlock>
-                            <TextBox Grid.Column="1" Text="{Binding UserName}" />
-                        </Grid>
-                        <!--#endregion-->
+
                         <!--#region  Fecha-->
                         <Grid Grid.Column="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="3*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" >Fecha</TextBlock>
                             <DatePicker Grid.Column="1"   IsEnabled="True" SelectedDate="{Binding Date, Mode=TwoWay}"/>

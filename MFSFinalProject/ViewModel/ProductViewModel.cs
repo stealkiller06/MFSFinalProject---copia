@@ -44,7 +44,7 @@ namespace MFSFinalProject.ViewModel
             {
 
                 var data = from p in context.Products
-                          where p.Remove != 1
+                           where p.Remove != 1
                            select new
                            {
                                Id = p.ProductId,
@@ -56,12 +56,16 @@ namespace MFSFinalProject.ViewModel
                                SellPrice = p.SellPrice,
                                MeasurementId = p.Mesurement.MeasurementId,
                                MeasurementName = p.Mesurement.Name,
-                               Cost = (context.OrderDetails
-                               .Where(o => o.Product.ProductId == p.ProductId).Count() == 0) ? 0: context.OrderDetails
-                               .Where(o => o.Product.ProductId == p.ProductId).Average(o => o.Cost),
-                               Stock = (context.OrderDetails.Where(o=>o.Product.ProductId == p.ProductId).Count() > 0)?
-                               context.OrderDetails.Where(o => o.Product.ProductId == p.ProductId && o.Remove !=1).Sum(o=>o.Quantity) - 
-                               context.SaleDetails.Where(s=> s.Product.ProductId == p.ProductId && s.Remove != 1).Sum(s=>s.Quantity): 0
+                               Cost = (context.OrderDetails.Where(o => o.Product.ProductId == p.ProductId && o.Remove != 1).Count() != 0)
+                                        ? context.OrderDetails.Where(o => o.Product.ProductId == p.ProductId && o.Remove != 1).Average(o => o.Cost) : 0,
+                               Stock = (context.OrderDetails.Where(o => o.Product.ProductId == p.ProductId && o.Remove != 1).Count() != 0) ?
+                                            (context.SaleDetails.Where(s => s.Product.ProductId == p.ProductId && s.Remove != 1).Count() != 0) ?
+                                               context.OrderDetails.Where(o => o.Product.ProductId == p.ProductId && o.Remove != 1).Sum(o => o.Quantity)
+                                               - context.SaleDetails.Where(s => s.Product.ProductId == p.ProductId && s.Remove != 1).Sum(s => s.Quantity)
+                                               : context.OrderDetails.Where(o => o.Product.ProductId == p.ProductId && o.Remove != 1).Sum(o => o.Quantity)
+                                               : 0
+
+
 
 
                            };
@@ -154,7 +158,6 @@ namespace MFSFinalProject.ViewModel
                 {
                     product = context.Products.Include(p => p.Category).Single(p => p.ProductId == SelectedProduct.Id);
                 }
-                product.User = context.Users.Find(UserLogin.Id);
                 product.Name = SelectedProduct.Name;
                 product.MinStock = SelectedProduct.MinStock;
                 product.Category = context.Categories.Find(SelectedProduct.CategoryId);

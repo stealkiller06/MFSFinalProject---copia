@@ -33,6 +33,7 @@ namespace MFSFinalProject.Migrations
                 context.Roles.AddOrUpdate(new Role() { Name = "Admin" });
                 context.Roles.AddOrUpdate(new Role() { Name = "Cajero" });
                 context.Roles.AddOrUpdate(new Role() { Name = "Almacen" });
+                context.SaveChanges();
 
                 context.Users.AddOrUpdate(new User()
                 {
@@ -44,6 +45,7 @@ namespace MFSFinalProject.Migrations
                     Phone = "999-999-9999",
 
                 });
+                context.SaveChanges();
             }
              
            

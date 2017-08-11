@@ -8,13 +8,6 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-         TextElement.FontWeight="Regular"
-         TextElement.FontSize="13"
-         TextOptions.TextFormattingMode="Ideal"
-         TextOptions.TextRenderingMode="Auto"
-         Background="{DynamicResource MaterialDesignBackground}"
-         FontFamily="{DynamicResource MaterialDesignFont}"
     Title="Mantenimiento de detalle de compras" Height="695.774" Width="877.722">
     <Window.Resources>
         <!--<vm:OrderDetailViewModel x:Key="orderDetailViewModel"/>-->
@@ -30,7 +23,7 @@
             <Setter Property="Padding" Value="20"/>
             <Setter Property="Margin" Value="15"/>
         </Style>
-        <vm:OrderDetailViewModel x:Key="orderDetailViewModel"/>
+       
     </Window.Resources>
 
     <Grid>

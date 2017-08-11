@@ -172,7 +172,9 @@ namespace MFSFinalProject.ViewModel
                 SaleDetail.SellPrice = selectedSaleDetail.SellPrice;
                 SaleDetail.Product = context.Products.Include(p => p.Category).Single(p => p.ProductId == SelectedSaleDetail.ProductId);
                 SaleId = SelectedSaleDetail.SaleId;
+                context.Entry(SaleDetail.Product.User).State = EntityState.Unchanged;
                 context.Entry(SaleDetail.Product.Category).State = EntityState.Unchanged;
+                
                 context.Entry(SaleDetail).State = SelectedSaleDetail.SaleDetailId == 0 ?
                                                 EntityState.Added : EntityState.Modified;
 
@@ -210,10 +212,12 @@ namespace MFSFinalProject.ViewModel
                     throw new Exception("Debes agregar el precio de venta del producto.");
                 using (MFSContext context = new MFSContext())
                 {
-                    int stockActually = (context.OrderDetails.Where(o => o.Product.ProductId == SelectedSaleDetail.ProductId).Count() > 0) ?
-                               context.OrderDetails.Where(o => o.Product.ProductId == SelectedSaleDetail.ProductId && o.Remove != 1).Sum(o => o.Quantity) -
-                               context.SaleDetails.Where(s => s.Product.ProductId == SelectedSaleDetail.ProductId && s.Remove != 1).Sum(s => s.Quantity) : 0;
-
+                    int stockActually = (context.OrderDetails.Where(o => o.Product.ProductId == SelectedSaleDetail.ProductId && o.Remove != 1).Count() != 0) ?
+                                            (context.SaleDetails.Where(s => s.Product.ProductId == SelectedSaleDetail.ProductId && s.Remove != 1).Count() != 0) ?
+                                               context.OrderDetails.Where(o => o.Product.ProductId == SelectedSaleDetail.ProductId && o.Remove != 1).Sum(o => o.Quantity)
+                                               - context.SaleDetails.Where(s => s.Product.ProductId == SelectedSaleDetail.ProductId && s.Remove != 1).Sum(s => s.Quantity)
+                                               : context.OrderDetails.Where(o => o.Product.ProductId == SelectedSaleDetail.ProductId && o.Remove != 1).Sum(o => o.Quantity)
+                                               : 0;
                     if (stockActually - SelectedSaleDetail.Quantity < 0)
                         throw new Exception("Acutalmente sólo tiene " + stockActually + " en el stock.");
                 }
