@@ -100,6 +100,7 @@ namespace MFSFinalProject.ViewModel
                 return;
             using (MFSContext context = new MFSContext())
             {
+                SelectedCategory.User = context.Users.Find(UserLogin.Id);
                 context.Entry(selectedCategory).State = (selectedCategory.CategoryId == 0) ?
                                                         System.Data.Entity.EntityState.Added :
                                                         System.Data.Entity.EntityState.Modified;

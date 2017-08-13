@@ -179,7 +179,7 @@
                             </Grid.ColumnDefinitions>
                             <Button Content="Nueva" Command="{Binding AddUserCommand}" Grid.Column="0"/>
                             <Button Content="Actualizar" Command="{Binding UpdateUserCommand}" Grid.Column="1"/>
-                            <Button Content="Eliminar" Command="{Binding DeleteProductCommand}" Grid.Column="2"/>
+                            <Button Content="Eliminar" Command="{Binding DeleteUserCommand}" Grid.Column="2"/>
                         </Grid>
                     </Grid>
 

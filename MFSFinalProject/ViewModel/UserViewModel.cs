@@ -85,8 +85,7 @@ namespace MFSFinalProject.ViewModel
             try
             {
                 //if the user has a name that mean is a user already saved
-                if (SelectedUser.UserName != null)
-                    return true;
+                return true;
             }
             catch (System.Exception)
             {

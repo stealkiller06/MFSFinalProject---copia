@@ -127,6 +127,10 @@
     <Compile Include="Migrations\201708112237155_category.Designer.cs">
       <DependentUpon>201708112237155_category.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708112255155_product.cs" />
+    <Compile Include="Migrations\201708112255155_product.Designer.cs">
+      <DependentUpon>201708112255155_product.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Customer.cs" />
     <Compile Include="Model\Help\Company.cs" />
@@ -339,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708112237155_category.resx">
       <DependentUpon>201708112237155_category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708112255155_product.resx">
+      <DependentUpon>201708112255155_product.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

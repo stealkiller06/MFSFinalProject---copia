@@ -17,7 +17,6 @@ namespace MFSFinalProject.Model
         public Product()
         {
             Category = new Category();
-            User = new User();
         }
 
 
@@ -59,7 +58,7 @@ namespace MFSFinalProject.Model
                 OnPropertyChanged();
             }
         }
-
+        public virtual User User { get; set; }
         //public virtual OrderDetail OrderDetail { get; set; }
         #endregion
 

@@ -31,6 +31,7 @@ namespace MFSFinalProject.Model
 
         #region Relationships
         public virtual ICollection<Product> Products { get; set; }
+        public virtual User User { get; set; }
         #endregion
 
 
